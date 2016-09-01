@@ -22,7 +22,7 @@ int main()
     if (c == '\n')
     {
       ++nl;
-      printf("[%d, %d]%c", nl, nw, c);
+      printf("[%d, %d]\n", nl, nw);
     }
     if (c == ' ' || c == '\n' || c == '\t')
     {
@@ -33,7 +33,6 @@ int main()
     {
       state = IN;
       ++nw;
-      printf("%c", c);
     }
     else
     {
