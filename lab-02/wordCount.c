@@ -31,6 +31,10 @@ int main()
       state = IN;
       ++nw;
     }
+    else
+    {
+      printf("%c", c);
+    }
   }
   printf("%d %d %d\n", nl, nw, nc);
   return 0;
