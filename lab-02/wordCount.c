@@ -19,17 +19,21 @@ int main()
   printf("%d.", nl + 1);
   while ((c = getchar()) != EOF){
     ++nc;
-    if (c == '\n')
-    {
-      ++nl;
-      state = OUT;
-      printf("[%d, %d]", nl, nw);
-      printf("%c", c);
-    }
-    if (c == ' ' || c == '\t')
+
+    if (c == ' ' || c == '\n' || c == '\t')
     {
       state = OUT;
-      printf("%c", c);
+      if (c == '\n')
+      {
+        ++nl;
+        printf("[%d, %d]", nl, nw);
+        printf("%c", c);
+        printf("%d.", nl + 1);
+      }
+      else
+      {
+        printf("%c", c);
+      }
     }
     else if (state == OUT)
     {
