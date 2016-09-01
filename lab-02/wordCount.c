@@ -17,25 +17,29 @@ int main()
   state = OUT;
   nl = nw = nc = 0;
   while ((c = getchar()) != EOF){
+    printf("%d." nl + 1);
     ++nc;
     if (c == '\n')
     {
       ++nl;
+      printf("[%d, %d]%c", nl, nw, c);
     }
     if (c == ' ' || c == '\n' || c == '\t')
     {
       state = OUT;
+      printf("%c", c);
     }
     else if (state == OUT)
     {
       state = IN;
       ++nw;
+      printf("%c", c);
     }
     else
     {
       printf("%c", c);
     }
   }
-  printf("%d %d %d\n", nl, nw, nc);
+  printf("%d lines, %d words, %d characters\n", nl, nw, nc);
   return 0;
 }
