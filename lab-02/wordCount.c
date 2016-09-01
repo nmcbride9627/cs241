@@ -16,15 +16,17 @@ int main()
 
   state = OUT;
   nl = nw = nc = 0;
+  printf("%d.", nl + 1);
   while ((c = getchar()) != EOF){
-    printf("%d.", nl + 1);
     ++nc;
     if (c == '\n')
     {
       ++nl;
+      state = OUT;
       printf("[%d, %d]", nl, nw);
+      printf("%c", c);
     }
-    if (c == ' ' || c == '\n' || c == '\t')
+    if (c == ' ' || c == '\t')
     {
       state = OUT;
       printf("%c", c);
