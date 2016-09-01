@@ -22,7 +22,7 @@ int main()
     if (c == '\n')
     {
       ++nl;
-      printf("[%d, %d]\n", nl, nw);
+      printf("[%d, %d]", nl, nw);
     }
     if (c == ' ' || c == '\n' || c == '\t')
     {
