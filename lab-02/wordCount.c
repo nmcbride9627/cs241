@@ -41,6 +41,9 @@ int main()
       ++nw;
       printf("%c", c);
     }
+    else{
+      printf("%c", c);
+    }
   }
   printf("%d lines, %d words, %d characters\n", nl, nw, nc);
   return 0;
