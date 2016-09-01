@@ -26,7 +26,7 @@ int main()
       if (c == '\n')
       {
         ++nl;
-        printf("[%d, %d]", nl, nw);
+        printf("[%d, %d]", nw, nc);
         printf("%c", c);
         printf("%d.", nl + 1);
       }
