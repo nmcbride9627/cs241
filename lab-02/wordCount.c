@@ -39,9 +39,6 @@ int main()
     {
       state = IN;
       ++nw;
-    }
-    else
-    {
       printf("%c", c);
     }
   }
