@@ -38,6 +38,7 @@ int main()
       state = OUT;
       if (c == '\n') //Singles out newlines
       {
+        ++totalLines;
         printf("[%d, %d]", currentLineWC, currentLineCC);
         printf("%c", c); //echos newline characters
 
@@ -53,7 +54,6 @@ int main()
           lineMostChars = totalLines;
           lineMostCharsCC = currentLineCC;
         }
-        ++totalLines;
         currentLineWC = currentLineCC = 0;
         lineStart = TRUE;
       }
