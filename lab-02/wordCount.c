@@ -8,24 +8,26 @@
 
 #define IN 1  /* inside a word */
 #define OUT 0 /* outside a word */
+#define TRUE 1
+#define FALSE 0
 
 /* count lines, words, and characters in input */
 int main()
 {
   int c, totalLines, totalWords, totalChars, state;
   int currentLineWC, currentLineCC;
-  bool lineStart;
+  int lineStart;
 
   state = OUT;
   totalLines = totalWords = totalChars = 0;
   currentLineWC = currentLineCC = 0;
-  lineStart = true;
+  lineStart = TRUE;
   printf("%d.", totalLines + 1);
   while ((c = getchar()) != EOF){
     if(lineStart)
     {
       printf("%d.", totalLines + 1); //Print the line number
-      lineStart = false;
+      lineStart = FALSE;
     }
     if (c == ' ' || c == '\n' || c == '\t') //Check for spaces, newlines, and tabs
     {
@@ -39,7 +41,7 @@ int main()
         totalChars += currentLineCC;
         totalWords += currentLineWC;
         currentLineWC = currentLineCC = 0;
-        lineStart = true;
+        lineStart = TRUE;
       }
       else
       {
