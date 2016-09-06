@@ -46,10 +46,12 @@ int main()
         if(currentLineWC > lineMostWordsWC)
         {
           lineMostWords = totalLines;
+          lineMostWordsWC = currentLineWC;
         }
         if(currentLineCC > lineMostCharsCC)
         {
           lineMostChars = totalLines;
+          lineMostCharsCC = currentLineCC;
         }
         ++totalLines;
         currentLineWC = currentLineCC = 0;
@@ -75,6 +77,6 @@ int main()
   }
   printf("%d lines, %d words, %d characters\n", totalLines, totalWords, totalChars);
   printf("With %d, line %d has the most characters\n", lineMostCharsCC, lineMostChars);
-  printf("With %d, line %d has the most words", lineMostWordsWC, lineMostWords);
+  printf("With %d, line %d has the most words\n", lineMostWordsWC, lineMostWords);
   return 0;
 }
