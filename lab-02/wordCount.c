@@ -20,7 +20,7 @@ int main()
   currentLineWC = currentLineCC = 0;
   printf("%d.", totalLines + 1);
   while ((c = getchar()) != EOF){
-    ++currentLineCC;
+    currentLineCC++;
     if (c == ' ' || c == '\n' || c == '\t') //Check for spaces, newlines, and tabs
     {
       state = OUT;
