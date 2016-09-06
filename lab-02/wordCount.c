@@ -14,13 +14,19 @@ int main()
 {
   int c, totalLines, totalWords, totalChars, state;
   int currentLineWC, currentLineCC;
+  bool lineStart;
 
   state = OUT;
   totalLines = totalWords = totalChars = 0;
   currentLineWC = currentLineCC = 0;
+  lineStart = true;
   printf("%d.", totalLines + 1);
   while ((c = getchar()) != EOF){
-    currentLineCC++;
+    if(lineStart)
+    {
+      printf("%d.", totalLines + 1); //Print the line number
+      lineStart = false;
+    }
     if (c == ' ' || c == '\n' || c == '\t') //Check for spaces, newlines, and tabs
     {
       state = OUT;
@@ -29,10 +35,11 @@ int main()
         ++totalLines;
         printf("[%d, %d]", currentLineWC, currentLineCC);
         printf("%c", c); //echos newline characters
-        printf("%d.", totalLines + 1); //Print the line number for the next line
+
         totalChars += currentLineCC;
         totalWords += currentLineWC;
         currentLineWC = currentLineCC = 0;
+        lineStart = true;
       }
       else
       {
@@ -43,10 +50,11 @@ int main()
     {
       state = IN;
       ++currentLineWC;
+      ++currentLineCC;
       printf("%c", c); //Prints the first letter coming into a word
-
     }
     else{
+      ++currentLineCC;
       printf("%c", c); //echos everything but spaces, tabs, and new lines
     }
   }
