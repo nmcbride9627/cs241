@@ -30,8 +30,8 @@ int main()
         printf("[%d, %d]", currentLineWC, currentLineCC);
         printf("%c", c); //echos newline characters
         printf("%d.", totalLines + 1); //Print the line number for the next line
-        totalChars += currentLineCC
-        totalWords += currentLineWC
+        totalChars += currentLineCC;
+        totalWords += currentLineWC;
         currentLineWC = currentLineCC = 0;
       }
       else
