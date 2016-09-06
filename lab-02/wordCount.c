@@ -17,6 +17,7 @@ int main()
   int c, totalLines, totalWords, totalChars, state;
   int currentLineWC, currentLineCC;
   int lineMostWords, lineMostChars;
+  int lineMostWordsWC, lineMostCharsCC;
   int lineStart;
 
   state = OUT;
