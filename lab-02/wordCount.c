@@ -45,6 +45,7 @@ int main()
       }
       else
       {
+        ++currentLineCC;
         printf("%c", c); //echos spaces and tabs
       }
     }
