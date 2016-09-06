@@ -16,13 +16,16 @@ int main()
 {
   int c, totalLines, totalWords, totalChars, state;
   int currentLineWC, currentLineCC;
+  int lineMostWords, lineMostChars;
   int lineStart;
 
   state = OUT;
   totalLines = totalWords = totalChars = 0;
   currentLineWC = currentLineCC = 0;
+  lineMostWords = lineMostChars = 0;
+  lineMostWordsWC = lineMostCharsCC = 0;
   lineStart = TRUE;
-  printf("%d.", totalLines + 1);
+
   while ((c = getchar()) != EOF){
     if(lineStart)
     {
@@ -34,12 +37,20 @@ int main()
       state = OUT;
       if (c == '\n') //Singles out newlines
       {
-        ++totalLines;
         printf("[%d, %d]", currentLineWC, currentLineCC);
         printf("%c", c); //echos newline characters
 
         totalChars += currentLineCC;
         totalWords += currentLineWC;
+        if(currentLineWC > lineMostWordsWC)
+        {
+          lineMostWords = totalLines;
+        }
+        if(currentLineCC > lineMostCharsCC)
+        {
+          lineMostChars = totalLines;
+        }
+        ++totalLines;
         currentLineWC = currentLineCC = 0;
         lineStart = TRUE;
       }
@@ -62,5 +73,7 @@ int main()
     }
   }
   printf("%d lines, %d words, %d characters\n", totalLines, totalWords, totalChars);
+  printf("With %d, line %d has the most characters\n", lineMostCharsCC, lineMostChars);
+  printf("With %d, line %d has the most words", lineMostWordsWC, lineMostWords);
   return 0;
 }
