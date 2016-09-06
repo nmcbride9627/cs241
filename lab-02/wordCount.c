@@ -12,39 +12,44 @@
 /* count lines, words, and characters in input */
 int main()
 {
-  int c, nl, nw, nc, state;
+  int c, totalLines, totalWords, totalChars, state;
+  int currentLineWC, currentLineCC;
 
   state = OUT;
-  nl = nw = nc = 0;
-  printf("%d.", nl + 1);
+  totalLines = totalWords = totalChars = 0;
+  currentLineWC = currentLineCC = 0;
+  printf("%d.", totalLines + 1);
   while ((c = getchar()) != EOF){
-    ++nc;
-
-    if (c == ' ' || c == '\n' || c == '\t')
+    ++currentLineCC;
+    if (c == ' ' || c == '\n' || c == '\t') //Check for spaces, newlines, and tabs
     {
       state = OUT;
-      if (c == '\n')
+      if (c == '\n') //Singles out newlines
       {
-        ++nl;
-        printf("[%d, %d]", nw, nc);
-        printf("%c", c);
-        printf("%d.", nl + 1);
+        ++totalLines;
+        printf("[%d, %d]", currentLineWC, currentLineCC);
+        printf("%c", c); //echos newline characters
+        printf("%d.", totalLines + 1); //Print the line number for the next line
+        totalChars += currentLineCC
+        totalWords += currentLineWC
+        currentLineWC = currentLineCC = 0;
       }
       else
       {
-        printf("%c", c);
+        printf("%c", c); //echos spaces and tabs
       }
     }
     else if (state == OUT)
     {
       state = IN;
-      ++nw;
-      printf("%c", c);
+      ++currentLineWC;
+      printf("%c", c); //Prints the first letter coming into a word
+
     }
     else{
-      printf("%c", c);
+      printf("%c", c); //echos everything but spaces, tabs, and new lines
     }
   }
-  printf("%d lines, %d words, %d characters\n", nl, nw, nc);
+  printf("%d lines, %d words, %d characters\n", totalLines, totalWords, totalChars);
   return 0;
 }
