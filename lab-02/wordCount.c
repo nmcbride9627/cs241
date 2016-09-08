@@ -28,14 +28,17 @@ int main()
   lineStart = TRUE;
 
   while ((c = getchar()) != EOF){
+    /*this prints the line number*/
     if(lineStart)
     {
       printf("%d.", totalLines + 1);
       lineStart = FALSE;
     }
+    /*checks for delimiters and increments the respective counts*/
     if (c == ' ' || c == '\n' || c == '\t')
     {
       state = OUT;
+      /*singles out newline for special maximum count checks*/
       if (c == '\n')
       {
         ++totalLines;
@@ -44,11 +47,13 @@ int main()
 
         totalChars += currentLineCC;
         totalWords += currentLineWC;
+        /*line with most words check*/
         if(currentLineWC > lineMostWordsWC)
         {
           lineMostWords = totalLines;
           lineMostWordsWC = currentLineWC;
         }
+        /*line with most charaters check*/
         if(currentLineCC > lineMostCharsCC)
         {
           lineMostChars = totalLines;
@@ -57,12 +62,15 @@ int main()
         currentLineWC = currentLineCC = 0;
         lineStart = TRUE;
       }
+      /*echos and counts spaces and tabs*/
       else
       {
         ++currentLineCC;
         printf("%c", c);
       }
     }
+    /*echos and counts the first character in each word
+     *and counts each word*/
     else if (state == OUT)
     {
       state = IN;
@@ -70,13 +78,17 @@ int main()
       ++currentLineCC;
       printf("%c", c);
     }
+    /*echos and counts all other characters*/
     else{
       ++currentLineCC;
       printf("%c", c);
     }
   }
-  printf("%d lines, %d words, %d characters\n", totalLines, totalWords, totalChars);
-  printf("With %d, line %d has the most characters\n", lineMostCharsCC, lineMostChars);
-  printf("With %d, line %d has the most words\n", lineMostWordsWC, lineMostWords);
+  printf("%d lines, %d words, %d characters\n",
+        totalLines, totalWords, totalChars);
+  printf("With %d, line %d has the most characters\n",
+        lineMostCharsCC, lineMostChars);
+  printf("With %d, line %d has the most words\n",
+        lineMostWordsWC, lineMostWords);
   return 0;
 }
