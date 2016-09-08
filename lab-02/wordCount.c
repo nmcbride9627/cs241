@@ -39,7 +39,7 @@ int main()
       if (c == '\n')
       {
         ++totalLines;
-        printf("[%d; %d]", currentLineWC, currentLineCC);
+        printf("[%d;%d]", currentLineWC, currentLineCC);
         printf("%c", c);
 
         totalChars += currentLineCC;
