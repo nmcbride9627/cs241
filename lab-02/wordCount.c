@@ -11,7 +11,14 @@
 #define TRUE 1
 #define FALSE 0
 
-/* count lines, words, and characters in input */
+/*************************************************************************
+ * This program scans in a file containing standard ASCII characters.
+ * It counts characters, words, and lines and prints the total count.
+ * It also echos each line with a heading line number and a footing
+ *   per line word and character count.
+ * It also prints which line has the most words and which had the
+ * most characters and how many repectively.
+ ************************************************************************/
 int main()
 {
   int c, totalLines, totalWords, totalChars, state;
