@@ -53,9 +53,10 @@ int main(int argc, char const *argv[])
     numericalValue = c - '0';
     concatenatedValue = ((concatenatedValue * 10) + numericalValue);
     }
+    bits = getbits(x, p, n);
+    printf("getbits(x=%u, p=%d, n=%d) = %d\n", x, p, n, bits);
   }
-  bits = getbits(x, p, n);
-  printf("getbits(x=%u, p=%d, n=%d) = %d", x, p, n, bits);
+
   return 0;
 }
 
