@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
       }
       else if (xTooBig)
       {
-        printf("Error: position out of range\n %lu", sizeof(x));
+        printf("Error: position out of range\n %lu", sizeof(concatenatedValue));
         xTooBig = false;
       }
       else
