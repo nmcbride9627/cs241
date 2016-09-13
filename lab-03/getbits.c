@@ -31,12 +31,14 @@ int main(int argc, char const *argv[])
           if(xpnFlag == 0)
           {
             x = concatenatedValue;
+            concatenatedValue = 0;
             xpnFlag++;
             break;
           }
           if(xpnFlag == 1)
           {
             p = concatenatedValue;
+            concatenatedValue = 0;
             xpnFlag++;
             break;
           }
@@ -45,6 +47,7 @@ int main(int argc, char const *argv[])
       else
       {
         n = concatenatedValue;
+        concatenatedValue = 0;
         xpnFlag = 0;
       }
     }
