@@ -13,8 +13,10 @@ unsigned getbits(unsigned x, int p, int n)
 
 int main(int argc, char const *argv[])
 {
-  unsigned  x;
-  int c, p, n, xpnFlag, bits;
+  printf("%u\n",getbits(127, 2, 1));
+  /*
+  unsigned  x, bits;
+  int c, p, n, xpnFlag;
   int numericalValue, concatenatedValue;
   c = x = p = n = xpnFlag = bits = 0;
   numericalValue =  concatenatedValue = 0;
@@ -22,8 +24,8 @@ int main(int argc, char const *argv[])
   while ((c = getchar()) != EOF)
   {
 
-      /* cycles where to store numericalValue between
-       * x, p, and n and stores repectively*/
+      * cycles where to store numericalValue between
+       * x, p, and n and stores repectively*
     if(c == ',' || c == '\n')
     {
       if(c == ',')
@@ -56,7 +58,7 @@ int main(int argc, char const *argv[])
     concatenatedValue = ((concatenatedValue * 10) + numericalValue);
     }
   }
-
+*/
   return 0;
 }
 
