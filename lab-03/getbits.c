@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 {
   unsigned  x, bits;
   int c, p, n, xpnFlag;
-  int numericalValue, concatenatedValue;
+//  int numericalValue, concatenatedValue;
   c = x = p = n = xpnFlag = bits = 0;
   numericalValue =  concatenatedValue = 0;
 
@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
       /*not on a new line*/
       if (c != ',')
       {
-        printf("%d\n", numericalValue);
+        printf("%d\n", getNumericalValue(c));
       } else {
         /* code */
       }
@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
 
       /* cycles where to store numericalValue between
        * x, p, and n and stores repectively*/
-    if(c == ',' || c == '\n')
+  /*  if(c == ',' || c == '\n')
     {
       if(c == ',')
       {
@@ -73,8 +73,8 @@ int main(int argc, char const *argv[])
     numericalValue = c - '0';
     concatenatedValue = ((concatenatedValue * 10) + numericalValue);
     }
+    */
   }
-
   return 0;
 }
 
