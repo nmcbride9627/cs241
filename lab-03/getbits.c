@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
       }
       else if (xTooBig)
       {
-        printf("Error: position out of range\n");
+        printf("Error: position out of range\n %lu", sizeof(x));
         xTooBig = false;
       }
       else
