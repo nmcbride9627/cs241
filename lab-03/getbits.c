@@ -11,10 +11,13 @@ unsigned getbits(unsigned x, int p, int n)
 {
   return (x >> (p+1-n)) & ~(~0 << n);
 }
+/*gets numerical value of a number*/
 int getNumericalValue(int x)
 {
   return x - '0';
 }
+
+/*TODO add comments*/
 int main(int argc, char const *argv[])
 {
   int c, p, n = 0;
@@ -24,8 +27,10 @@ int main(int argc, char const *argv[])
 
   while ((c = getchar()) != EOF)
   {
+    /*new line check*/
     if (c == '\n')
     {
+      /*set value for n newline is its delimiter*/
       if(n == 0)
       {
         n = concatenatedValue;
@@ -36,6 +41,7 @@ int main(int argc, char const *argv[])
         perror("This shouldn't happen, something broke!");
         return 1;
       }
+      /*print statements*/
       if (n > p+1)
       {
         printf("Error: too many bits requested from position\n");
@@ -51,13 +57,14 @@ int main(int argc, char const *argv[])
       }
       x = p = n = 0;
     }
+    /*not on a new line*/
     else
     {
-      /*not on a new line*/
       if (c != ',')
       {
         concatenatedValue = (concatenatedValue * 10) + getNumericalValue(c);
       }
+      /*set values for x and p if delimiter is found*/
       else {
         if(x == 0)
         {
