@@ -4,6 +4,7 @@
 /* CS-241-002        */
 /*********************/
 #include <stdio.h>
+#include <stdbool.h>
 
 /*getbits: get n bits from position p*/
 unsigned getbits(unsigned x, int p, int n)
@@ -16,10 +17,10 @@ int getNumericalValue(int x)
 }
 int main(int argc, char const *argv[])
 {
-  unsigned  x;
-  int c, p, n;
-  int concatenatedValue = 0;
-  c = x = p = n = 0;
+  int c, p, n = 0;
+  unsigned  x = 0;
+  unsigned long concatenatedValue = 0;
+  bool xTooBig = false;
 
   while ((c = getchar()) != EOF)
   {
@@ -39,9 +40,10 @@ int main(int argc, char const *argv[])
       {
         printf("Error: too many bits requested from position\n");
       }
-      else if (x > 4294967295)
+      else if (xTooBig)
       {
         printf("Error: position out of range\n");
+        xTooBig = false;
       }
       else
       {
@@ -55,6 +57,10 @@ int main(int argc, char const *argv[])
       if (c != ',')
       {
         concatenatedValue = (concatenatedValue * 10) + getNumericalValue(c);
+        if (concatenatedValue > sizeof(x))
+        {
+          xTooBig = true;
+        }
       }
       else {
         if(x == 0)
