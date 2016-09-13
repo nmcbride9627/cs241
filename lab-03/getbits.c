@@ -33,8 +33,20 @@ int main(int argc, char const *argv[])
       else
       {
         perror("This shouldn't happen, something broke!");
+        return 1;
       }
-      printf("getbits(x=%u, p=%d, n=%d) = %u\n", x, p, n, getbits(x, p, n));
+      if (n > p+1)
+      {
+        printf("Error: too many bits requested from position\n");
+      }
+      else if (x > sizeof(x))
+      {
+        printf("Error: position out of range\n");
+      }
+      else
+      {
+        printf("getbits(x=%u, p=%d, n=%d) = %u\n", x, p, n, getbits(x, p, n));
+      }
       x = p = n = 0;
     }
     else
@@ -58,6 +70,7 @@ int main(int argc, char const *argv[])
         else
         {
           perror("This shouldn't happen, something broke!");
+          return 1;
         }
       }
     }
@@ -65,9 +78,7 @@ int main(int argc, char const *argv[])
   return 0;
 }
 
-/*
- * to get numberic value scnning in char by char
- * 10*0+1->1
- * 10*1+1->12
- * 10*12+3->123
- */
+/* to get numberic value scanning in char by char
+ * 10*0+1  -> 1
+ * 10*1+1  -> 12
+ * 10*12+3 -> 123 */
