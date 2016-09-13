@@ -16,10 +16,10 @@ int getNumericalValue(int x)
 }
 int main(int argc, char const *argv[])
 {
-  unsigned  x, bits;
-  int c, p, n, xpnFlag;
+  unsigned  x;
+  int c, p, n;
   int concatenatedValue = 0;
-  c = x = p = n = xpnFlag = bits = 0;
+  c = x = p = n = 0;
 
   while ((c = getchar()) != EOF)
   {
@@ -28,12 +28,14 @@ int main(int argc, char const *argv[])
       if(n == 0)
       {
         n = concatenatedValue;
+        concatenatedValue = 0;
       }
       else
       {
         perror("This shouldn't happen, something broke!");
       }
       printf("getbits(x=%u, p=%d, n=%d) = %u\n", x, p, n, getbits(x, p, n));
+      x = p = n = 0;
     }
     else
     {
@@ -46,10 +48,12 @@ int main(int argc, char const *argv[])
         if(x == 0)
         {
           x = concatenatedValue;
+          concatenatedValue = 0;
         }
         else if (p == 0)
         {
           p = concatenatedValue;
+          concatenatedValue = 0;
         }
         else
         {
@@ -61,43 +65,6 @@ int main(int argc, char const *argv[])
   return 0;
 }
 
-      /* cycles where to store numericalValue between
-       * x, p, and n and stores repectively*/
-  /*  if(c == ',' || c == '\n')
-    {
-      if(c == ',')
-      {
-        {
-          if(xpnFlag == 0)
-          {
-            x = concatenatedValue;
-            concatenatedValue = 0;
-            xpnFlag++;
-          }
-          if(xpnFlag == 1)
-          {
-            p = concatenatedValue;
-            concatenatedValue = 0;
-            xpnFlag++;
-          }
-        }
-      }
-      else
-      {
-        n = concatenatedValue;
-        concatenatedValue = 0;
-        xpnFlag = 0;
-      }
-    }
-    else
-    {
-    numericalValue = c - '0';
-    concatenatedValue = ((concatenatedValue * 10) + numericalValue);
-    }
-  }
-  return 0;
-}
-*/
 /*
  * to get numberic value scnning in char by char
  * 10*0+1->1
