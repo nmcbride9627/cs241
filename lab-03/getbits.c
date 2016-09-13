@@ -16,7 +16,7 @@ int getNumericalValue(int x)
 }
 int main(int argc, char const *argv[])
 {
-  unsigned  x;
+  unsigned  x, test;
   int c, p, n;
   int concatenatedValue = 0;
   c = x = p = n = 0;
@@ -39,7 +39,7 @@ int main(int argc, char const *argv[])
       {
         printf("Error: too many bits requested from position\n");
       }
-      else if (x > sizeof(x))
+      else if (x > sizeof(test))
       {
         printf("Error: position out of range\n");
       }
