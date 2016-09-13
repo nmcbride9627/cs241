@@ -18,9 +18,9 @@ int main(int argc, char const *argv[])
 {
   unsigned  x, bits;
   int c, p, n, xpnFlag;
-//  int numericalValue, concatenatedValue;
+/*  int numericalValue, concatenatedValue;*/
   c = x = p = n = xpnFlag = bits = 0;
-  numericalValue =  concatenatedValue = 0;
+/*  numericalValue =  concatenatedValue = 0;*/
 
   while ((c = getchar()) != EOF)
   {
@@ -39,6 +39,9 @@ int main(int argc, char const *argv[])
         /* code */
       }
     }
+  }
+  return 0;
+}
 
       /* cycles where to store numericalValue between
        * x, p, and n and stores repectively*/
@@ -73,11 +76,10 @@ int main(int argc, char const *argv[])
     numericalValue = c - '0';
     concatenatedValue = ((concatenatedValue * 10) + numericalValue);
     }
-    */
   }
   return 0;
 }
-
+*/
 /*
  * to get numberic value scnning in char by char
  * 10*0+1->1
