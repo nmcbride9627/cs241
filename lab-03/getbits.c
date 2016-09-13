@@ -21,6 +21,7 @@ int main(int argc, char const *argv[])
 
   while ((c = getchar()) != EOF)
   {
+
       /* cycles where to store numericalValue between
        * x, p, and n and stores repectively*/
     if(c == ',' || c == '\n')
@@ -33,14 +34,12 @@ int main(int argc, char const *argv[])
             x = concatenatedValue;
             concatenatedValue = 0;
             xpnFlag++;
-            break;
           }
           if(xpnFlag == 1)
           {
             p = concatenatedValue;
             concatenatedValue = 0;
             xpnFlag++;
-            break;
           }
         }
       }
@@ -56,8 +55,6 @@ int main(int argc, char const *argv[])
     numericalValue = c - '0';
     concatenatedValue = ((concatenatedValue * 10) + numericalValue);
     }
-    bits = getbits(x, p, n);
-    printf("getbits(x=%u, p=%d, n=%d) = %d\n", x, p, n, bits);
   }
 
   return 0;
