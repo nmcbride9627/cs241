@@ -18,15 +18,21 @@ int main(int argc, char const *argv[])
 {
   unsigned  x, bits;
   int c, p, n, xpnFlag;
-/*  int numericalValue, concatenatedValue;*/
+  int concatenatedValue = 0;
   c = x = p = n = xpnFlag = bits = 0;
-/*  numericalValue =  concatenatedValue = 0;*/
 
   while ((c = getchar()) != EOF)
   {
     if (c == '\n')
     {
-      /*newline logic*/
+      if(n == 0)
+      {
+        n = concatenatedValue;
+      }
+      else
+      {
+        perror("This shouldn't happen, something broke!");
+      }
       printf("getbits(x=%u, p=%d, n=%d) = %u\n", x, p, n, getbits(x, p, n));
     }
     else
@@ -34,9 +40,21 @@ int main(int argc, char const *argv[])
       /*not on a new line*/
       if (c != ',')
       {
-        printf("%d\n", getNumericalValue(c));
-      } else {
-        /* code */
+        concatenatedValue = (concatenatedValue * 10) + getNumericalValue(c);
+      }
+      else {
+        if(x == 0)
+        {
+          x = concatenatedValue;
+        }
+        else if (p == 0)
+        {
+          p = concatenatedValue;
+        }
+        else
+        {
+          perror("This shouldn't happen, something broke!");
+        }
       }
     }
   }
