@@ -57,16 +57,19 @@ int main(int argc, char const *argv[])
       if (c != ',')
       {
         concatenatedValue = (concatenatedValue * 10) + getNumericalValue(c);
-        if (concatenatedValue > 0xFFFFFFFF)
-        {
-          xTooBig = true;
-        }
       }
       else {
         if(x == 0)
         {
-          x = concatenatedValue;
-          concatenatedValue = 0;
+          if (concatenatedValue > 0xFFFFFFFF)
+          {
+            xTooBig = true;
+          }
+          else
+          {
+            x = concatenatedValue;
+            concatenatedValue = 0;
+          }
         }
         else if (p == 0)
         {
@@ -83,8 +86,3 @@ int main(int argc, char const *argv[])
   }
   return 0;
 }
-
-/* to get numberic value scanning in char by char
- * 10*0+1  -> 1
- * 10*1+1  -> 12
- * 10*12+3 -> 123 */
