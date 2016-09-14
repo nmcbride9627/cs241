@@ -18,6 +18,7 @@ int getNumericalValue(int x)
 }
 
 /*TODO add comments*/
+/*TODO fix error messages*/
 int main(int argc, char const *argv[])
 {
   int c, p, n = 0;
@@ -48,7 +49,7 @@ int main(int argc, char const *argv[])
       }
       else if (xTooBig)
       {
-        printf("Error: position out of range\n");
+        printf("Error: value out of range\n");
         xTooBig = false;
       }
       else
@@ -68,6 +69,7 @@ int main(int argc, char const *argv[])
       else {
         if(x == 0)
         {
+          printf("%lu\n", concatenatedValue);
           if (concatenatedValue > 0xFFFFFFFF)
           {
             xTooBig = true;
