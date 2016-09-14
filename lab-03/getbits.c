@@ -57,14 +57,17 @@ int main(int argc, char const *argv[])
         printf("Error: value out of range\n");
         xTooBig = false;
       }
+      else if(p+1 > 32)
+      {
+        printf("Error: position out of range\n");
+      }
+      else if(n+1 > 32)
+      {
+        printf("Error: number of bits out of range\n");
+      }
       else if (n > p+1)
       {
         printf("Error: too many bits requested from position\n");
-      }
-      else if(n > p+1 && n > bitCount(x))
-      {
-        printf("Error: number of bits out of range\n");
-        printf("bitcount: %d\n", bitCount(x));
       }
       else
       {
