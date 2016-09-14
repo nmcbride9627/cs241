@@ -63,6 +63,7 @@ int main(int argc, char const *argv[])
       }
       else if(p + 1 > bitCount(x))
       {
+        printf("bitcount: %d\n", bitCount(x));
         printf("Error: number of bits out of range\n");
       }
       else
