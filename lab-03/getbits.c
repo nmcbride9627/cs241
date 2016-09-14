@@ -11,6 +11,15 @@ unsigned getbits(unsigned x, int p, int n)
 {
   return (x >> (p+1-n)) & ~(~0 << n);
 }
+int bitCount(unsigned x)
+{
+  int b;
+  for(b = 0; x != 0; x >>= 1)
+  {
+    b++;
+  }
+  return b;
+}
 /*gets numerical value of a number*/
 int getNumericalValue(int x)
 {
@@ -48,10 +57,13 @@ int main(int argc, char const *argv[])
         printf("Error: value out of range\n");
         xTooBig = false;
       }
-
       else if (n > p+1)
       {
         printf("Error: too many bits requested from position\n");
+      }
+      else if(p > bitCount(x))
+      {
+        printf("Error: number of bits out of range\n");
       }
       else
       {
