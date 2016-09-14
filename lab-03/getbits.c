@@ -43,14 +43,15 @@ int main(int argc, char const *argv[])
         return 1;
       }
       /*print statements*/
-      if (n > p+1)
-      {
-        printf("Error: too many bits requested from position\n");
-      }
-      else if (xTooBig)
+      if (xTooBig)
       {
         printf("Error: value out of range\n");
         xTooBig = false;
+      }
+
+      else if (n > p+1)
+      {
+        printf("Error: too many bits requested from position\n");
       }
       else
       {
