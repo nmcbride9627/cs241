@@ -61,7 +61,7 @@ int main(int argc, char const *argv[])
       {
         printf("Error: too many bits requested from position\n");
       }
-      else if(p > bitCount(x))
+      else if(p + 1 > bitCount(x))
       {
         printf("bitcount: %d", bitCount(x));
         printf("Error: number of bits out of range\n");
