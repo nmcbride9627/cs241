@@ -15,9 +15,9 @@ getbits(x=1431655765, p=5, n=3) = 2
 getbits(x=1431655765, p=6, n=3) = 5
 getbits(x=1431655765, p=30, n=3) = 5
 getbits(x=1431655765, p=31, n=3) = 2
-getbits(x=1431655765, p=32, n=3) = 1
-getbits(x=1431655765, p=33, n=3) = 0
-getbits(x=1431655765, p=31, n=32) = 0
+Error: position out of range
+Error: position out of range
+Error: number of bits out of range
 getbits(x=4294967290, p=5, n=1) = 1
 getbits(x=4294967290, p=5, n=2) = 3
 getbits(x=4294967290, p=5, n=3) = 7
@@ -27,7 +27,7 @@ getbits(x=4294967290, p=5, n=6) = 58
 Error: too many bits requested from position
 getbits(x=32768, p=20, n=10) = 16
 getbits(x=32767, p=20, n=10) = 15
-Error: too many bits requested from position
-Error: too many bits requested from position
-Error: position out of range
+Error: value out of range
+Error: value out of range
+Error: value out of range
 getbits(x=323235, p=10, n=4) = 13
