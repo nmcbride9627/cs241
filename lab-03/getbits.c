@@ -70,7 +70,6 @@ int main(int argc, char const *argv[])
       else {
         if(x == 0)
         {
-          printf("%lu\n", concatenatedValue);
           if (concatenatedValue > 0xFFFFFFFF)
           {
             xTooBig = true;
