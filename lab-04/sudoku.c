@@ -11,14 +11,7 @@ void getNextBoard(char *sudokuBoard)
   int c = getchar();
   for(i = 0; c != '\n'; c = getchar(), i++)
   {
-    if(c == 46)
-    {
-      sudokuBoard[i] = '.';
-    }
-    else
-    {
-      sudokuBoard[i] = c;
-    }
+    sudokuBoard[i] = c;
   }
 }
 
