@@ -5,15 +5,15 @@
 /*********************/
 #include <stdio.h>
 
-void getNextBoard(int *sudokuBoard)
+void getNextBoard(char *sudokuBoard)
 {
   int i;
   int c = getchar();
   for(i = 0; c != '\n'; c = getchar(), i++)
   {
-    if(c == '.')
+    if(c == 46)
     {
-      sudokuBoard[i] = c;
+      sudokuBoard[i] = '.';
     }
     else
     {
@@ -22,18 +22,18 @@ void getNextBoard(int *sudokuBoard)
   }
 }
 
-void printBoard(int *sudokuBoard)
+void printBoard(char *sudokuBoard)
 {
   int i;
   for(i = 0; i < 81; i++)
   {
-    printf("%c", sudokuBoard[i] - '0');
-    printf("\n");
+    printf("%c", sudokuBoard[i]);
   }
+  printf("\n");
 }
 
 int main(int argc, char const *argv[]) {
-  int sudokuBoard[81];
+  char sudokuBoard[81];
   getNextBoard(sudokuBoard);
   printBoard(sudokuBoard);
   return 0;
