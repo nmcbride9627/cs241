@@ -49,7 +49,22 @@ int main(int argc, char const *argv[]) {
   {
     errorCode = getNextBoard(sudokuBoard);
     printBoard(sudokuBoard);
-    printf("Error code:%d\n", errorCode);
+    if(errorCode == 1)
+    {
+      printf("Error: board too short\n");
+    }
+    else if(errorCode == 2)
+    {
+      printf("Error: board too long\n");
+    }
+    else if(errorCode == -1)
+    {
+      printf("End of File\n");
+    }
+    else
+    {
+      printf("Good to go!\n");
+    }
   }
   return 0;
 }
