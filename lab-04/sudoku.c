@@ -17,7 +17,7 @@ void getNextBoard(char *sudokuBoard)
     }
     else
     {
-      sudokuBoard[i] = c - '0';
+      sudokuBoard[i] = c;
     }
   }
 }
