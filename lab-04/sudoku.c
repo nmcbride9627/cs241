@@ -55,30 +55,29 @@ void printBoard(char *sudokuBoard)
 }
 
 int main(int argc, char const *argv[]) {
+  /* Error codes:
+   * -1 = EOF
+   *  0 = None
+   *  1 = Board too short
+   *  2 = Board too long
+   *  3 = Invalid character
+   *  4 = Invalid board
+   */
   int errorCode = 0;
   char sudokuBoard[81];
   while(errorCode != -1)
   {
     errorCode = getNextBoard(sudokuBoard);
-    if(errorCode == 1)
+    if(errorCode)
     {
-      printf("Error: board too short\n");
-    }
-    else if(errorCode == 2)
-    {
-      printf("Error: board too long\n");
-    }
-    else if(errorCode == 3)
-    {
-      printf("Error: invalid character\n");
-    }
-    else if(errorCode == -1)
-    {
-      printf("End of File\n");
+      printf("Error\n");
     }
     else
     {
-      printf("Good to go!\n");
+      /*solve board*/
+      /*print solution*/
+      /*if no soulution print no solution*/
+
     }
   }
   return 0;
