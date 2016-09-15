@@ -11,7 +11,7 @@ int getNextBoard(char *sudokuBoard)
   int c = 0;
   while((c = getchar()) != EOF)
   {
-    printf("%d", c);
+    printf("%c", c);
     if(c == '\n')
     {
       if (i < 81)
