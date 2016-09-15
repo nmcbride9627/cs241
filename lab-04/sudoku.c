@@ -11,7 +11,14 @@ void getNextBoard(int *sudokuBoard)
   int c = getchar();
   for(i = 0; c != '\n'; c = getchar(), i++)
   {
-    sudokuBoard[i] = c;
+    if(c == '.')
+    {
+      sudokuBoard[i] = c;
+    }
+    else
+    {
+      sudokuBoard[i] = c - '0';
+    }
   }
 }
 
@@ -20,7 +27,8 @@ void printBoard(int *sudokuBoard)
   int i;
   for(i = 0; i < 81; i++)
   {
-    printf("%d\n", sudokuBoard[i]);
+    printf("%c", sudokuBoard[i] - '0');
+    printf("\n");
   }
 }
 
