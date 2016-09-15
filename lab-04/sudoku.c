@@ -61,13 +61,13 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error: board too long\n");
     }
-    else if(errorCode == -1)
+    else if(errorCode == 3)
     {
-      printf("End of File\n");
+      printf("Error: invalid character\n");
     }
     else if(errorCode == -1)
     {
-      printf("Error: invalid character\n");
+      printf("End of File\n");
     }
     else
     {
