@@ -11,6 +11,7 @@ int getNextBoard(char *sudokuBoard)
   int c = 0;
   while((c = getchar()) != EOF)
   {
+    printf("%d", c);
     if(c == '\n')
     {
       if (i < 81)
@@ -52,7 +53,6 @@ int main(int argc, char const *argv[]) {
   while(errorCode != -1)
   {
     errorCode = getNextBoard(sudokuBoard);
-    printBoard(sudokuBoard);
     if(errorCode == 1)
     {
       printf("Error: board too short\n");
