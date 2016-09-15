@@ -25,9 +25,16 @@ int getNumericalValue(int x)
 {
   return x - '0';
 }
-
-/*TODO add comments*/
-/*TODO fix error messages*/
+/* This program takes input in the format <x,p,n\n>
+ * where ',' and '\n' are delimiters.
+ * It then will output the value of getbits()
+ * which will get a group of n-bits from positon p
+ * in the binary representation of x
+ * If the input for x is larger than an unsigned int
+ * or if the number of bits or the position is greater
+ * than the number of bits in an unsigned int or
+ * too many bits are requested from a given postion
+ * a respective error message is printed*/
 int main(int argc, char const *argv[])
 {
   int c, p, n = 0;
