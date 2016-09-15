@@ -5,14 +5,31 @@
 /*********************/
 #include <stdio.h>
 
-void getNextBoard(char *sudokuBoard)
+int getNextBoard(char *sudokuBoard)
 {
-  int i;
-  int c = getchar();
-  for(i = 0; c != '\n'; c = getchar(), i++)
+  int i = 0;
+  int c = 0;
+  while((c = getchar()) != EOF)
   {
+    if(c == '\n')
+    {
+      if (i < 81)
+      {
+        return 1;
+      }
+      else if (i > 81)
+      {
+        return 2;
+      }
+      else
+      {
+        return 0;
+      }
+    }
     sudokuBoard[i] = c;
+    i++;
   }
+  return -1;
 }
 
 void printBoard(char *sudokuBoard)
@@ -26,10 +43,13 @@ void printBoard(char *sudokuBoard)
 }
 
 int main(int argc, char const *argv[]) {
+  int errorCode = 0;
   char sudokuBoard[81];
-  getNextBoard(sudokuBoard);
-  printBoard(sudokuBoard);
-  getNextBoard(sudokuBoard);
-  printBoard(sudokuBoard);
+  while(errorCode != -1)
+  {
+    errorCode = getNextBoard(sudokuBoard);
+    printBoard(sudokuBoard);
+    printf("Error code:%d\n", errorCode);
+  }
   return 0;
 }
