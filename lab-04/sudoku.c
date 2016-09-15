@@ -17,17 +17,17 @@ int getNextBoard(char *sudokuBoard)
     printf("%c", c);
     if(c == '\n')
     {
-      if (i < 81)
+      if (hasInvalidCharacter)
+      {
+        return 3;
+      }
+      else if (i < 81)
       {
         return 1;
       }
       else if (i > 81)
       {
         return 2;
-      }
-      else if (hasInvalidCharacter)
-      {
-        return 3;
       }
       else
       {
