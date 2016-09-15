@@ -29,5 +29,7 @@ int main(int argc, char const *argv[]) {
   char sudokuBoard[81];
   getNextBoard(sudokuBoard);
   printBoard(sudokuBoard);
+  getNextBoard(sudokuBoard);
+  printBoard(sudokuBoard);
   return 0;
 }
