@@ -4,11 +4,14 @@
 /* CS-241-002        */
 /*********************/
 #include <stdio.h>
+#include <stdbool.h>
 
 int getNextBoard(char *sudokuBoard)
 {
   int i = 0;
   int c = 0;
+  bool hasInvalidCharacter = false;
+
   while((c = getchar()) != EOF)
   {
     printf("%c", c);
@@ -22,6 +25,10 @@ int getNextBoard(char *sudokuBoard)
       {
         return 2;
       }
+      else if (hasInvalidCharacter)
+      {
+        return 3;
+      }
       else
       {
         return 0;
@@ -29,7 +36,7 @@ int getNextBoard(char *sudokuBoard)
     }
     else if(c != '.' && (c < '1' || c > '9'))
     {
-      return 3;
+      hasInvalidCharacter = true;
     }
     sudokuBoard[i] = c;
     i++;
