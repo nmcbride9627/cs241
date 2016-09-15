@@ -79,6 +79,7 @@ int main(int argc, char const *argv[]) {
       /*if no soulution print no solution*/
 
     }
+    printf("\n");
   }
   return 0;
 }
