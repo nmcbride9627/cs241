@@ -68,7 +68,7 @@ int main(int argc, char const *argv[]) {
   while(errorCode != -1)
   {
     errorCode = getNextBoard(sudokuBoard);
-    if(errorCode)
+    if(errorCode && errorCode != -1)
     {
       printf("Error\n");
     }
