@@ -26,6 +26,10 @@ int getNextBoard(char *sudokuBoard)
         return 0;
       }
     }
+    else if(c != '.' && (c <= '1' || c >= '9'))
+    {
+      return 3;
+    }
     sudokuBoard[i] = c;
     i++;
   }
@@ -60,6 +64,10 @@ int main(int argc, char const *argv[]) {
     else if(errorCode == -1)
     {
       printf("End of File\n");
+    }
+    else if(errorCode == -1)
+    {
+      printf("Error: invalid character\n");
     }
     else
     {
