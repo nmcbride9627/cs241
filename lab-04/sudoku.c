@@ -26,7 +26,7 @@ int getNextBoard(char *sudokuBoard)
         return 0;
       }
     }
-    else if(c != '.' && (c <= '1' || c >= '9'))
+    else if(c != '.' && (c < '1' || c > '9'))
     {
       return 3;
     }
