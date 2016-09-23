@@ -181,15 +181,7 @@ int main(int argc, char const *argv[]) {
     }
     else
     {
-      verifyBox(sudokuBoard, 0, 0);
-      verifyBox(sudokuBoard, 3, 0);
-      verifyBox(sudokuBoard, 6, 0);
-      verifyBox(sudokuBoard, 0, 3);
-      verifyBox(sudokuBoard, 3, 3);
-      verifyBox(sudokuBoard, 6, 3);
-      verifyBox(sudokuBoard, 0, 6);
-      verifyBox(sudokuBoard, 3, 6);
-      verifyBox(sudokuBoard, 6, 6);
+      isValid(sudokuBoard, 0);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
