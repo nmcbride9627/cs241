@@ -60,7 +60,7 @@ int getNextBoard(char *sudokuBoard)
 bool isValid(char *sudokuBoard, int postion)
 {
   int row = postion / 9;
-  /*int col = postion % 9;*/
+  int col = postion % 9;
   int i,j;
   for(i = row * 9; i < (row * 9) + 7; i++)
   {
@@ -68,7 +68,19 @@ bool isValid(char *sudokuBoard, int postion)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("found duplicate\n");
+        printf("found duplicate in row\n");
+        printBoard(sudokuBoard);
+        return false;
+      }
+    }
+  }
+  for(i = col; i < (9 * 7) + col; i += 9)
+  {
+    for(j = i + 9; j < (9 * 8) + col; j += 9)
+    {
+      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
+      {
+        printf("found duplicate in col\n");
         printBoard(sudokuBoard);
         return false;
       }
