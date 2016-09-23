@@ -153,10 +153,12 @@ bool isValid(int *sudokuBoard, int postion)
     verifyCol(sudokuBoard, col) &&
     verifyBox(sudokuBoard, row, col))
     {
+      printf("valid\n");
       return true;
     }
     else
     {
+      printf("not valid\n");
       return false;
     }
 }
