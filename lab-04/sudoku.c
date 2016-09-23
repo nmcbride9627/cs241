@@ -113,7 +113,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   }
   return true;
 }
-bool fullIsValid(int *sudokuBoard)
+bool fullIsValid(int sudokuBoard[81])
 {
   int row = 0;
   int col = 0;
@@ -145,7 +145,7 @@ bool fullIsValid(int *sudokuBoard)
   return true;
 }
 
-bool isValid(int *sudokuBoard, int postion)
+bool isValid(int sudokuBoard[81], int postion)
 {
   int row = postion / 9;
   int col = postion % 9;
