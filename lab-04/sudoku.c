@@ -6,7 +6,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void printBoard(char *sudokuBoard)
+#define PERIOD 46
+
+void printBoard(int *sudokuBoard)
 {
   int i;
   for(i = 0; i < 81; i++)
@@ -20,7 +22,7 @@ void printBoard(char *sudokuBoard)
   printf("\n");
 }
 
-int getNextBoard(char *sudokuBoard)
+int getNextBoard(int *sudokuBoard)
 {
   int i = 0;
   int c = 0;
@@ -57,10 +59,25 @@ int getNextBoard(char *sudokuBoard)
   }
   return -1;
 }
-bool isValid(char *sudokuBoard, int postion)
+
+bool verifyCol(int *sudokuBoard, int col)
 {
-  int row = postion / 9;
-  int col = postion % 9;
+  int i, j;
+  for(i = col; i < (9 * 7) + col; i += 9)
+  {
+    for(j = i + 9; j < (9 * 8) + col; j += 9)
+    {
+      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
+      {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+bool verifyRow(int *sudokuBoard, int row)
+{
   int i,j;
   for(i = row * 9; i < (row * 9) + 7; i++)
   {
@@ -68,28 +85,81 @@ bool isValid(char *sudokuBoard, int postion)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("found duplicate in row: %c\n", sudokuBoard[i]);
-        printBoard(sudokuBoard);
         return false;
       }
     }
   }
-  for(i = col; i < (9 * 7) + col; i += 9)
-  {
-    for(j = i + 9; j < (9 * 8) + col; j += 9)
-    {
-      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
-      {
-        printf("found duplicate in col: %c\n", sudokuBoard[i]);
-        printBoard(sudokuBoard);
-        return false;
-      }
-    }
-  }
-  printf("no dupes\n");
   return true;
 }
 
+bool verifyBox(int *sudokuBoard, int row, int col)
+{
+  int r, c;
+  bool foundNumber[10];
+
+  for(r = (row/3) * 3; r < ((row/3)*3) + 3; r++)
+  {
+    for(c = (col/3) * 3; c < ((row/3)*3) + 3; c++)
+    {
+      if(foundNumber[sudokuBoard[r*9+c]])
+      {
+        return false;
+      }
+      if(sudokuBoard[r*9+c] != PERIOD)
+      {
+        foundNumber[sudokuBoard[r*9+c]] = true;
+      }
+    }
+  }
+  return true;
+}
+bool fullIsValid(int *sudokuBoard)
+{
+  int row = 0;
+  int col = 0;
+
+  for(row = 0; row < 9; row++)
+  {
+    if(!verifyRow(sudokuBoard, row))
+    {
+      return false;
+    }
+  }
+  for(col = 0; col < 9; col ++)
+  {
+    if(!verifyCol(sudokuBoard, col))
+    {
+      return false;
+    }
+  }
+  for(row = 0; row < 9; row += 3)
+  {
+    for(col = 0; col < 9; col += 3)
+    {
+      if(!verifyBox(sudokuBoard, row, col))
+      {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+bool isValid(int *sudokuBoard, int postion)
+{
+  int row = postion / 9;
+  int col = postion % 9;
+  if(verifyRow(sudokuBoard, row) &&
+    verifyCol(sudokuBoard, col) &&
+    verifyBox(sudokuBoard, row, col))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+}
 
 int main(int argc, char const *argv[]) {
   /* Error codes:
@@ -101,7 +171,7 @@ int main(int argc, char const *argv[]) {
    *  4 = Invalid board
    */
   int errorCode = 0;
-  char sudokuBoard[81];
+  int sudokuBoard[81];
   while(errorCode != -1)
   {
     errorCode = getNextBoard(sudokuBoard);
@@ -109,26 +179,12 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
+    else if(!fullIsValid(sudokuBoard))
+    {
+      printf("Error\n");
+    }
     else
     {
-      isValid(sudokuBoard, 0);
-      isValid(sudokuBoard, 9);
-      isValid(sudokuBoard, 18);
-      isValid(sudokuBoard, 27);
-      isValid(sudokuBoard, 36);
-      isValid(sudokuBoard, 45);
-      isValid(sudokuBoard, 54);
-      isValid(sudokuBoard, 63);
-      isValid(sudokuBoard, 72);
-
-      isValid(sudokuBoard, 1);
-      isValid(sudokuBoard, 2);
-      isValid(sudokuBoard, 3);
-      isValid(sudokuBoard, 4);
-      isValid(sudokuBoard, 5);
-      isValid(sudokuBoard, 6);
-      isValid(sudokuBoard, 7);
-      isValid(sudokuBoard, 8);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
