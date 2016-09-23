@@ -43,12 +43,34 @@ int getNextBoard(char *sudokuBoard)
   }
   return -1;
 }
-
+bool isValid(char *sudokuBoard, int postion)
+{
+  int row = postion / 9;
+  /*int col = postion % 9;*/
+  int i,j;
+  for(i = row * 9; i < (row * 9) + 8; i++)
+  {
+    for(j = i + 1 ; (row * 9) + 9; j++)
+    {
+      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j))
+      {
+        printf("found duplicate\n");
+        return false;
+      }
+    }
+  }
+  printf("no dupes\n");
+  return true;
+}
 void printBoard(char *sudokuBoard)
 {
   int i;
   for(i = 0; i < 81; i++)
   {
+    if(i % 9 == 0)
+    {
+      printf("\n");
+    }
     printf("%c", sudokuBoard[i]);
   }
   printf("\n");
@@ -74,6 +96,15 @@ int main(int argc, char const *argv[]) {
     }
     else
     {
+      isValid(sudokuBoard, 0);
+      isValid(sudokuBoard, 9);
+      isValid(sudokuBoard, 18);
+      isValid(sudokuBoard, 27);
+      isValid(sudokuBoard, 36);
+      isValid(sudokuBoard, 45);
+      isValid(sudokuBoard, 54);
+      isValid(sudokuBoard, 63);
+      isValid(sudokuBoard, 72);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
