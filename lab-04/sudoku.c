@@ -6,6 +6,20 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+void printBoard(char *sudokuBoard)
+{
+  int i;
+  for(i = 0; i < 81; i++)
+  {
+    if(i % 9 == 0)
+    {
+      printf("\n");
+    }
+    printf("%c", sudokuBoard[i]);
+  }
+  printf("\n");
+}
+
 int getNextBoard(char *sudokuBoard)
 {
   int i = 0;
@@ -55,6 +69,7 @@ bool isValid(char *sudokuBoard, int postion)
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j))
       {
         printf("found duplicate\n");
+        printBoard(sudokuBoard);
         return false;
       }
     }
@@ -62,19 +77,7 @@ bool isValid(char *sudokuBoard, int postion)
   printf("no dupes\n");
   return true;
 }
-void printBoard(char *sudokuBoard)
-{
-  int i;
-  for(i = 0; i < 81; i++)
-  {
-    if(i % 9 == 0)
-    {
-      printf("\n");
-    }
-    printf("%c", sudokuBoard[i]);
-  }
-  printf("\n");
-}
+
 
 int main(int argc, char const *argv[]) {
   /* Error codes:
