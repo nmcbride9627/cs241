@@ -113,7 +113,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   }
   return true;
 }
-bool fullIsValid(int sudokuBoard[81])
+bool fullIsValid(int *sudokuBoard)
 {
   int row = 0;
   int col = 0;
@@ -145,7 +145,7 @@ bool fullIsValid(int sudokuBoard[81])
   return true;
 }
 
-bool isValid(int sudokuBoard[81], int postion)
+bool isValid(int *sudokuBoard, int postion)
 {
   int row = postion / 9;
   int col = postion % 9;
@@ -179,12 +179,17 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
-    else if(!fullIsValid(sudokuBoard))
-    {
-      printf("Error\n");
-    }
     else
     {
+      verifyRow(sudokuBoard, 0);
+      verifyRow(sudokuBoard, 1);
+      verifyRow(sudokuBoard, 2);
+      verifyRow(sudokuBoard, 3);
+      verifyRow(sudokuBoard, 4);
+      verifyRow(sudokuBoard, 5);
+      verifyRow(sudokuBoard, 6);
+      verifyRow(sudokuBoard, 7);
+      verifyRow(sudokuBoard, 8);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
