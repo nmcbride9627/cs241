@@ -120,6 +120,15 @@ int main(int argc, char const *argv[]) {
       isValid(sudokuBoard, 54);
       isValid(sudokuBoard, 63);
       isValid(sudokuBoard, 72);
+
+      isValid(sudokuBoard, 1);
+      isValid(sudokuBoard, 2);
+      isValid(sudokuBoard, 3);
+      isValid(sudokuBoard, 4);
+      isValid(sudokuBoard, 5);
+      isValid(sudokuBoard, 6);
+      isValid(sudokuBoard, 7);
+      isValid(sudokuBoard, 8);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
