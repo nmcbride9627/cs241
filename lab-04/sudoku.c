@@ -68,7 +68,7 @@ bool isValid(char *sudokuBoard, int postion)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("found duplicate in row\n");
+        printf("found duplicate in row: %c\n", sudokuBoard[i]);
         printBoard(sudokuBoard);
         return false;
       }
@@ -80,7 +80,7 @@ bool isValid(char *sudokuBoard, int postion)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("found duplicate in col\n");
+        printf("found duplicate in col: %c\n", sudokuBoard[i]);
         printBoard(sudokuBoard);
         return false;
       }
