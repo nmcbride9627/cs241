@@ -181,15 +181,15 @@ int main(int argc, char const *argv[]) {
     }
     else
     {
-      verifyCol(sudokuBoard, 0);
-      verifyCol(sudokuBoard, 1);
-      verifyCol(sudokuBoard, 2);
-      verifyCol(sudokuBoard, 3);
-      verifyCol(sudokuBoard, 4);
-      verifyCol(sudokuBoard, 5);
-      verifyCol(sudokuBoard, 6);
-      verifyCol(sudokuBoard, 7);
-      verifyCol(sudokuBoard, 8);
+      verifyBox(sudokuBoard, 0, 0);
+      verifyBox(sudokuBoard, 3, 0);
+      verifyBox(sudokuBoard, 6, 0);
+      verifyBox(sudokuBoard, 0, 3);
+      verifyBox(sudokuBoard, 3, 3);
+      verifyBox(sudokuBoard, 6, 3);
+      verifyBox(sudokuBoard, 0, 6);
+      verifyBox(sudokuBoard, 3, 6);
+      verifyBox(sudokuBoard, 6, 6);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
