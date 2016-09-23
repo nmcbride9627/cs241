@@ -66,7 +66,7 @@ bool isValid(char *sudokuBoard, int postion)
   {
     for(j = i + 1 ; (row * 9) + 9; j++)
     {
-      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j))
+      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != "."))
       {
         printf("found duplicate\n");
         printBoard(sudokuBoard);
