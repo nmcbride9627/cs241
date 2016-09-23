@@ -69,6 +69,7 @@ bool verifyCol(int *sudokuBoard, int col)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
+        printf("col not valid\n");
         return false;
       }
     }
@@ -85,6 +86,7 @@ bool verifyRow(int *sudokuBoard, int row)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
+        printf("row not valid\n");
         return false;
       }
     }
@@ -103,6 +105,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
     {
       if(foundNumber[sudokuBoard[r*9+c]])
       {
+        printf("box not valid\n");
         return false;
       }
       if(sudokuBoard[r*9+c] != PERIOD)
