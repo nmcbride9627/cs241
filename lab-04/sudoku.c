@@ -201,6 +201,8 @@ int main(int argc, char const *argv[]) {
   while(errorCode != -1)
   {
     errorCode = getNextBoard(sudokuBoard);
+
+      printBoard(sudokuBoard);
     if(errorCode && errorCode != -1)
     {
       printf("Error\n");
@@ -213,7 +215,6 @@ int main(int argc, char const *argv[]) {
     {
       printf("No solution\n");
     }
-      printBoard(sudokuBoard);
 
       /*TODO*/
       /*solve board*/
