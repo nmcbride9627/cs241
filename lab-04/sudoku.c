@@ -6,8 +6,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define PERIOD 46
-
 void printBoard(int *sudokuBoard)
 {
   int i;
@@ -108,7 +106,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
         printf("box not valid\n");
         return false;
       }
-      if(sudokuBoard[r*9+c] != PERIOD)
+      if(sudokuBoard[r*9+c] != '.')
       {
         foundNumber[sudokuBoard[r*9+c]] = true;
       }
