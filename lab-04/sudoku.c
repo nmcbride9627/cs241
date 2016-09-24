@@ -103,7 +103,7 @@ bool verifyRow(int *sudokuBoard, int row)
 bool verifyBox(int *sudokuBoard, int row, int col)
 {
   int r, c;
-  bool foundNumber[10];
+  bool foundNumber[10] = {0,0,0,0,0,0,0,0,0,0};
 
   for(r = (row/3) * 3; r < ((row/3)*3) + 3; r++)
   {
