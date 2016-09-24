@@ -167,6 +167,8 @@ bool solveSudoku(int *sudokuBoard)
 {
   int position;
   int i;
+
+  printBoard(sudokuBoard);
   position = findUnassigned(sudokuBoard);
   if(position == -1)
   {
