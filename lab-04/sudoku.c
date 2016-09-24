@@ -109,7 +109,6 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   {
     for(c = (col/3) * 3; c < ((row/3)*3) + 3; c++)
     {
-      printf("%d\n", sudokuBoard[(r*9)+c] - '0');
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
         printf("box not valid\n");
@@ -118,37 +117,6 @@ bool verifyBox(int *sudokuBoard, int row, int col)
       if(sudokuBoard[r*9+c] != '.')
       {
         foundNumber[sudokuBoard[(r*9)+c] - '0'] = true;
-      }
-    }
-  }
-  return true;
-}
-bool fullIsValid(int *sudokuBoard)
-{
-  int row = 0;
-  int col = 0;
-
-  for(row = 0; row < 9; row++)
-  {
-    if(!verifyRow(sudokuBoard, row))
-    {
-      return false;
-    }
-  }
-  for(col = 0; col < 9; col ++)
-  {
-    if(!verifyCol(sudokuBoard, col))
-    {
-      return false;
-    }
-  }
-  for(row = 0; row < 9; row += 3)
-  {
-    for(col = 0; col < 9; col += 3)
-    {
-      if(!verifyBox(sudokuBoard, row, col))
-      {
-        return false;
       }
     }
   }
@@ -163,15 +131,26 @@ bool isValid(int *sudokuBoard, int postion)
     verifyCol(sudokuBoard, col) &&
     verifyBox(sudokuBoard, row, col))
     {
-      printf("valid\n");
       return true;
     }
     else
     {
-      printf("not valid\n");
       printBoard(sudokuBoard);
       return false;
     }
+}
+
+bool fullIsValid(int *sudokuBoard)
+{
+  int i;
+  for(i = 0; i < 81; i+=10)
+  {
+    if(!isValid(sudokuBoard, i))
+    {
+      return false;
+    }
+  }
+  return true;
 }
 
 int main(int argc, char const *argv[]) {
@@ -194,7 +173,7 @@ int main(int argc, char const *argv[]) {
     }
     else
     {
-      isValid(sudokuBoard, 0);
+      fullIsValid(sudokuBoard);
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
