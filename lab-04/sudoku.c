@@ -11,7 +11,8 @@ void printBoard(int *sudokuBoard)
   int i;
   for(i = 0; i < 81; i++)
   {
-    if((i % 3 == 0) && (i % 9 != 0))
+    printf("%c", sudokuBoard[i]);
+    /*if((i % 3 == 0) && (i % 9 != 0))
     {
       printf("|");
     }
@@ -23,7 +24,7 @@ void printBoard(int *sudokuBoard)
     {
       printf("------------\n");
     }
-    printf("%c", sudokuBoard[i]);
+    printf("%c", sudokuBoard[i]);*/
   }
   printf("\n");
 }
@@ -206,10 +207,14 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
+    else if(!solveSudoku(sudokuBoard))
+    {
+      printf("No solution\n");
+    }
     else
     {
-      solveSudoku(sudokuBoard);
       printBoard(sudokuBoard);
+
       /*TODO*/
       /*solve board*/
       /*print solution*/
