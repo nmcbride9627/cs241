@@ -15,7 +15,7 @@ void printBoard(int *sudokuBoard)
     {
       printf("|");
     }
-    if((i % 9 == 0) && (i != 0))
+    if((i == 27) || (i==45) )
     {
       printf("\n------------\n");
     }
