@@ -114,10 +114,10 @@ bool verifyBox(int *sudokuBoard, int row, int col)
         printf("box not valid\n");
         return false;
       }
+      printf("%c\n", sudokuBoard[(r*9)+c]);
       if(sudokuBoard[r*9+c] != '.')
       {
         foundNumber[sudokuBoard[(r*9)+c]] = true;
-        printf("%c\n", sudokuBoard[(r*9)+c]);
       }
     }
   }
