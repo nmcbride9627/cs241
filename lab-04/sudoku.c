@@ -168,7 +168,6 @@ bool solveSudoku(int *sudokuBoard)
   int position;
   int i;
 
-  printBoard(sudokuBoard);
   position = findUnassigned(sudokuBoard);
   if(position == -1)
   {
@@ -176,6 +175,7 @@ bool solveSudoku(int *sudokuBoard)
   }
   for(i = 1; i <= 9; i++)
   {
+    printBoard(sudokuBoard);
     sudokuBoard[position] = i + '0';
     if(isValid(sudokuBoard, position))
     {
