@@ -107,11 +107,11 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   int r, c;
   bool foundNumber[10] = {0,0,0,0,0,0,0,0,0,0};
 
+  printf("Row: %d, Col: %d\n", row, col);
   for(r = (row/3) * 3; r < ((row/3)*3) + 3; r++)
   {
     for(c = (col/3) * 3; c < ((row/3)*3) + 3; c++)
     {
-      printf("%d", sudokuBoard[(r*9)+c] - '0');
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
         printf("fuck my ass\n");
@@ -119,6 +119,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
       }
       if(sudokuBoard[r*9+c] != '.')
       {
+        printf("%d", sudokuBoard[(r*9)+c] - '0');
         foundNumber[sudokuBoard[(r*9)+c] - '0'] = true;
       }
     }
