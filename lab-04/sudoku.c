@@ -23,7 +23,7 @@ void printBoard(int *sudokuBoard)
     {
       printf("------------\n");
     }
-    printf("%d", sudokuBoard[i]);
+    printf("%d ", sudokuBoard[i]);
   }
   printf("\n");
 }
