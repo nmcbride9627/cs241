@@ -177,7 +177,10 @@ bool solveSudoku(int *sudokuBoard)
     sudokuBoard[position] = i;
     if(isValid(sudokuBoard, position))
     {
-      return true;
+      if(solveSudoku(sudokuBoard))
+      {
+        return true;
+      }
     }
     sudokuBoard[position] = '.';
   }
