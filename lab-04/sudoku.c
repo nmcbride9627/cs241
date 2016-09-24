@@ -76,7 +76,6 @@ bool verifyCol(int *sudokuBoard, int col)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("fuck my col\n");
         return false;
       }
     }
@@ -93,7 +92,6 @@ bool verifyRow(int *sudokuBoard, int row)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("fuck my row\n");
         return false;
       }
     }
@@ -107,15 +105,12 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   int r, c;
   bool foundNumber[10] = {0,0,0,0,0,0,0,0,0,0};
 
-  //printf("\nRow: %d, Col: %d\n", row, col);
   for(r = (row/3) * 3; r < ((row/3)*3) + 3; r++)
   {
     for(c = (col/3) * 3; c < ((col/3)*3) + 3; c++)
     {
-      //printf("sudokuBoard[%d] = %d\n", (r*9) + c, sudokuBoard[(r*9)+c] - '0');
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
-      //  printf("fuck my ass\n");
         return false;
       }
       if(sudokuBoard[r*9+c] != '.')
@@ -207,7 +202,6 @@ int main(int argc, char const *argv[]) {
   {
     errorCode = getNextBoard(sudokuBoard);
 
-      printBoard(sudokuBoard);
     if(errorCode && errorCode != -1)
     {
       printf("Error\n");
@@ -220,6 +214,7 @@ int main(int argc, char const *argv[]) {
     {
       printf("No solution\n");
     }
+    printBoard(sudokuBoard);
 
       /*TODO*/
       /*solve board*/
