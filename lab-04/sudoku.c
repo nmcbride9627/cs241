@@ -174,7 +174,7 @@ bool solveSudoku(int *sudokuBoard)
   }
   for(i = 1; i <= 9; i++)
   {
-    sudokuBoard[position] = i;
+    sudokuBoard[position] = i + '0';
     if(isValid(sudokuBoard, position))
     {
       if(solveSudoku(sudokuBoard))
