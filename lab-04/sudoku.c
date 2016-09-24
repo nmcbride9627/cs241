@@ -181,8 +181,8 @@ bool solveSudoku(int *sudokuBoard)
       {
         return true;
       }
+      sudokuBoard[position] = '.';
     }
-    sudokuBoard[position] = '.';
   }
   return false;
 }
