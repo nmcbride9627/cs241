@@ -117,7 +117,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
       }
       if(sudokuBoard[r*9+c] != '.')
       {
-        foundNumber[sudokuBoard[(r*9)+c]] = true;
+        foundNumber[sudokuBoard[(r*9)+c] - '0'] = true;
       }
     }
   }
