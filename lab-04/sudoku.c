@@ -15,9 +15,13 @@ void printBoard(int *sudokuBoard)
     {
       printf("|");
     }
+    if(i %9 == 0)
+    {
+      printf("\n");
+    }
     if((i == 27) || (i==45) )
     {
-      printf("\n------------\n");
+      printf("------------\n");
     }
     printf("%c", sudokuBoard[i]);
   }
