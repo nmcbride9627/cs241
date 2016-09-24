@@ -76,6 +76,7 @@ bool verifyCol(int *sudokuBoard, int col)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
+        printf("fuck my col\n");
         return false;
       }
     }
@@ -92,6 +93,7 @@ bool verifyRow(int *sudokuBoard, int row)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
+        printf("fuck my row\n");
         return false;
       }
     }
@@ -111,6 +113,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
     {
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
+        printf("fuck my ass\n");
         return false;
       }
       if(sudokuBoard[r*9+c] != '.')
