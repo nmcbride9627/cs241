@@ -213,8 +213,6 @@ int main(int argc, char const *argv[]) {
     {
       printf("No solution\n");
     }
-      printBoard(sudokuBoard);
-
       /*TODO*/
       /*solve board*/
       /*print solution*/
