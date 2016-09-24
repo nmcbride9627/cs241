@@ -109,6 +109,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   {
     for(c = (col/3) * 3; c < ((row/3)*3) + 3; c++)
     {
+      printf("%d\n", (r*9)+c);
       printf("%d\n", sudokuBoard[(r*9)+c] - '0');
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
