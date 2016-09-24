@@ -162,6 +162,7 @@ bool isValid(int *sudokuBoard, int postion)
     else
     {
       printf("not valid\n");
+      printBoard(sudokuBoard);
       return false;
     }
 }
