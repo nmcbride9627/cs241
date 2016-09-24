@@ -171,9 +171,13 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
+    else if(!fullIsValid(sudokuBoard))
+    {
+      printf("Error\n");
+    }
     else
     {
-      fullIsValid(sudokuBoard);
+
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
