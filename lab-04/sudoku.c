@@ -5,7 +5,7 @@
 /*********************/
 #include <stdio.h>
 #include <stdbool.h>
-
+/* prints a formatted representation of the board */
 void printBoard(int *sudokuBoard)
 {
   int i;
@@ -27,7 +27,8 @@ void printBoard(int *sudokuBoard)
   }
   printf("\n");
 }
-
+/* cans in the game board from a file
+ * and does preliminary validiy checks */
 int getNextBoard(int *sudokuBoard)
 {
   int i = 0;
@@ -65,7 +66,7 @@ int getNextBoard(int *sudokuBoard)
   }
   return -1;
 }
-
+/* verifies columns by comparing every element with each other */
 bool verifyCol(int *sudokuBoard, int col)
 {
   int i, j;
@@ -81,7 +82,7 @@ bool verifyCol(int *sudokuBoard, int col)
   }
   return true;
 }
-
+/* verifies row by comparing every element with each other */
 bool verifyRow(int *sudokuBoard, int row)
 {
   int i,j;
@@ -97,7 +98,8 @@ bool verifyRow(int *sudokuBoard, int row)
   }
   return true;
 }
-
+/* algorithm for the box checking ported from
+ * www.cs.ucf.edu/~dmarino/hs/apcsa/hmk/sol/sudokode.java */
 bool verifyBox(int *sudokuBoard, int row, int col)
 {
   int r, c;
@@ -119,7 +121,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   }
   return true;
 }
-
+/* checks the board at a given position for validity */
 bool isValid(int *sudokuBoard, int postion)
 {
   int row = postion / 9;
@@ -135,7 +137,8 @@ bool isValid(int *sudokuBoard, int postion)
       return false;
     }
 }
-
+/* verfies the full board by calling
+ * isValid diagonaly across the board */
 bool fullIsValid(int *sudokuBoard)
 {
   int i;
@@ -148,7 +151,39 @@ bool fullIsValid(int *sudokuBoard)
   }
   return true;
 }
-
+int findUnassigned(int *sudokuBoard)
+{
+  int i;
+  for(i = 0; i < 81; i++)
+  {
+    if(sudokuBoard[i] == '.')
+    {
+      return i;
+    }
+  }
+  return -1;
+}
+bool solveSudoku(int *sudokuBoard)
+{
+  int position;
+  int i;
+  position = findUnassigned(sudokuBoard);
+  if(position == -1)
+  {
+    return true;
+  }
+  for(i = 1; i <= 9; i++)
+  {
+    sudokuBoard[position] = i;
+    if(isValid(sudokuBoard, position))
+    {
+      return true;
+    }
+    sudokuBoard[position] = '.';
+  }
+  return false;
+}
+/*TODO this program does stuff*/
 int main(int argc, char const *argv[]) {
   /* Error codes:
    * -1 = EOF
@@ -173,11 +208,12 @@ int main(int argc, char const *argv[]) {
     }
     else
     {
-
+      solveSudoku(sudokuBoard);
+      printBoard(sudokuBoard);
+      /*TODO*/
       /*solve board*/
       /*print solution*/
       /*if no soulution print no solution*/
-
     }
     printf("\n");
   }
