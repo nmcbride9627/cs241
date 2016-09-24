@@ -109,12 +109,12 @@ bool verifyBox(int *sudokuBoard, int row, int col)
   {
     for(c = (col/3) * 3; c < ((row/3)*3) + 3; c++)
     {
-      if(!foundNumber[sudokuBoard[(r*9)+c]])
+      printf("%c\n", sudokuBoard[(r*9)+c]);
+      if(foundNumber[sudokuBoard[(r*9)+c]])
       {
         printf("box not valid\n");
         return false;
       }
-      printf("%c\n", sudokuBoard[(r*9)+c]);
       if(sudokuBoard[r*9+c] != '.')
       {
         foundNumber[sudokuBoard[(r*9)+c]] = true;
