@@ -151,25 +151,25 @@ bool fullIsValid(int *sudokuBoard)
   }
   return true;
 }
-int findUnassigned(int *sudokuBoard)
+bool findUnassigned(int *sudokuBoard, int *postion)
 {
   int i;
   for(i = 0; i < 81; i++)
   {
     if(sudokuBoard[i] == '.')
     {
-      return i;
+      *postion = i;
+      return true;
     }
   }
-  return -1;
+  return false;
 }
 bool solveSudoku(int *sudokuBoard)
 {
   int position;
   int i;
 
-  position = findUnassigned(sudokuBoard);
-  if(position == -1)
+  if(!findUnassigned(sudokuBoard, &position))
   {
     return true;
   }
