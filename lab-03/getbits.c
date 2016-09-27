@@ -1,8 +1,8 @@
-/*********************/
-/* Nathaniel McBride */
+/**********************/
+/* Nathaniel McBride  */
 /* September 16, 2016 */
-/* CS-241-002        */
-/*********************/
+/* CS-241-002         */
+/**********************/
 #include <stdio.h>
 #include <stdbool.h>
 
