@@ -169,6 +169,7 @@ bool solveSudoku(int *sudokuBoard)
   int position;
   int i;
 
+  printBoard(sudokuBoard);
   if(!findUnassigned(sudokuBoard, &position))
   {
     return true;
