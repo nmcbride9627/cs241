@@ -76,6 +76,7 @@ bool verifyCol(int *sudokuBoard, int col)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
+        printf("Col not valid\n");
         return false;
       }
     }
@@ -93,6 +94,7 @@ bool verifyRow(int *sudokuBoard, int row)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
+        printf("Row not valid\n");
         return false;
       }
     }
@@ -113,6 +115,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
     {
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
+        printf("Box not valid\n");
         return false;
       }
       if(sudokuBoard[r*9+c] != '.')
@@ -154,6 +157,7 @@ bool fullIsValid(int *sudokuBoard)
       return false;
     }
   }
+  printf("Fully Valid\n");
   return true;
 }
 bool findUnassigned(int *sudokuBoard, int *postion)
