@@ -80,6 +80,7 @@ bool verifyCol(int *sudokuBoard, int col)
       }
     }
   }
+  printf("Col valid\n");
   return true;
 }
 /* verifies row by comparing every element with each other */
@@ -96,6 +97,7 @@ bool verifyRow(int *sudokuBoard, int row)
       }
     }
   }
+  printf("Row Valid\n");
   return true;
 }
 /* algorithm for the box checking ported from
@@ -119,6 +121,7 @@ bool verifyBox(int *sudokuBoard, int row, int col)
       }
     }
   }
+  printf("Box valid\n");
   return true;
 }
 /* checks the board at a given position for validity */
@@ -126,6 +129,7 @@ bool isValid(int *sudokuBoard, int postion)
 {
   int row = postion / 9;
   int col = postion % 9;
+  printf("Row: %d, Col: %d\n", row, col);
   if(verifyRow(sudokuBoard, row) &&
     verifyCol(sudokuBoard, col) &&
     verifyBox(sudokuBoard, row, col))
@@ -144,6 +148,7 @@ bool fullIsValid(int *sudokuBoard)
   int i;
   for(i = 0; i < 81; i++)
   {
+    printf("Position: %d\n", i);
     if(!isValid(sudokuBoard, i))
     {
       return false;
@@ -211,10 +216,12 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
+    /*
     else if(!solveSudoku(sudokuBoard))
     {
       printf("No solution\n");
     }
+    */
     printBoard(sudokuBoard);
 
       /*TODO*/
