@@ -63,6 +63,7 @@ int getNextBoard(int *sudokuBoard)
     }
     sudokuBoard[i] = c;
     i++;
+    c = getchar();
   }
   return -1;
 }
