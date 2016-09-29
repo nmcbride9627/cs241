@@ -70,15 +70,18 @@ int getNextBoard(int *sudokuBoard)
 /* verifies row by comparing every element with each other */
 bool verifyRow(int *sudokuBoard, int row)
 {
-  int i,j;
-  for(i = row * 9; i < (row * 9) + 7; i++)
+  int c;
+  bool foundNumber[10] = {0,0,0,0,0,0,0,0,0,0};
+
+  for(c = 0; c < 9; c++)
   {
-    for(j = i + 1 ; j < (row * 9) + 8; j++)
+    if(foundNumber[sudokuBoard[(row*9)+c] - '0'])
     {
-      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
-      {
-        return false;
-      }
+      return false;
+    }
+    if(sudokuBoard[(row*9)+c] != '.')
+    {
+      foundNumber[sudokuBoard[(row*9)+c] - '0'] = true;
     }
   }
   return true;
