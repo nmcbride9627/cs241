@@ -77,12 +77,10 @@ bool verifyRow(int *sudokuBoard, int row)
     {
       if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
       {
-        printf("Row not valid\n");
         return false;
       }
     }
   }
-  printf("Row Valid\n");
   return true;
 }
 /* verifies columns by comparing every element with each other */
@@ -95,7 +93,6 @@ bool verifyCol(int *sudokuBoard, int col)
   {
     if(foundNumber[sudokuBoard[(r*9)+col] - '0'])
     {
-      printf("Col not valid\n");
       return false;
     }
     if(sudokuBoard[(r*9)+col] != '.')
@@ -103,7 +100,6 @@ bool verifyCol(int *sudokuBoard, int col)
       foundNumber[sudokuBoard[(r*9)+col] - '0'] = true;
     }
   }
-  printf("Col valid\n");
   return true;
 }
 /* algorithm for the box checking ported from
@@ -119,7 +115,6 @@ bool verifyBox(int *sudokuBoard, int row, int col)
     {
       if(foundNumber[sudokuBoard[(r*9)+c] - '0'])
       {
-        printf("Box not valid\n");
         return false;
       }
       if(sudokuBoard[r*9+c] != '.')
@@ -128,7 +123,6 @@ bool verifyBox(int *sudokuBoard, int row, int col)
       }
     }
   }
-  printf("Box valid\n");
   return true;
 }
 /* checks the board at a given position for validity */
@@ -136,7 +130,6 @@ bool isValid(int *sudokuBoard, int postion)
 {
   int row = postion / 9;
   int col = postion % 9;
-  printf("Row: %d, Col: %d\n", row, col);
   if(verifyRow(sudokuBoard, row) &&
     verifyCol(sudokuBoard, col) &&
     verifyBox(sudokuBoard, row, col))
@@ -155,13 +148,11 @@ bool fullIsValid(int *sudokuBoard)
   int i;
   for(i = 0; i < 81; i++)
   {
-    printf("Position: %d\n", i);
     if(!isValid(sudokuBoard, i))
     {
       return false;
     }
   }
-  printf("Fully Valid\n");
   return true;
 }
 bool findUnassigned(int *sudokuBoard, int *postion)
