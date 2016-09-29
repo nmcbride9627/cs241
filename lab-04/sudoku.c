@@ -209,10 +209,8 @@ int main(int argc, char const *argv[]) {
    */
   int errorCode = 0;
   int sudokuBoard[81];
-  while(errorCode != -1)
+  while(getNextBoard(sudokuBoard) != -1)
   {
-    errorCode = getNextBoard(sudokuBoard);
-
     if(errorCode && errorCode != -1)
     {
       printf("Error\n");
