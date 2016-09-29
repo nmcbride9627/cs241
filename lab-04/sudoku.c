@@ -67,24 +67,6 @@ int getNextBoard(int *sudokuBoard)
   }
   return -1;
 }
-/* verifies columns by comparing every element with each other */
-bool verifyCol(int *sudokuBoard, int col)
-{
-  int i, j;
-  for(i = col; i < (9 * 7) + col; i += 9)
-  {
-    for(j = i + 9; j < (9 * 8) + col; j += 9)
-    {
-      if((sudokuBoard[i] == sudokuBoard[j]) && (i != j) && (sudokuBoard[i] != '.'))
-      {
-        printf("Col not valid\n");
-        return false;
-      }
-    }
-  }
-  printf("Col valid\n");
-  return true;
-}
 /* verifies row by comparing every element with each other */
 bool verifyRow(int *sudokuBoard, int row)
 {
@@ -101,6 +83,27 @@ bool verifyRow(int *sudokuBoard, int row)
     }
   }
   printf("Row Valid\n");
+  return true;
+}
+/* verifies columns by comparing every element with each other */
+bool verifyCol(int *sudokuBoard, int col)
+{
+  int r;
+  bool foundNumber[10] = {0,0,0,0,0,0,0,0,0,0};
+
+  for(r = 0; r < 9; r++)
+  {
+    if(foundNumber[sudokuBoard[(r*9)+col] - '0'])
+    {
+      printf("Col not valid\n");
+      return false;
+    }
+    if(sudokuBoard[(r*9)+col] != '.')
+    {
+      foundNumber[sudokuBoard[(r*9)+col] - '0'] = true;
+    }
+  }
+  printf("Col valid\n");
   return true;
 }
 /* algorithm for the box checking ported from
