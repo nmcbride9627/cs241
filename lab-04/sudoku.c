@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 /* prints a formatted representation of the board */
-void printBoard(int *sudokuBoard)
+void printFormattedBoard(int *sudokuBoard)
 {
   int i;
   for(i = 0; i < 81; i++)
@@ -26,6 +26,14 @@ void printBoard(int *sudokuBoard)
     printf("%c", sudokuBoard[i]);
   }
   printf("\n");
+}
+void printBoard(int *sudokuBoard)
+{
+  int i;
+  for(i = 0; i < 81; i++)
+  {
+    printf("%c\n", sudokuBoard[i]);
+  }
 }
 /* cans in the game board from a file
  * and does preliminary validiy checks */
