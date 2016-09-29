@@ -228,8 +228,8 @@ int main(int argc, char const *argv[]) {
     */
     printBoard(sudokuBoard);
     sudokuBoard[0] = 1;
-    fullIsValid(sudokuBoard);
     printBoard(sudokuBoard);
+    fullIsValid(sudokuBoard);
 
       /*TODO*/
       /*solve board*/
