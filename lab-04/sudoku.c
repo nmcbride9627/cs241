@@ -32,8 +32,9 @@ void printBoard(int *sudokuBoard)
   int i;
   for(i = 0; i < 81; i++)
   {
-    printf("%c\n", sudokuBoard[i]);
+    printf("%c", sudokuBoard[i]);
   }
+  printf("\n");
 }
 /* cans in the game board from a file
  * and does preliminary validiy checks */
