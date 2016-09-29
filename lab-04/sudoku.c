@@ -175,16 +175,15 @@ bool solveSudoku(int *sudokuBoard)
 {
   int position;
   int i;
-  printBoard(sudokuBoard);
   if(!findUnassigned(sudokuBoard, &position))
   {
     return true;
   }
   for(i = 1; i <= 9; i++)
   {
+    sudokuBoard[position] = i + '0';
     if(isValid(sudokuBoard, position))
     {
-      sudokuBoard[position] = i + '0';
       if(solveSudoku(sudokuBoard))
       {
         return true;
@@ -218,11 +217,10 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
-    /*
     else if(!solveSudoku(sudokuBoard))
     {
       printf("No solution\n");
-    }*/
+    }
 
     printBoard(sudokuBoard);
 
