@@ -218,10 +218,11 @@ int main(int argc, char const *argv[]) {
     {
       printf("Error\n");
     }
+    /*
     else if(!solveSudoku(sudokuBoard))
     {
       printf("No solution\n");
-    }
+    }*/
 
     printBoard(sudokuBoard);
 
