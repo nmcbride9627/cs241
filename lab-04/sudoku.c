@@ -209,7 +209,7 @@ int main(int argc, char const *argv[]) {
    */
   int errorCode = 0;
   int sudokuBoard[81];
-  while(getNextBoard(sudokuBoard) != -1)
+  while((errorCode = getNextBoard(sudokuBoard)) != -1)
   {
     if(errorCode && errorCode != -1)
     {
