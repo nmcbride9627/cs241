@@ -233,7 +233,6 @@ int main(int argc, char const *argv[]) {
     else
     {
       printBoard(sudokuBoard);
-
     }
     printf("\n");
   }
