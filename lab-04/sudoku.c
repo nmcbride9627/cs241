@@ -34,8 +34,8 @@ int getNextBoard(int *sudokuBoard)
   int i = 0;
   int c = 0;
   bool hasInvalidCharacter = false;
-
-  while((c = getchar()) != EOF)
+  c = getchar();
+  while(c != EOF)
   {
     printf("%c", c);
     if(c == '\n')
