@@ -22,7 +22,6 @@ unsigned long convertToDecimal(char *number)
     sum = sum + (rem * pow(2, power));
     power++;
   }
-  printf("%lu\n", sum);
   return sum;
 }
 /*converts a decimal number to binary*/
@@ -41,11 +40,12 @@ unsigned long convertToBinary(char *number)
   return sum;
 }
 
+/*this is supposed to print the decimal number in the correct format*/
 void printDecimal(char *str, int length)
 {
   printf("%s\n", str);
 }
-
+/*this is supposed to print the binary number in the correct format*/
 void printBinary(char *str, int length)
 {
   printf("%s\n", str);
