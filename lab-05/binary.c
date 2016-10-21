@@ -9,11 +9,13 @@
 #include <stdlib.h>
 #include <math.h>
 
+/*converts a binary number to decimal*/
 unsigned long convertToDecimal(char *number)
 {
-  int num = strtoul(number, NULL, 2);
-  unsigned long rem = 0, sum = 0, power = 0;
+  unsigned long num = strtoul(number, NULL, 2);
 
+  unsigned long rem = 0, sum = 0, power = 0;
+  printf("%lu\n",num);
   while(num > 0)
   {
     rem = num % 10;
@@ -23,12 +25,12 @@ unsigned long convertToDecimal(char *number)
   }
   return sum;
 }
-
+/*converts a decimal number to binary*/
 unsigned long convertToBinary(char *number)
 {
-  int num = strtoul(number, NULL, 10);
+  unsigned long num = strtoul(number, NULL, 10);
   unsigned long rem, sum = 0, power = 0;
-
+  printf("%lu\n",num);
   while(num > 0)
   {
     rem = num % 2;
@@ -48,7 +50,10 @@ void printBinary(char *str, int length)
 {
   printf("%s\n", str);
 }
-
+/* This program will convert a number from decimal to binary
+ * or vice versa given the correct flag.
+ * It wil then print the converted number in a specified size.
+ * See usage below */
 int main(int argc, char *argv[])
 {
   const char *USAGE = "usage:\n"
@@ -136,7 +141,5 @@ int main(int argc, char *argv[])
     printf("ERROR: this shouldn't happen\n");
     return 1;
   }
-
-
   return 0;
 }
