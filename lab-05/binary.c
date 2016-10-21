@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     number = convertToDecimal(argv[3]);
     if(number == 0)
     {
-      printf("ERROR: argument 3 is not a decimal integer\n");
+      printf("ERROR: argument 3 is not a decimal integer\n%s", USAGE);
       return 1;
     }
     sprintf(str, "%lu", number);
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
     number = convertToBinary(argv[3]);
     if(number == 0)
     {
-      printf("ERROR: argument 3 is not a decimal integer\n");
+      printf("ERROR: argument 3 is not a decimal integer\n%s", USAGE);
       return 1;
     }
     sprintf(str, "%lu", number);
