@@ -15,12 +15,11 @@ unsigned long convertToDecimal(char *number)
   unsigned long num = strtoul(number, NULL, 2);
 
   unsigned long rem = 0, sum = 0, power = 0;
-  printf("%lu\n",num);
   while(num > 0)
   {
     rem = num % 10;
-    num /= 10;
-    sum += (rem * pow(2, power));
+    num = num / 10;
+    sum = sum + (rem * pow(2, power));
     power++;
   }
   return sum;
@@ -30,13 +29,13 @@ unsigned long convertToBinary(char *number)
 {
   unsigned long num = strtoul(number, NULL, 10);
   unsigned long rem, sum = 0, power = 0;
-  printf("%lu\n",num);
+
   while(num > 0)
   {
     rem = num % 2;
-    num /= 2;
-    sum += (rem * power);
-    power *= 10;
+    num = num / 2;
+    sum = sum + (rem * power);
+    power = power * 10;
   }
   return sum;
 }
