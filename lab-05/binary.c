@@ -29,11 +29,11 @@ int main(int argc, char *argv[])
     printf("ERROR: incorrect number of arguments\n%s", USAGE);
     return 1;
   }
-  if(*++argv[1] == 'b')
+  if(strcmp(argv[1], "-b") == 0)
   {
     binary = 1;
   }
-  else if(*++argv[1] == 'd')
+  else if(strcmp(argv[1], "-d") == 0)
   {
     decimal = 1;
   }
@@ -62,6 +62,7 @@ int main(int argc, char *argv[])
   {
     printf("ERROR: argument 2 must be: -8 | -16 | -32 | -64\n%s", USAGE);
     return 1;
+
   }
 
   return 0;
