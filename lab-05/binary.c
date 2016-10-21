@@ -6,10 +6,51 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+unsigned long convertToDecimal(char *number)
+{
+  int num = strtoul(number, NULL, 2);
+  unsigned long rem = 0, sum = 0, power = 0;
+
+  while(num > 0)
+  {
+    rem = num % 10;
+    num /= 10;
+    sum += (rem * pow(2, power));
+    power++;
+  }
+  return sum;
+}
+
+unsigned long convertToBinary(char *number)
+{
+  int num = strtoul(number, NULL, 2);
+  unsigned long rem, sum = 0, power = 0;
+
+  while(num > 0)
+  {
+    rem = num % 2;
+    num /= 2;
+    sum += (rem * power);
+    power *= 10;
+  }
+  return sum;
+}
+
+void printDecimal(unsigned long number, int length)
+{
+  printf("%lu\n", number);
+}
+
+void printBinary(unsigned long number, int length)
+{
+  printf("%lu\n", number);
+}
 
 int main(int argc, char *argv[])
 {
-
   const char *USAGE = "usage:\n"
     "./binary OPTION SIZE NUMBER\n"
     " OPTION:\n"
@@ -24,6 +65,7 @@ int main(int argc, char *argv[])
     " number to be converted.\n";
 
   int binary = 0, decimal = 0, size = 0;
+
   if(argc != 4)
   {
     printf("ERROR: incorrect number of arguments\n%s", USAGE);
@@ -62,8 +104,19 @@ int main(int argc, char *argv[])
   {
     printf("ERROR: argument 2 must be: -8 | -16 | -32 | -64\n%s", USAGE);
     return 1;
-
   }
-
+  if(binary == 1)
+  {
+    printDecimal(convertToDecimal(argv[3]), size);
+  }
+  else if(decimal == 1)
+  {
+    printBinary(convertToBinary(argv[3]), size);
+  }
+  else
+  {
+    printf("ERROR: this shouldn't happen\n");
+    return 1;
+  }
   return 0;
 }
