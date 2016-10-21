@@ -26,7 +26,7 @@ unsigned long convertToDecimal(char *number)
 
 unsigned long convertToBinary(char *number)
 {
-  int num = strtoul(number, NULL, 2);
+  int num = strtoul(number, NULL, 10);
   unsigned long rem, sum = 0, power = 0;
 
   while(num > 0)
@@ -39,14 +39,14 @@ unsigned long convertToBinary(char *number)
   return sum;
 }
 
-void printDecimal(unsigned long number, int length)
+void printDecimal(char *str, int length)
 {
-  printf("%lu\n", number);
+  printf("%s\n", str);
 }
 
-void printBinary(unsigned long number, int length)
+void printBinary(char *str, int length)
 {
-  printf("%lu\n", number);
+  printf("%s\n", str);
 }
 
 int main(int argc, char *argv[])
@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
     " number to be converted.\n";
 
   int binary = 0, decimal = 0, size = 0;
+  unsigned long number;
 
   if(argc != 4)
   {
@@ -107,16 +108,35 @@ int main(int argc, char *argv[])
   }
   if(binary == 1)
   {
-    printDecimal(convertToDecimal(argv[3]), size);
+    char str[64];
+
+    number = convertToDecimal(argv[3]);
+    if(number == 0)
+    {
+      printf("ERROR: argument 3 is not a decimal integer\n");
+      return 1;
+    }
+    sprintf(str, "%lu", number);
+    printDecimal(str, size);
   }
   else if(decimal == 1)
   {
-    printBinary(convertToBinary(argv[3]), size);
+    char str[64];
+    number = convertToBinary(argv[3]);
+    if(number == 0)
+    {
+      printf("ERROR: argument 3 is not a decimal integer\n");
+      return 1;
+    }
+    sprintf(str, "%lu", number);
+    printBinary(str, size);
   }
   else
   {
     printf("ERROR: this shouldn't happen\n");
     return 1;
   }
+
+
   return 0;
 }
