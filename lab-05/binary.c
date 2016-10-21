@@ -13,8 +13,8 @@
 unsigned long convertToDecimal(char *number)
 {
   unsigned long num = strtoul(number, NULL, 2);
-
   unsigned long rem = 0, sum = 0, power = 0;
+
   while(num > 0)
   {
     rem = num % 10;
@@ -22,6 +22,7 @@ unsigned long convertToDecimal(char *number)
     sum = sum + (rem * pow(2, power));
     power++;
   }
+  printf("%lu\n", sum);
   return sum;
 }
 /*converts a decimal number to binary*/
