@@ -19,9 +19,10 @@ void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
       {
         primes[i] = n;
         i++;
+        return;
       }
     }
-    if(n / testDivisor == 0)
+    if(n % testDivisor == 0)
     {
       primes[i] = testDivisor;
       i++;
