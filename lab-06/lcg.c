@@ -20,8 +20,8 @@ void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
         primes[i] = n;
         printf("Prime %lu\n", n);
         i++;
-        return;
       }
+      return;
     }
     if(n % testDivisor == 0)
     {
