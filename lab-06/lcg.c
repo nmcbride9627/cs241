@@ -43,7 +43,7 @@ void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
 struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
 {
   struct LinearCongruentialGenerator lcg;
-  unsigned long primes[64];
+  unsigned long primes[64] = {0};
   unsigned long p = 1;
   int i = 0;
 
