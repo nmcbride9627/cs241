@@ -44,7 +44,7 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
 {
   struct LinearCongruentialGenerator lcg;
   unsigned long primes[64];
-  unsigned long p;
+  unsigned long p = 1;
   int i = 0;
 
   lcg.x = c;
