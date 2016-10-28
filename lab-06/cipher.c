@@ -3,7 +3,7 @@
 
 int main(int argc, char const *argv[]) {
   int i;
-  struct LinearCongruentialGenerator lcg = makeLCG(4294967296, 1013904223);
+  struct LinearCongruentialGenerator lcg = makeLCG(210, 1);
   printf("LCG.m = %lu\n", lcg.m);
   printf("LCG.a = %lu\n", lcg.a);
   printf("LCG.c = %lu\n", lcg.c);
