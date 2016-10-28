@@ -3,8 +3,8 @@
 /* November 4, 2016   */
 /* CS-241-002         */
 /**********************/
-#include "lcg.h"
 #include <stdio.h>
+#include "lcg.h"
 
 void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
 {
@@ -49,7 +49,6 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
 
   lcg.x = c;
   findUniquePrimeFactors(m, primes);
-  printf("Dunction call\n");
   while(primes[i])
   {
     p *= primes[i];
