@@ -47,6 +47,14 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
   unsigned long p = 1;
   int i = 0;
 
+  if(lcg.m <= 0 || lcg.a <= 0 || lcg.a >= lcg.m || lcg.c < 0 || lcg.c >= lcg.m)
+  {
+    lcg.m = 0;
+    lcg.a = 0;
+    lcg.c = 0;
+    lcg.x = 0;
+    return lcg;
+  }
   lcg.x = c;
   findUniquePrimeFactors(m, primes);
   while(primes[i])
