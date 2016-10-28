@@ -52,6 +52,7 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
   while(primes[i])
   {
     p *= primes[i];
+    printf("p = %lu\n", p);
     i++;
   }
 
@@ -71,5 +72,5 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
 unsigned long getNextRandomValue(struct LinearCongruentialGenerator* lcg)
 {
   lcg->x = (lcg->a*lcg->x + lcg->c) % lcg->m;
-  return (lcg->x);
+  return lcg->x;
 }
