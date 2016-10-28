@@ -10,6 +10,7 @@ int main(int argc, char const *argv[]) {
   while(primes[i])
   {
     printf("primes[%d] = %lu\n",i, primes[i]);
+    i++;
   }
   return 0;
 }
