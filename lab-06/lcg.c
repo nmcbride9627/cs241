@@ -18,7 +18,6 @@ void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
       if(n != 1)
       {
         primes[i] = n;
-        printf("Prime %lu\n", n);
         i++;
       }
       return;
@@ -26,7 +25,6 @@ void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
     if(n % testDivisor == 0)
     {
       primes[i] = testDivisor;
-      printf("Prime: %d\n", testDivisor);
       i++;
       while(n % testDivisor == 0)
       {
@@ -51,7 +49,6 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
   while(primes[i])
   {
     p *= primes[i];
-    printf("p = %lu\n", p);
     i++;
   }
 
