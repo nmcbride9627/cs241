@@ -5,7 +5,7 @@
 
 int main(int argc, char const *argv[]) {
     int c, i = 0, delimCount = 0, lineCount = 0;
-    char cipherText;
+    unsigned long cipherText;
     char lcg_m[20], lcg_c[20];
     unsigned long m, c;
     bool lineStart = true;
