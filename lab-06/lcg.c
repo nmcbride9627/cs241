@@ -67,14 +67,14 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
   {
     lcg.a = 1 + p;
   }
-  /*
+
   if(lcg.m <= 0 || lcg.a <= 0 || lcg.a >= lcg.m || lcg.c < 0 || lcg.c >= lcg.m)
   {
     lcg.m = 0;
     lcg.a = 0;
     lcg.c = 0;
     lcg.x = 0;
-  }*/
+
   return lcg;
 }
 
