@@ -55,7 +55,7 @@ int main(int argc, char const *argv[]) {
       }
       if(delimCount == 2)
       {
-        if(lcg->m == 0)
+        if(lcg.m == 0)
         {
           lcgm = strtoul(lcg_m, NULL, 10);
           lcgc = strtoul(lcg_c, NULL, 10);
