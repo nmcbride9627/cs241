@@ -1,13 +1,15 @@
+#include "lcg.h"
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "lcg.h"
+
 
 int main(int argc, char const *argv[]) {
     int c, i = 0, delimCount = 0, lineCount = 0;
     unsigned long cipherText;
     char lcg_m[20], lcg_c[20];
-    unsigned long m, c;
+    unsigned long lcgm, lcgc;
     bool lineStart = true;
     bool encrypt = true;
     struct LinearCongruentialGenerator lcg;
@@ -55,9 +57,9 @@ int main(int argc, char const *argv[]) {
       {
         if(lcg->m == 0)
         {
-          m = strtoul(lcg_m, NULL, 10);
-          c = strtoul(lcg_c, NULL, 10);
-          lcg = makeLCG(m,c);
+          lcgm = strtoul(lcg_m, NULL, 10);
+          lcgc = strtoul(lcg_c, NULL, 10);
+          lcg = makeLCG(lcgm,lcgc);
         }
         if(encrypt)
         {
@@ -71,8 +73,8 @@ int main(int argc, char const *argv[]) {
               lineCount++;
               break;
             }
-            cipherText = c ^ (getNextRandomValue(lcg) % 128)
-            printf("%c", cipherText);
+            cipherText = c ^ (getNextRandomValue(lcg) % 128);
+            printf("%lu", cipherText);
           }
           printf("\n");
         }
@@ -80,3 +82,5 @@ int main(int argc, char const *argv[]) {
       }
 
     }
+    return 0;
+  }
