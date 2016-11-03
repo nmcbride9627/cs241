@@ -77,6 +77,7 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
 
 unsigned long getNextRandomValue(struct LinearCongruentialGenerator* lcg)
 {
+  unsigned long x = lcg->x;
   lcg->x = (lcg->a*lcg->x + lcg->c) % lcg->m;
-  return lcg->x;
+  return x;
 }
