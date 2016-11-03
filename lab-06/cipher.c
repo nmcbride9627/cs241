@@ -73,7 +73,7 @@ int main(int argc, char const *argv[]) {
               lineCount++;
               break;
             }
-            cipherText = c ^ (getNextRandomValue(lcg) % 128);
+            cipherText = c ^ (getNextRandomValue(&lcg) % 128);
             printf("%lu", cipherText);
           }
           printf("\n");
