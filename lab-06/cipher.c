@@ -86,10 +86,26 @@ int main(int argc, char const *argv[]) {
               delimCount = 0;
               lineStart = true;
               lineCount++;
+              lcg.m = 0;
               break;
             }
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
-            printf("%c ", cipherText);
+            if(cipherText < 32)
+            {
+              printf("*%lu", ('@'+cipherText));
+            }
+            else if(cipherText == 127)
+            {
+              printf("*&");
+            }
+            else if(cipherText == '*')
+            {
+              printf("**");
+            }
+            else
+            {
+              printf("%lu ", cipherText);
+            }
             c = getchar();
           }
           printf("\n");
