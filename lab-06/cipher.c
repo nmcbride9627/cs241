@@ -92,7 +92,7 @@ int main(int argc, char const *argv[]) {
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
             if(cipherText < 32)
             {
-              printf("*%lu", ('@'+cipherText));
+              printf("*%c", ('@'+cipherText));
             }
             else if(cipherText == 127)
             {
@@ -104,7 +104,7 @@ int main(int argc, char const *argv[]) {
             }
             else
             {
-              printf("%lu ", cipherText);
+              printf("%c ", cipherText);
             }
             c = getchar();
           }
