@@ -13,7 +13,7 @@
 int main(int argc, char const *argv[]) {
     int c, i = 0, delimCount = 0, lineCount = 0;
     unsigned long cipherText;
-    char lcg_m[20], lcg_c[20];
+    char lcg_m[20] = {0}, lcg_c[20]= {0};
     unsigned long lcgm, lcgc;
     bool lineStart = true;
     bool encrypt = true;
