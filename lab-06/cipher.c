@@ -127,6 +127,7 @@ int main(int argc, char const *argv[]) {
         else if(!encrypt)
         {
           /*TODO decrypt*/
+          printf("%5d) Decrypt line\n", lineCount);
           while (c != EOF)
           {
             if(c == '\n')
@@ -141,7 +142,6 @@ int main(int argc, char const *argv[]) {
             }
             c = getchar();
           }
-          printf("%5d) Decrypt line\n", lineCount);
         }
 
       }
