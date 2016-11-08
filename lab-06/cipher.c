@@ -45,6 +45,7 @@ int main(int argc, char const *argv[]) {
         delimCount++;
         printf("delimCount: %d\n", delimCount);
         i = 0;
+        c = getchar();
       }
       if(delimCount == 0)
       {
@@ -53,7 +54,7 @@ int main(int argc, char const *argv[]) {
         i++;
         if(i > 20)
         {
-          i = 0;
+          /*TODO ERROR*/
         }
       }
       if(delimCount == 1)
@@ -63,7 +64,7 @@ int main(int argc, char const *argv[]) {
         i++;
         if(i > 20)
         {
-          i = 0;
+          /*TODO ERROR*/
         }
       }
       if(delimCount == 2)
