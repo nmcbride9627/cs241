@@ -89,7 +89,7 @@ int main(int argc, char const *argv[]) {
               break;
             }
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
-            printf("%lu ", cipherText);
+            printf("%c ", cipherText);
             c = getchar();
           }
           printf("\n");
