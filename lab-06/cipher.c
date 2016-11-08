@@ -65,6 +65,7 @@ int main(int argc, char const *argv[]) {
           lcgm = strtoul(lcg_m, NULL, 10);
           lcgc = strtoul(lcg_c, NULL, 10);
           lcg = makeLCG(lcgm,lcgc);
+          printf("LCG_M: %lu, LCG_C %lu, LCG_A: %lu, LCG_X %lu\n", lcg.m, lcg.c, lcg.a, lcg.x);
         }
         if(encrypt)
         {
