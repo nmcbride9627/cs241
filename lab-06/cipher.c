@@ -51,6 +51,7 @@ int main(int argc, char const *argv[]) {
           }
           c = getchar();
         }
+        printf("%5d) error", lineCount);
       }
       if(c == ',')
       {
