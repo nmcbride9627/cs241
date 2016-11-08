@@ -104,7 +104,7 @@ int main(int argc, char const *argv[]) {
             }
             else
             {
-              printf("%c ", cipherText);
+              printf("%c", cipherText);
             }
             c = getchar();
           }
