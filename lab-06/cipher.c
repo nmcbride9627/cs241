@@ -25,13 +25,11 @@ int main(int argc, char const *argv[]) {
       {
         if(c == 'e')
         {
-          printf("Encrypt mode\n");
           encrypt = true;
           c = getchar();
         }
         if(c == 'd')
         {
-          printf("Decrypt mode\n");
           encrypt = false;
           c = getchar();
         }
@@ -43,14 +41,12 @@ int main(int argc, char const *argv[]) {
       if(c == ',')
       {
         delimCount++;
-        printf("delimCount: %d\n", delimCount);
         i = 0;
         c = getchar();
       }
       if(delimCount == 0)
       {
         lcg_m[i] = (c);
-        printf("lcg_m[%d] = %d\n", i, (c - '0'));
         i++;
         if(i > 20)
         {
@@ -60,7 +56,6 @@ int main(int argc, char const *argv[]) {
       if(delimCount == 1)
       {
         lcg_c[i] = (c);
-        printf("lcg_c[%d] = %d\n", i, (c - '0'));
         i++;
         if(i > 20)
         {
@@ -74,11 +69,10 @@ int main(int argc, char const *argv[]) {
           lcgm = strtoul(lcg_m, NULL, 10);
           lcgc = strtoul(lcg_c, NULL, 10);
           lcg = makeLCG(lcgm,lcgc);
-          printf("LCG_M: %lu, LCG_C %lu, LCG_A: %lu, LCG_X %lu\n", lcg.m, lcg.c, lcg.a, lcg.x);
         }
         if(encrypt)
         {
-          printf("%5d ", lineCount);
+          printf("%5d) ", lineCount);
           while (c != EOF)
           {
             if(c == '\n')
@@ -92,7 +86,7 @@ int main(int argc, char const *argv[]) {
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
             if(cipherText < 32)
             {
-              printf("*%c", ('@'+cipherText));
+              printf("*%c", (char)('@'+cipherText));
             }
             else if(cipherText == 127)
             {
@@ -104,7 +98,7 @@ int main(int argc, char const *argv[]) {
             }
             else
             {
-              printf("%c", cipherText);
+              printf("%c", (char)cipherText);
             }
             c = getchar();
           }
