@@ -59,6 +59,7 @@ int main(int argc, char const *argv[]) {
       if(delimCount == 1)
       {
         lcg_c[i] = (c - '0');
+        printf("lcg_c[%d] = %d\n", i, (c - '0'));
         i++;
         if(i > 20)
         {
