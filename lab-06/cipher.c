@@ -41,7 +41,7 @@ int main(int argc, char const *argv[]) {
           printf("%5d) Error", lineCount);
           while (c != EOF)
           {
-            printf("stuck in loop\n");
+            printf("c = %c\n", c);
             if(c == '\n')
             {
               delimCount = 0;
