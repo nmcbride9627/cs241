@@ -25,10 +25,12 @@ int main(int argc, char const *argv[]) {
       {
         if(c == 'e')
         {
+          printf("Encrypt mode\n");
           encrypt = true;
         }
         if(c == 'd')
         {
+          printf("Decrypt mode\n");
           encrypt = false;
         }
       }
@@ -39,11 +41,13 @@ int main(int argc, char const *argv[]) {
       if(c == ',')
       {
         delimCount++;
+        printf("delimCount: %d\n", delimCount);
         i = 0;
       }
       if(delimCount == 0)
       {
         lcg_m[i] = (c - '0');
+        printf("lcg_m[%d] = %d\n", i, (c - '0'));
         i++;
         if(i > 20)
         {
