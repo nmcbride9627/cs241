@@ -27,11 +27,13 @@ int main(int argc, char const *argv[]) {
         {
           printf("Encrypt mode\n");
           encrypt = true;
+          c = getchar();
         }
         if(c == 'd')
         {
           printf("Decrypt mode\n");
           encrypt = false;
+          c = getchar();
         }
       }
       else
