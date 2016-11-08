@@ -22,36 +22,39 @@ int main(int argc, char const *argv[]) {
 
     while ((c = getchar()) != EOF)
     {
-      if(lineStart && (c == 'e' || c == 'd'))
+      if(lineStart)
       {
         if(c == 'e')
         {
           encrypt = true;
           c = getchar();
         }
-        if(c == 'd')
+        else if(c == 'd')
         {
           encrypt = false;
           c = getchar();
         }
-      }
-      else if (lineStart && (c != 'e' || c != 'd'))
-      {
-        while (c != EOF)
+        else
         {
-          if(c == '\n')
+          printf("%5d) Error", lineCount);
+          while (c != EOF)
           {
-            delimCount = 0;
-            lineStart = true;
-            lineCount++;
-            lcg.m = 0;
-            memset(&lcg_c, 0, 20);
-            memset(&lcg_m, 0, 20);
-            break;
+            if(c == '\n')
+            {
+              delimCount = 0;
+              lineStart = true;
+              lineCount++;
+              lcg.m = 0;
+              memset(&lcg_c, 0, 20);
+              memset(&lcg_m, 0, 20);
+              break;
+            }
           }
-          c = getchar();
         }
-        printf("%5d) Error\n", lineCount);
+      }
+      else
+      {
+        /*TODO ERROR*/
       }
       if(c == ',')
       {
