@@ -143,7 +143,7 @@ int main(int argc, char const *argv[]) {
             }
             c = getchar();
           }
-          printf("Decrypt line\n");
+          printf("%5d) Decrypt line", lineCount);
         }
 
       }
