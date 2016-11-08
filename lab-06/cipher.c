@@ -1,3 +1,8 @@
+/**********************/
+/* Nathaniel McBride  */
+/* November 4, 2016   */
+/* CS-241-002         */
+/**********************/
 #include "lcg.h"
 
 #include <stdio.h>
@@ -74,7 +79,7 @@ int main(int argc, char const *argv[]) {
               break;
             }
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
-            printf("%lu", cipherText);
+            printf("%c", cipherText);
             c = getchar();
           }
           printf("\n");
