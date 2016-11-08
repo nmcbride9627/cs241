@@ -38,7 +38,7 @@ int main(int argc, char const *argv[]) {
         }
         else
         {
-          printf("%5d) Error", lineCount);
+          printf("%5d) Error\n", lineCount);
           while (c != EOF)
           {
             printf("c = %c\n", c);
@@ -87,6 +87,25 @@ int main(int argc, char const *argv[]) {
           lcgm = strtoul(lcg_m, NULL, 10);
           lcgc = strtoul(lcg_c, NULL, 10);
           lcg = makeLCG(lcgm,lcgc);
+          if(!lcg.m && !lcg.c && !lcg.a && !lcg.x)
+          {
+            printf("%5d) Error\n", lineCount);
+            while (c != EOF)
+            {
+              printf("c = %c\n", c);
+              if(c == '\n')
+              {
+                delimCount = 0;
+                lineStart = true;
+                lineCount++;
+                lcg.m = 0;
+                memset(&lcg_c, 0, 20);
+                memset(&lcg_m, 0, 20);
+                break;
+              }
+              c = getchar();
+            }
+          }
         }
         if(encrypt)
         {
