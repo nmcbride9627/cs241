@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
           c = getchar();
         }
       }
-      else
+      else if (lineStart && (c != 'e' || c != 'd'))
       {
         while (c != EOF)
         {
