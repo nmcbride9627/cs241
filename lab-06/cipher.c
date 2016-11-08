@@ -107,6 +107,15 @@ int main(int argc, char const *argv[]) {
           }
           printf("\n");
         }
+        else if(!encrypt)
+        {
+          /*TODO decrypt*/
+          while (c != EOF && c != '\n')
+          {
+            c = getchar();
+            printf("Decrypt line\n");
+          }
+        }
 
       }
 
