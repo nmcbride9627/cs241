@@ -52,6 +52,7 @@ int main(int argc, char const *argv[]) {
               memset(&lcg_m, 0, 20);
               break;
             }
+            c = getchar();
           }
         }
       }
