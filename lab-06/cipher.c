@@ -157,6 +157,28 @@ int main(int argc, char const *argv[]) {
               memset(&lcg_m, 0, 20);
               break;
             }
+            if(c == '*')
+            {
+              c = getchar();
+              if(c == '*')
+              {
+                cipherText = '*';
+              }
+              else if(c == '&')
+              {
+                cipherText = 127;
+              }
+              else
+              {
+                cipherText = (c - '@');
+              }
+              cipherText = cipherText ^ (getNextRandomValue(&lcg) % 128);
+            }
+            else
+            {
+              cipherText = c ^ (getNextRandomValue(&lcg) % 128);
+            }
+            printf("%c", (char)cipherText);
             c = getchar();
           }
         }
