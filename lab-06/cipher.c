@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 int main(int argc, char const *argv[]) {
@@ -81,6 +82,8 @@ int main(int argc, char const *argv[]) {
               lineStart = true;
               lineCount++;
               lcg.m = 0;
+              memset(&lcg_c, 0, 20);
+              memset(&lcg_m, 0, 20);
               break;
             }
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
