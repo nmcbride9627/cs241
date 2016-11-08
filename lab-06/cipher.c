@@ -41,6 +41,7 @@ int main(int argc, char const *argv[]) {
           printf("%5d) Error", lineCount);
           while (c != EOF)
           {
+            printf("stuck in loop\n");
             if(c == '\n')
             {
               delimCount = 0;
@@ -53,10 +54,6 @@ int main(int argc, char const *argv[]) {
             }
           }
         }
-      }
-      else
-      {
-        /*TODO ERROR*/
       }
       if(c == ',')
       {
@@ -143,7 +140,7 @@ int main(int argc, char const *argv[]) {
             }
             c = getchar();
           }
-          printf("%5d) Decrypt line", lineCount);
+          printf("%5d) Decrypt line\n", lineCount);
         }
 
       }
