@@ -27,11 +27,13 @@ int main(int argc, char const *argv[]) {
         if(c == 'e')
         {
           encrypt = true;
+          lineStart = false;
           c = getchar();
         }
         else if(c == 'd')
         {
           encrypt = false;
+          lineStart = false;
           c = getchar();
         }
         else
