@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]) {
     unsigned long lcgm, lcgc;
     bool lineStart = true;
     bool encrypt = true;
-    struct LinearCongruentialGenerator lcg;
+    struct LinearCongruentialGenerator lcg = {0,0,0,0};
 
     while ((c = getchar()) != EOF)
     {
