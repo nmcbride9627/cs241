@@ -39,6 +39,7 @@ int main(int argc, char const *argv[]) {
       if(c == ',')
       {
         delimCount++;
+        i = 0;
       }
       if(delimCount == 0)
       {
