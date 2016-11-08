@@ -75,6 +75,7 @@ int main(int argc, char const *argv[]) {
             }
             cipherText = c ^ (getNextRandomValue(&lcg) % 128);
             printf("%lu", cipherText);
+            c = getchar();
           }
           printf("\n");
         }
