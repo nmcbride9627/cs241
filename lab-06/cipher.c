@@ -68,20 +68,6 @@ int main(int argc, char const *argv[]) {
         if(i > 20)
         {
           printf("%5d) Error\n", lineCount);
-          while (c != EOF)
-          {
-            if(c == '\n')
-            {
-              delimCount = 0;
-              lineStart = true;
-              lineCount++;
-              lcg.m = 0;
-              memset(&lcg_c, 0, 20);
-              memset(&lcg_m, 0, 20);
-              break;
-            }
-            c = getchar();
-          }
         }
       }
       if(delimCount == 1)
@@ -91,20 +77,6 @@ int main(int argc, char const *argv[]) {
         if(i > 20)
         {
           printf("%5d) Error\n", lineCount);
-          while (c != EOF)
-          {
-            if(c == '\n')
-            {
-              delimCount = 0;
-              lineStart = true;
-              lineCount++;
-              lcg.m = 0;
-              memset(&lcg_c, 0, 20);
-              memset(&lcg_m, 0, 20);
-              break;
-            }
-            c = getchar();
-          }
         }
       }
       if(delimCount == 2)
