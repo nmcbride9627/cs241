@@ -122,8 +122,9 @@ int main(int argc, char const *argv[]) {
               memset(&lcg_m, 0, 20);
               break;
             }
-            printf("Decrypt line\n");
+            c = getchar();
           }
+          printf("Decrypt line\n");
         }
 
       }
