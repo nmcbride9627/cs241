@@ -70,7 +70,6 @@ int main(int argc, char const *argv[]) {
           printf("%5d) Error\n", lineCount);
           while (c != EOF)
           {
-            printf("c = %c\n", c);
             if(c == '\n')
             {
               delimCount = 0;
@@ -94,7 +93,6 @@ int main(int argc, char const *argv[]) {
           printf("%5d) Error\n", lineCount);
           while (c != EOF)
           {
-            printf("c = %c\n", c);
             if(c == '\n')
             {
               delimCount = 0;
