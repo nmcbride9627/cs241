@@ -52,18 +52,26 @@ int removeItem(struct ListNode** headRef, int data)
   struct ListNode* current = *headRef;
   bool removedData = false;
 
-  while(current != NULL)
+  if(previous == NULL && current->data == data)
   {
-    if(current->data == data)
+    *headRef = current->next;
+    free(current);
+  }
+  else
+  {
+    while(current != NULL)
     {
-      previous->next = current->next;
-      free(current);
-      removedData = true;
-    }
-    else
-    {
-      previous = current;
-      current = current->next;
+      if(current->data == data)
+      {
+        previous->next = current->next;
+        free(current);
+        removedData = true;
+      }
+      else
+      {
+        previous = current;
+        current = current->next;
+      }
     }
   }
   if(removedData)
