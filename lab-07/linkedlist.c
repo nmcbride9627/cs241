@@ -93,7 +93,7 @@ int popStack(struct ListNode** headRef)
   int data;
   struct ListNode* node = *headRef;
   data = node->data;
-  (*headRef) = node->next;
+  *headRef = node->next;
   free(node);
   return data;
 }
@@ -149,6 +149,5 @@ void reverseList(struct ListNode** headRef)
     previous = current;
     current = next;
   }
-
   *headRef = previous;
 }
