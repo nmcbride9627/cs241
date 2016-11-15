@@ -10,7 +10,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+/*This program take input in the format:
+ * <e|d><m>,<c>,<data>\n
+ * and either encrypts or decrypts the data
+ * option specified with the LCG keys m and c */
 int main(int argc, char const *argv[]) {
     int c, i = 0, delimCount = 0, lineCount = 1;
     unsigned long cipherText;
@@ -61,6 +64,7 @@ int main(int argc, char const *argv[]) {
         i = 0;
         c = getchar();
       }
+      /*scanning for m*/
       if(delimCount == 0)
       {
         lcg_m[i] = (c);
@@ -70,6 +74,7 @@ int main(int argc, char const *argv[]) {
           printf("%5d) Error\n", lineCount);
         }
       }
+      /*scanning for c*/
       if(delimCount == 1)
       {
         lcg_c[i] = (c);
@@ -79,6 +84,7 @@ int main(int argc, char const *argv[]) {
           printf("%5d) Error\n", lineCount);
         }
       }
+      /*generates the lcg and the encryps or decrypts*/
       if(delimCount == 2)
       {
         if(lcg.m == 0)
@@ -143,8 +149,7 @@ int main(int argc, char const *argv[]) {
         }
         else if(!encrypt)
         {
-          /*TODO decrypt*/
-          printf("%5d) Decrypt line\n", lineCount);
+          printf("%5d) ", lineCount);
           while (c != EOF)
           {
             if(c == '\n')
@@ -181,6 +186,7 @@ int main(int argc, char const *argv[]) {
             printf("%c", (char)cipherText);
             c = getchar();
           }
+          printf("\n");
         }
 
       }

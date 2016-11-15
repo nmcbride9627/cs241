@@ -5,7 +5,8 @@
 /**********************/
 #include <stdio.h>
 #include "lcg.h"
-
+/* This function finds unique prime factors of a number
+ * returns an array of the prime factors with max of 64*/
 void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
 {
   int i = 0;
@@ -37,7 +38,7 @@ void findUniquePrimeFactors(unsigned long n, unsigned long primes[64])
     }
   }
 }
-
+/*This function generated the LCG given m and c*/
 struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
 {
   struct LinearCongruentialGenerator lcg;
@@ -74,7 +75,7 @@ struct LinearCongruentialGenerator makeLCG(unsigned long m, unsigned long c)
   }
   return lcg;
 }
-
+/*This function returns the next value from a LCG*/
 unsigned long getNextRandomValue(struct LinearCongruentialGenerator* lcg)
 {
   unsigned long x = lcg->x;
