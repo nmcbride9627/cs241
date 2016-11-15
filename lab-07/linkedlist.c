@@ -21,21 +21,22 @@ struct ListNode* createNode(int data)
 struct ListNode* insertSorted(struct ListNode* head, int data)
 {
   struct ListNode* newNode = createNode(data);
-  struct ListNode* currNode = head;
-  struct ListNode* nextNode = head->next;
+  struct ListNode* current = head;
 
-  if(currNode == NULL)
+  if(head == NULL || head->data >= newNode->data)
   {
-    return newNode;
+    newNode->next = head;
+    head = newNode;
   }
-  else if(nextNode != NULL)
+  else
   {
-
-    if(currNode->data < data && nextNode->data >= data)
+    while(current->next != NULL &&
+      current->next->data < newNode->data)
     {
-      newNode->next = currNode->next;
-      currNode->next = newNode;
+      current = current->next;
     }
+    newNode->next = current->next;
+    current->next = newNode;
   }
   return head;
 }
