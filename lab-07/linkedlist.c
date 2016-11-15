@@ -68,11 +68,8 @@ int removeItem(struct ListNode** headRef, int data)
         free(current);
         removedData = true;
       }
-      else
-      {
-        previous = current;
-        current = current->next;
-      }
+      previous = current;
+      current = current->next;
     }
   }
   return removedData;
