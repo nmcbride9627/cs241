@@ -44,7 +44,11 @@ struct ListNode* insertSorted(struct ListNode* head, int data)
  * Make no assumptions as to whether the list is sorted.
  * Memory for removed node should be freed.
  * Return 1 if data was present, 0 if not found. */
-int removeItem(struct ListNode** headRef, int data);
+int removeItem(struct ListNode** headRef, int data)
+{
+  /*TODO*/
+  return 0;
+}
 
 /* Insert data at head of list, return new list head. */
 struct ListNode* pushStack(struct ListNode* head, int data)
@@ -104,4 +108,7 @@ void freeList(struct ListNode* head)
 }
 
 /* Reverse order of elements in the list */
-void reverseList(struct ListNode** headRef);
+void reverseList(struct ListNode** headRef)
+{
+  /*TODO*/
+}
