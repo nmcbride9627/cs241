@@ -7,6 +7,7 @@
 #include "linkedlist.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 /* Alloc a new node with given data. */
 struct ListNode* createNode(int data)
@@ -47,8 +48,32 @@ struct ListNode* insertSorted(struct ListNode* head, int data)
  * Return 1 if data was present, 0 if not found. */
 int removeItem(struct ListNode** headRef, int data)
 {
-  /*TODO*/
-  return 0;
+  struct ListNode* previous = NULL;
+  struct ListNode* current = *headRef;
+  bool removedData = false;
+
+  while(current != NULL)
+  {
+    if(current->data == data)
+    {
+      previous->next = current->next;
+      free(current);
+      removedData = true;
+    }
+    else
+    {
+      previous = current;
+      current = current->next;
+    }
+  }
+  if(removedData)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 /* Insert data at head of list, return new list head. */
