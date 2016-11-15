@@ -56,6 +56,7 @@ int removeItem(struct ListNode** headRef, int data)
   {
     *headRef = current->next;
     free(current);
+    removedData = true;
   }
   else
   {
@@ -74,14 +75,7 @@ int removeItem(struct ListNode** headRef, int data)
       }
     }
   }
-  if(removedData)
-  {
-    return 1;
-  }
-  else
-  {
-    return 0;
-  }
+  return removedData;
 }
 
 /* Insert data at head of list, return new list head. */
