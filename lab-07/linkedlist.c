@@ -138,5 +138,17 @@ void freeList(struct ListNode* head)
 /* Reverse order of elements in the list */
 void reverseList(struct ListNode** headRef)
 {
-  /*TODO*/
+  struct ListNode* previous = NULL;
+  struct ListNode* current = *headRef;
+  struct ListNode* next = NULL;
+
+  while(current != NULL)
+  {
+    next = current->next;
+    current->next = previous;
+    previous = current;
+    current = next;
+  }
+
+  *headRef = previous;
 }
