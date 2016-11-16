@@ -73,7 +73,7 @@ int maxValueBST(struct TreeNode* root)
 /* Return minimum value in non-empty binary search tree. */
 int minValueBST(struct TreeNode* root)
 {
-	int minValue = 0;
+	int minValue = 99999999;
 	int minValueL, minValueR;
 	if(root != NULL)
 	{
