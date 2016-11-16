@@ -125,21 +125,20 @@ int isBST(struct TreeNode* root)
 	/*TODO*/
 	if(root != NULL)
 	{
-		if((root->left != NULL && root->left->data > root->data) ||
-			(root->right != NULL && root->right->data < root->data) ||
-			(!isBST(root->left)) || (!isBST(root->right)))
+		if(root->left != NULL && root->left->data > root->data)
 		{
 			return 0;
 		}
-		else
+		if(root->right != NULL && root->right->data < root->data)
 		{
-			return 1;
+			return 0;
+		}
+		if(!isBST(root->left) || !isBST(root->right))
+		{
+			return 0;
 		}
 	}
-	else
-	{
-		return 1;
-	}
+	return 1;
 }
 
 /* This function is wrapped by printTree and printLeaves
