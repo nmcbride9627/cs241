@@ -67,6 +67,7 @@ int main(int argc, char** argv)
   tree = makeNotBST();
 
   printf("notBST: ");
+  printf("BST maximum value = %d\n", maxValueBST(bst));
   printTree(tree);
   printf("notBST leaves: ");
   printLeaves(tree);
@@ -95,7 +96,7 @@ int main(int argc, char** argv)
   for(i = -4; i < 25; i+=4)
   {
     n = removeBST(&bst, i);
-    if(!n) printf("remove did not find %d\n", i);  
+    if(!n) printf("remove did not find %d\n", i);
   }
 
   printf("BST after removes: ");
@@ -105,7 +106,7 @@ int main(int argc, char** argv)
   printf("BST depth = %d\n", maxDepth(bst));
   printf("BST maximum value = %d\n", maxValueBST(bst));
   printf("BST balanced = %d\n", isBalanced(bst));
-  printf("BST isBST = %d\n", isBST(bst));  
+  printf("BST isBST = %d\n", isBST(bst));
 
   freeTree(bst);
   bst = NULL;
