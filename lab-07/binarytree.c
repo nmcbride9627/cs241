@@ -70,6 +70,28 @@ int maxValueBST(struct TreeNode* root)
 	return maxValue;
 }
 
+/* Return minimum value in non-empty binary search tree. */
+int minValueBST(struct TreeNode* root)
+{
+	int minValue = 0;
+	int minValueL, minValueR;
+	if(root != NULL)
+	{
+		minValue = root->data;
+		minValueL = minValueBST(root->left);
+		minValueR = minValueBST(root->right);
+		if(minValueL < minValue)
+		{
+			minValue = minValueL;
+		}
+		if(minValueR < minValue)
+		{
+			minValue = minValueR;
+		}
+	}
+	return minValue;
+}
+
 /* Return maximum depth of tree. Empty tree has depth 0. */
 int maxDepth(struct TreeNode* root)
 {
