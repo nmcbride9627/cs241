@@ -131,8 +131,15 @@ int isBST(struct TreeNode* root)
 		{
 			return 0;
 		}
+		else
+		{
+			return 1;
+		}
 	}
-	return 1;
+	else
+	{
+		return 1;
+	}
 }
 
 /* This function is wrapped by printTree and printLeaves
