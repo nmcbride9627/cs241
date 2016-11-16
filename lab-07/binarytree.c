@@ -7,6 +7,7 @@
 #include "binarytree.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 /* Alloc a new node with given data. */
 struct TreeNode* createNode(int data)
@@ -77,17 +78,21 @@ int isBST(struct TreeNode* root)
   return 0;
 }
 
+void printTreeWrapper(struct TreeNode* root, bool newLineWrap)
+{
+  if(root != NULL)
+  {
+    printTreeWrapper(root->left, false);
+    printf("%d ", root->data);
+    printTreeWrapper(root->right, false);
+  }
+}
 /* Print data for inorder (left, root, right)
  * tree traversal on single line,
  * separated with spaces, ending with newline. */
 void printTree(struct TreeNode* root)
 {
-  if(root != NULL)
-  {
-    printTree(root->left);
-    printf("%d \n", root->data);
-    printTree(root->right);
-  }
+  printTreeWrapper(root, true);
 }
 
 /* Print data for leaves on single line,
