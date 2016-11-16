@@ -51,17 +51,21 @@ int removeBST(struct TreeNode** rootRef, int data)
 /* Return maximum value in non-empty binary search tree. */
 int maxValueBST(struct TreeNode* root)
 {
+  int maxValue = 0;
+  int maxValueL, maxValueR;
   /*TODO*/
-  int maxValue = root->data;
-  if(root->left != NULL)
+  if(root != NULL)
   {
-    if(maxValueBST(root->left) > maxValue)
+    maxValue = root->data;
+    maxValueL = maxValueBST(root->left);
+    maxValueR = maxValueBST(root->right);
+    if(maxValueL > maxValue)
     {
-      maxValue = maxValueBST(root->left);
+      maxValue = maxValueL;
     }
-    if(maxValueBST(root->right) > maxValue)
+    if(maxValueR > maxValue)
     {
-      maxValue = maxValueBST(root->right);
+      maxValue = maxValueR;
     }
   }
   return maxValue;
