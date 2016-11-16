@@ -81,11 +81,11 @@ int maxDepth(struct TreeNode* root)
     maxDepthR = maxDepth(root->right);
     if(maxDepthL > maxDepthT)
     {
-      maxDepthT = maxDepthL;
+      maxDepthT = ++maxDepthL;
     }
     if(maxDepthR > maxDepthT)
     {
-      maxDepthT = maxDepthR;
+      maxDepthT = ++maxDepthR;
     }
   }
   return maxDepthT;
