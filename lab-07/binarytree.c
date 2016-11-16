@@ -73,22 +73,24 @@ int maxValueBST(struct TreeNode* root)
 /* Return maximum depth of tree. Empty tree has depth 0. */
 int maxDepth(struct TreeNode* root)
 {
-  int maxDepthT = 0;
   int maxDepthL, maxDepthR;
   if(root != NULL)
   {
     maxDepthL = maxDepth(root->left);
     maxDepthR = maxDepth(root->right);
-    if(maxDepthL > maxDepthT)
+    if(maxDepthL > maxDepthR)
     {
-      maxDepthT = ++maxDepthL;
+      return ++maxDepthL;
     }
-    if(maxDepthR > maxDepthT)
+    else
     {
-      maxDepthT = ++maxDepthR;
+      return ++maxDepthR;
     }
   }
-  return maxDepthT;
+  else
+  {
+    return 0;
+  }
 }
 
 /* A tree is balanced if both subtrees are balanced and
