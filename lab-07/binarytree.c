@@ -21,10 +21,19 @@ struct TreeNode* createNode(int data)
 /* Insert data at appropriate place in BST, return new tree root. */
 struct TreeNode* insertBST(struct TreeNode* root, int data)
 {
+  if(root == NULL)
+  {
+    return createNode(data);
+  }
   if(data < root->data)
   {
-    insertBST(root->left, data);
+    root->left = insertBST(root->left, data);
   }
+  else if(data > root->data)
+  {
+    root->right = insertBST(root->right, data);
+  }
+  return root;
 }
 
 /* Remove data from BST pointed to by rootRef, changing root if necessary.
