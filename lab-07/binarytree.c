@@ -147,11 +147,11 @@ int isBST(struct TreeNode* root)
 	/*TODO*/
 	if(root != NULL)
 	{
-		if(root->left != NULL && root->left->data > root->data)
+		if(root->left != NULL && maxValue(root->left) > root->data)
 		{
 			return 0;
 		}
-		if(root->right != NULL && root->right->data < root->data)
+		if(root->right != NULL && minValue(root->right) < root->data)
 		{
 			return 0;
 		}
