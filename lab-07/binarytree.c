@@ -78,16 +78,28 @@ int isBST(struct TreeNode* root)
   return 0;
 }
 
-/* This function is wrapped by printTree to print the BST
- * with a newline character at the end while
- * retaining use of recursion */
-void printTreeWrapper(struct TreeNode* root, bool newLineWrap)
+/* This function is wrapped by printTree and printLeaves
+ * to print the whole tree or just the leaves
+ * specified by printL(printLeaves) parameter
+ * with a newline character before last return
+ * while retaining the use of recursion */
+void printWrapper(struct TreeNode* root, bool newLineWrap, bool printL)
 {
   if(root != NULL)
   {
-    printTreeWrapper(root->left, false);
-    printf("%d ", root->data);
-    printTreeWrapper(root->right, false);
+    printWrapper(root->left, false, printL);
+    if(printL)
+    {
+      if(root->left == NULL && root->right == NULL)
+      {
+        printf("%d ", root->data);
+      }
+    }
+    else
+    {
+      printf("%d ", root->data);
+    }
+    printWrapper(root->right, false, printL);
   }
   if(newLineWrap)
   {
@@ -99,23 +111,14 @@ void printTreeWrapper(struct TreeNode* root, bool newLineWrap)
  * separated with spaces, ending with newline. */
 void printTree(struct TreeNode* root)
 {
-  printTreeWrapper(root, true);
+  printWrapper(root, true, false);
 }
 
 /* Print data for leaves on single line,
  * separated with spaces, ending with newline.*/
 void printLeaves(struct TreeNode* root)
 {
-  /*TODO*/
-  if(root != NULL)
-  {
-    printLeaves(root->left);
-    if(root->left == NULL && root->right == NULL)
-    {
-      printf("%d ", root->data);
-    }
-    printLeaves(root->right);
-  }
+  printWrapper(root, true, true);
 }
 
 /* Free memory used by the tree. */
