@@ -67,8 +67,8 @@ int main(int argc, char** argv)
   tree = makeNotBST();
 
   printf("notBST: ");
-  printf("BST maximum value = %d\n", maxValueBST(bst));
   printTree(tree);
+  printf("BST maximum value = %d\n", maxValueBST(bst));
   printf("notBST leaves: ");
   printLeaves(tree);
   printf("notBST depth = %d\n", maxDepth(tree));
