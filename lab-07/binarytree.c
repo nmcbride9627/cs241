@@ -53,17 +53,23 @@ int maxValueBST(struct TreeNode* root)
 {
   /*TODO*/
   int maxValue = 0;
+  int maxValueL = 0;
+  int maxValueR = 0;
   if(root != NULL)
   {
-    maxValue = maxValueBST(root->left);
-    if(root->data > maxValue)
+    maxValueL = maxValueBST(root->left);
+    if(root->data > maxValueL)
     {
-      maxValue = root->data;
+      maxValueL = root->data;
     }
-    maxValue = maxValueBST(root->right);
-    if(root->data > maxValue)
+    maxValueR = maxValueBST(root->right);
+    if(root->data > maxValueR)
     {
-      maxValue = root->data;
+      maxValueR = root->data;
+    }
+    if(maxValueL > maxValueR)
+    {
+      maxValue = maxValueL;
     }
   }
   return maxValue;
