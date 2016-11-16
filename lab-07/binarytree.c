@@ -145,7 +145,6 @@ int isBalanced(struct TreeNode* root)
 /* Return 1 if tree is a binary search tree, 0 if not. */
 int isBST(struct TreeNode* root)
 {
-	/*TODO*/
 	if(root != NULL)
 	{
 		if(root->left != NULL && maxValueBST(root->left) > root->data)
