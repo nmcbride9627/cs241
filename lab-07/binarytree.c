@@ -107,6 +107,15 @@ void printTree(struct TreeNode* root)
 void printLeaves(struct TreeNode* root)
 {
   /*TODO*/
+  if(root != NULL)
+  {
+    printLeaves(root->left);
+    if(root->left == NULL && root->right == NULL)
+    {
+      printf("%d ", root->data);
+    }
+    printLeaves(root->right);
+  }
 }
 
 /* Free memory used by the tree. */
