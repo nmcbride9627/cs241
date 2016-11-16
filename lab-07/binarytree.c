@@ -82,13 +82,12 @@ int isBST(struct TreeNode* root)
  * separated with spaces, ending with newline. */
 void printTree(struct TreeNode* root)
 {
-  if(root == NULL)
+  if(root != NULL)
   {
-    return;
+    printTree(root->left);
+    printf("%d ", root->data);
+    printTree(root->right);
   }
-  printTree(root->left);
-  printf("%d ", root->data);
-  printTree(root->right);
   printf("\n");
 }
 
