@@ -52,7 +52,17 @@ int removeBST(struct TreeNode** rootRef, int data)
 int maxValueBST(struct TreeNode* root)
 {
   /*TODO*/
-  return 0;
+  int maxValue;
+  if(root != NULL)
+  {
+    maxValue = maxValueBST(root->left);
+    if(root->data > maxValue)
+    {
+      maxValue = root->data;
+    }
+    maxValue = maxValueBST(root->right);
+  }
+  return maxValue;
 }
 
 /* Return maximum depth of tree. Empty tree has depth 0. */
