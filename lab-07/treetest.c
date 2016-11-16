@@ -52,7 +52,6 @@ int main(int argc, char** argv)
   tree = NULL;
 
   tree = makeTestTree(6,2);
-
   printf("another test tree: ");
   printTree(tree);
   printf("tree leaves: ");
@@ -68,7 +67,7 @@ int main(int argc, char** argv)
 
   printf("notBST: ");
   printTree(tree);
-  printf("BST maximum value = %d\n", maxValueBST(bst));
+  printf("BST maximum value = %d\n", maxValueBST(tree));
   printf("notBST leaves: ");
   printLeaves(tree);
   printf("notBST depth = %d\n", maxDepth(tree));
