@@ -89,6 +89,7 @@ void printTree(struct TreeNode* root)
   printTree(root->left);
   printf("%d ", root->data);
   printTree(root->right);
+  printf("\n");
 }
 
 /* Print data for leaves on single line,
