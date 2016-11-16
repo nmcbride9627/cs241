@@ -41,21 +41,41 @@ struct TreeNode* insertBST(struct TreeNode* root, int data)
  *   predecessor in the two-child case.
  * Memory for removed node should be freed.
  * Return 1 if data was present, 0 if not found. */
-int removeBST(struct TreeNode** rootRef, int data);
+int removeBST(struct TreeNode** rootRef, int data)
+{
+  /*TODO*/
+  return 0;
+}
 
 /* Return maximum value in non-empty binary search tree. */
-int maxValueBST(struct TreeNode* root);
+int maxValueBST(struct TreeNode* root)
+{
+  /*TODO*/
+  return 0;
+}
 
 /* Return maximum depth of tree. Empty tree has depth 0. */
-int maxDepth(struct TreeNode* root);
+int maxDepth(struct TreeNode* root)
+{
+  /*TODO*/
+  return 0;
+}
 
 /* A tree is balanced if both subtrees are balanced and
  * the difference in height between the subtrees is no more than 1.
  * Return 1 if tree is balanced, 0 if not. */
-int isBalanced(struct TreeNode* root);
+int isBalanced(struct TreeNode* root)
+{
+  /*TODO*/
+  return 0;
+}
 
 /* Return 1 if tree is a binary search tree, 0 if not. */
-int isBST(struct TreeNode* root);
+int isBST(struct TreeNode* root)
+{
+  /*TODO*/
+  return 0;
+}
 
 /* Print data for inorder (left, root, right)
  * tree traversal on single line,
@@ -73,7 +93,10 @@ void printTree(struct TreeNode* root)
 
 /* Print data for leaves on single line,
  * separated with spaces, ending with newline.*/
-void printLeaves(struct TreeNode* root);
+void printLeaves(struct TreeNode* root)
+{
+  /*TODO*/
+}
 
 /* Free memory used by the tree. */
 void freeTree(struct TreeNode* root)
