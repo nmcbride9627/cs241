@@ -52,10 +52,9 @@ int removeBST(struct TreeNode** rootRef, int data)
 int maxValueBST(struct TreeNode* root)
 {
   /*TODO*/
-  int maxValue = 0;
-  if(root != NULL)
+  int maxValue = root->data;
+  if(root->left != NULL)
   {
-    maxValue = root->data;
     if(maxValueBST(root->left) > maxValue)
     {
       maxValue = maxValueBST(root->left);
