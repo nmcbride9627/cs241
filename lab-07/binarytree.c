@@ -61,6 +61,10 @@ int maxValueBST(struct TreeNode* root)
       maxValue = root->data;
     }
     maxValue = maxValueBST(root->right);
+    if(root->data > maxValue)
+    {
+      maxValue = root->data;
+    }
   }
   return maxValue;
 }
