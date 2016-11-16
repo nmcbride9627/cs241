@@ -78,6 +78,9 @@ int isBST(struct TreeNode* root)
   return 0;
 }
 
+/* This function is wrapped by printTree to print the BST
+ * with a newline character at the end while
+ * retaining use of recursion */
 void printTreeWrapper(struct TreeNode* root, bool newLineWrap)
 {
   if(root != NULL)
@@ -85,6 +88,10 @@ void printTreeWrapper(struct TreeNode* root, bool newLineWrap)
     printTreeWrapper(root->left, false);
     printf("%d ", root->data);
     printTreeWrapper(root->right, false);
+  }
+  if(newLineWrap)
+  {
+    printf("\n");
   }
 }
 /* Print data for inorder (left, root, right)
