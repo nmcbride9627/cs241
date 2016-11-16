@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "binarytree.h"
 
+int minValueBST(struct TreeNode* root);
+
 /* Makes a simple tree for testing isBalanced */
 struct TreeNode* makeTestTree(int n, int k)
 {
@@ -57,6 +59,7 @@ int main(int argc, char** argv)
   printTree(tree);
   printf("tree leaves: ");
   printLeaves(tree);
+  printf("BST minimum value = %d\n", minValueBST(tree));
   printf("tree depth = %d\n", maxDepth(tree));
   printf("tree balanced = %d\n", isBalanced(tree));
   printf("tree isBST = %d\n", isBST(tree));
@@ -70,6 +73,7 @@ int main(int argc, char** argv)
   printTree(tree);
   printf("notBST leaves: ");
   printLeaves(tree);
+  printf("BST minimum value = %d\n", minValueBST(tree));
   printf("notBST depth = %d\n", maxDepth(tree));
   printf("notBST balanced = %d\n", isBalanced(tree));
   printf("notBST isBST = %d\n", isBST(tree));
@@ -89,13 +93,14 @@ int main(int argc, char** argv)
   printLeaves(bst);
   printf("BST depth = %d\n", maxDepth(bst));
   printf("BST maximum value = %d\n", maxValueBST(bst));
+  printf("BST minimum value = %d\n", minValueBST(bst));
   printf("BST balanced = %d\n", isBalanced(bst));
   printf("BST isBST = %d\n", isBST(bst));
 
   for(i = -4; i < 25; i+=4)
   {
     n = removeBST(&bst, i);
-    if(!n) printf("remove did not find %d\n", i);  
+    if(!n) printf("remove did not find %d\n", i);
   }
 
   printf("BST after removes: ");
@@ -104,8 +109,9 @@ int main(int argc, char** argv)
   printLeaves(bst);
   printf("BST depth = %d\n", maxDepth(bst));
   printf("BST maximum value = %d\n", maxValueBST(bst));
+  printf("BST minimum value = %d\n", minValueBST(bst));
   printf("BST balanced = %d\n", isBalanced(bst));
-  printf("BST isBST = %d\n", isBST(bst));  
+  printf("BST isBST = %d\n", isBST(bst));
 
   freeTree(bst);
   bst = NULL;
