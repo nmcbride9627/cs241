@@ -98,14 +98,14 @@ int maxDepth(struct TreeNode* root)
  * Return 1 if tree is balanced, 0 if not. */
 int isBalanced(struct TreeNode* root)
 {
-  int left, right, diff;
+  int depthL, depthR, diff;
   if(root == NULL)
   {
     return 1;
   }
-  left = isBalanced(root->left);
-  right = isBalanced(root->right);
-  diff = abs(left - right);
+  depthL = maxDepth(root->left);
+  depthR = maxDepth(root->right);
+  diff = abs(depthL - depthR);
   if(diff <= 1 &&
     isBalanced(root->left) &&
     isBalanced(root->right))
