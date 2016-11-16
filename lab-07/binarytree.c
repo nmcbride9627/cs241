@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
 /* Alloc a new node with given data. */
 struct TreeNode* createNode(int data)
@@ -51,7 +52,7 @@ int removeBST(struct TreeNode** rootRef, int data)
 /* Return maximum value in non-empty binary search tree. */
 int maxValueBST(struct TreeNode* root)
 {
-	int maxValue = 0;
+	int maxValue = INT_MIN;
 	int maxValueL, maxValueR;
 	if(root != NULL)
 	{
@@ -73,7 +74,7 @@ int maxValueBST(struct TreeNode* root)
 /* Return minimum value in non-empty binary search tree. */
 int minValueBST(struct TreeNode* root)
 {
-	int minValue = 99999999;
+	int minValue = INT_MAX;
 	int minValueL, minValueR;
 	if(root != NULL)
 	{
