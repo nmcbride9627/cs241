@@ -38,6 +38,51 @@ struct TreeNode* insertBST(struct TreeNode* root, int data)
 	return root;
 }
 
+struct TreeNode* getSmallestNode(struct TreeNode* root)
+{
+	struct TreeNode* current = root;
+	while(current->left != NULL)
+	{
+		current = current->left;
+	}
+	return current;
+}
+
+struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
+{
+	struct TreeNode* tempNode;
+	if(root != NULL)
+	{
+		if(data < root->data)
+		{
+			root = removeNode(root->left, data, foundData);
+		}
+		else if(data > root->data)
+		{
+			root = removeNode(root->right, data, foundData);
+		}
+		else
+		{
+			*foundData = true;
+			if(root->left == NULL)
+			{
+				tempNode = root->right;
+				free(root);
+				return tempNode;
+			}
+			else if(root->right == NULL)
+			{
+				tempNode = root->left;
+				free(root);
+				return tempNode;
+			}
+			tempNode = getSmallestNode(root->right);
+			root->data = tempNode->data;
+			root->right = removeNode(root->right, tempNode->data, foundData);
+		}
+	}
+	return root;
+}
 /* Remove data from BST pointed to by rootRef, changing root if necessary.
  * For simplicity's sake, always choose node's in-order
  *	 predecessor in the two-child case.
@@ -45,8 +90,9 @@ struct TreeNode* insertBST(struct TreeNode* root, int data)
  * Return 1 if data was present, 0 if not found. */
 int removeBST(struct TreeNode** rootRef, int data)
 {
-	/*TODO*/
-	return 0;
+	bool foundData = false;
+	*rootRef = removeNode(*rootRef, data, &foundData);
+	return foundData;
 }
 
 /* Return maximum value in non-empty binary search tree. */
