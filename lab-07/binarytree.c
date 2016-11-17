@@ -89,7 +89,7 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 			{
 				tempNode = getPredecessor(root->left);
 				root->data = tempNode->data;
-				root->left = removeNode(root->left, tempNode->data, NULL);
+				root->left = removeNode(root->left, tempNode->data, foundData);
 			}
 		}
 	}
