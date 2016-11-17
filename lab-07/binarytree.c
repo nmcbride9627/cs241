@@ -67,21 +67,30 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 		else
 		{
 			*foundData = true;
-			if(root->left == NULL)
+			if(root->left == NULL && root->right == NULL)
 			{
-				tempNode = root->right;
 				free(root);
-				return tempNode;
+				root = NULL;
+				return root;
+			}
+			else if(root->left == NULL)
+			{
+				tempNode = root;
+				root = root->right;
+				free(tempNode);
 			}
 			else if(root->right == NULL)
 			{
-				tempNode = root->left;
-				free(root);
-				return tempNode;
+				tempNode = root;
+				root = root->left;
+				free(tempNode);
 			}
-			tempNode = getSmallestNode(root->right);
-			root->data = tempNode->data;
-			root->right = removeNode(root->right, tempNode->data, foundData);
+			else
+			{
+				tempNode = getSmallestNode(root->right);
+				root->data = tempNode->data;
+				root->right = removeNode(root->right, tempNode->data, foundData);
+			}
 		}
 	}
 	return root;
