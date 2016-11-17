@@ -50,7 +50,7 @@ struct TreeNode* getPredecessor(struct TreeNode* root)
 
 /* This fucntion is wrapped by removeBST
  * it's purpose is to provide a way to recursively
- * find and remove the node by */
+ * find and remove the node by geting around double pointer*/
 struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 {
 	struct TreeNode* tempNode;
@@ -89,7 +89,7 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 			{
 				tempNode = getPredecessor(root->left);
 				root->data = tempNode->data;
-				root->right = removeNode(root->right, tempNode->data, foundData);
+				root->left = removeNode(root->left, tempNode->data, NULL);
 			}
 		}
 	}
