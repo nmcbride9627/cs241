@@ -48,6 +48,9 @@ struct TreeNode* getSmallestNode(struct TreeNode* root)
 	return current;
 }
 
+/* This fucntion is wrapped by removeBST
+ * it's purpose is to provide a way to recursively
+ * find and remove the node by */
 struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 {
 	struct TreeNode* tempNode;
@@ -55,11 +58,11 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 	{
 		if(data < root->data)
 		{
-			root->left = removeNode(root->left, data, foundData);
+			removeNode(root->left, data, foundData);
 		}
 		else if(data > root->data)
 		{
-			root->right = removeNode(root->right, data, foundData);
+			removeNode(root->right, data, foundData);
 		}
 		else
 		{
