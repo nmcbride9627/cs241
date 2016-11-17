@@ -47,7 +47,7 @@ struct TreeNode* getSmallestNode(struct TreeNode* root)
 	}
 	return current;
 }
-/*
+
 struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 {
 	struct TreeNode* tempNode;
@@ -55,11 +55,11 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 	{
 		if(data < root->data)
 		{
-			root = removeNode(root->left, data, foundData);
+			root->left = removeNode(root->left, data, foundData);
 		}
 		else if(data > root->data)
 		{
-			root = removeNode(root->right, data, foundData);
+			root->right = removeNode(root->right, data, foundData);
 		}
 		else
 		{
@@ -83,7 +83,6 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 	}
 	return root;
 }
-*/
 /* Remove data from BST pointed to by rootRef, changing root if necessary.
  * For simplicity's sake, always choose node's in-order
  *	 predecessor in the two-child case.
@@ -92,7 +91,7 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 int removeBST(struct TreeNode** rootRef, int data)
 {
 	bool foundData = false;
-	/*rootRef = removeNode(*rootRef, data, &foundData);*/
+	*rootRef = removeNode(*rootRef, data, &foundData);
 	return foundData;
 }
 
