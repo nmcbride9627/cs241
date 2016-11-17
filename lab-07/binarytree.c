@@ -58,11 +58,11 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 	{
 		if(data < root->data)
 		{
-			removeNode(root->left, data, foundData);
+			root->left = removeNode(root->left, data, foundData);
 		}
 		else if(data > root->data)
 		{
-			removeNode(root->right, data, foundData);
+			root->right = removeNode(root->right, data, foundData);
 		}
 		else
 		{
