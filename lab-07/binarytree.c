@@ -38,12 +38,12 @@ struct TreeNode* insertBST(struct TreeNode* root, int data)
 	return root;
 }
 
-struct TreeNode* getSmallestNode(struct TreeNode* root)
+struct TreeNode* getPredecessor(struct TreeNode* root)
 {
 	struct TreeNode* current = root;
-	while(current->left != NULL)
+	while(current->right != NULL)
 	{
-		current = current->left;
+		current = current->right;
 	}
 	return current;
 }
@@ -87,7 +87,7 @@ struct TreeNode* removeNode(struct TreeNode* root, int data, bool* foundData)
 			}
 			else
 			{
-				tempNode = getSmallestNode(root->right);
+				tempNode = getPredecessor(root->left);
 				root->data = tempNode->data;
 				root->right = removeNode(root->right, tempNode->data, foundData);
 			}
