@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
       unsigned char out = 0;
 
       /* color order is BGR */
-      fread(&bytes, 1, 3, in);
+      fread(&bytes, 1, 4, in);
 
       temp[0] = (bytes[0] & 3) << 6;
       temp[1] = (bytes[1] & 3) << 4;
