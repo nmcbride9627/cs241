@@ -31,8 +31,6 @@ int main(int argc, char* argv[])
 
   int pixelWidth;
   int pixelHeight;
-  int rowSize;
-  int rowPadding;
 
   int i, j;
 
@@ -66,29 +64,24 @@ int main(int argc, char* argv[])
   pixelWidth = getIntFromArray(&header[18]);
   pixelHeight = getIntFromArray(&header[22]);
 
-  /* compute row padding */
-  rowSize = pixelWidth*3;
-  rowPadding = (4 - (rowSize % 4)) % 4;
-  rowSize += rowPadding;
-
-  /* Read RGB data from original, copy without red */
+  /* Read RGB and extact two LSB's*/
   for(i = 0; i < pixelHeight; ++i)
   {
     for(j = 0; j < pixelWidth; ++j)
     {
       unsigned char bytes[3];
-      unsigned char temp[3] = {0};
       unsigned char out = 0;
 
       /* color order is BGR */
       fread(&bytes, 1, 4, in);
 
-      temp[0] = (bytes[0] & 3) << 6;
-      temp[1] = (bytes[1] & 3) << 4;
-      temp[2] = (bytes[2] & 3) << 2;
-      temp[3] = bytes[3] & 3;
+      bytes[0] = (bytes[0] & 3) << 6;
+      bytes[1] = (bytes[1] & 3) << 4;
+      bytes[2] = (bytes[2] & 3) << 2;
+      bytes[3] = bytes[3] & 3;
 
-      out = temp[0] | temp[1] | temp[2] | temp[3];
+      out = bytes[0] | bytes[1] | bytes[2] | bytes[3];
+
       if(out == 0)
       {
         fclose(in);
