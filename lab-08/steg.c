@@ -91,6 +91,8 @@ int main(int argc, char* argv[])
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
+  printf("rowPadding  = %d bytes\n", rowPadding);
+  
   /* write header to output file */
   fwrite(header, 1, sizeof(header), out);
 
@@ -107,10 +109,10 @@ int main(int argc, char* argv[])
 
       if(!endOfFile)
       {
-        bytes[0] = bytes[0] & mask;
-        bytes[1] = bytes[1] & mask;
-        bytes[2] = bytes[2] & mask;
-        bytes[3] = bytes[3] & mask;
+        bytes[0] &= mask;
+        bytes[1] &= mask;
+        bytes[2] &= mask;
+        bytes[3] &= mask;
 
         c = getchar();
         if(c == EOF)
@@ -119,7 +121,7 @@ int main(int argc, char* argv[])
         }
         else
         {
-          bytes[0] = bytes[0] | (c >> 6);
+          bytes[0] = bytes[0] | ((c >> 6) & 3);
           bytes[1] = bytes[1] | ((c >> 4) & 3);
           bytes[2] = bytes[2] | ((c >> 2) & 3);
           bytes[3] = bytes[3] | (c & 3);
