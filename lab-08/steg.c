@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
   pixelHeight = getIntFromArray(&header[22]);
 
   /* compute row padding */
-  rowSize = pixelWidth*3;
+  rowSize = pixelWidth*4;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
