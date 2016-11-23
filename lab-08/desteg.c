@@ -75,6 +75,13 @@ int main(int argc, char* argv[])
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
+  printf("pixelWidth  = %d pixels\n", pixelWidth);
+  printf("pixelHeight = %d pixels\n", pixelHeight);
+  printf("rowPadding  = %d bytes\n", rowPadding);
+  printf("rowSize     = %d bytes\n", rowSize);
+  printf("pixelDataSize = %d bytes\n", pixelDataSize);
+  printf("fileSize = %d bytes\n", fileSize);
+
   /* Read RGB data from original, copy without red */
   for(i = 0; i < pixelHeight; ++i)
   {
