@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
     {
       unsigned char bytes[3];
       unsigned char temp[3] = {0};
-      unsigned char out;
+      unsigned char out = 0;
 
       /* color order is BGR */
       fread(&bytes, 1, 3, in);
@@ -105,9 +105,6 @@ int main(int argc, char* argv[])
     }
     /* handle end of row padding */
     fseek(in, rowPadding, SEEK_CUR);
-    for(j = 0; j < rowPadding; ++j)
-    {
-    }
   }
   fclose(in);
   return 0;

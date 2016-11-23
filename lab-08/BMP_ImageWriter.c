@@ -26,7 +26,7 @@ void copyIntToAddress(int n, unsigned char bytes[])
 /* Bitmap format requires that each row is divisible by 4. Therefore,        */
 /*    rowSize may need to be padded up to 3 bytes past the end of the data.  */
 /*****************************************************************************/
-void setRGB(unsigned char data[], int x, int y, int rowSize, 
+void setRGB(unsigned char data[], int x, int y, int rowSize,
             int pixelHeight,
             unsigned char r, unsigned char g, unsigned char b)
 {
@@ -39,8 +39,8 @@ void setRGB(unsigned char data[], int x, int y, int rowSize,
 }
 
 int main(void)
-{ 
-  unsigned char header[54] = 
+{
+  unsigned char header[54] =
   {
     'B','M',   /* magic number */
     0,0,0,0,   /* size in bytes (set below) */
@@ -67,7 +67,7 @@ int main(void)
   int fileSize;
   unsigned char* img;
   FILE* myFile;
-  
+
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
   pixelDataSize = rowSize*pixelHeight;
@@ -75,7 +75,7 @@ int main(void)
 
   printf("rowPadding=%d bytes\n", rowPadding);
   printf("rowSize   =%d bytes\n", rowSize);
-  
+
   copyIntToAddress(fileSize, &header[2]);
   copyIntToAddress(pixelWidth, &header[18]);
   copyIntToAddress(pixelHeight, &header[22]);
@@ -87,14 +87,14 @@ int main(void)
   /* to 0FF, but that data is ignored by readers. */
   memset(img,0xFF,pixelDataSize);
 
-  setRGB(img, 0, 1, rowSize, pixelHeight, 255, 0, 0); 
-  setRGB(img, 1, 1, rowSize, pixelHeight, 0, 255, 0); 
-  setRGB(img, 2, 1, rowSize, pixelHeight, 0, 255, 0); 
-  setRGB(img, 3, 1, rowSize, pixelHeight, 0, 255, 0); 
-  setRGB(img, 4, 1, rowSize, pixelHeight, 0, 0, 255); 
-  setRGB(img, 2, 0, rowSize, pixelHeight, 255, 255, 0); 
-  setRGB(img, 2, 2, rowSize, pixelHeight, 200, 0, 255); 
-  
+  setRGB(img, 0, 1, rowSize, pixelHeight, 255, 0, 0);
+  setRGB(img, 1, 1, rowSize, pixelHeight, 0, 255, 0);
+  setRGB(img, 2, 1, rowSize, pixelHeight, 0, 255, 0);
+  setRGB(img, 3, 1, rowSize, pixelHeight, 0, 255, 0);
+  setRGB(img, 4, 1, rowSize, pixelHeight, 0, 0, 255);
+  setRGB(img, 2, 0, rowSize, pixelHeight, 255, 255, 0);
+  setRGB(img, 2, 2, rowSize, pixelHeight, 200, 0, 255);
+
   myFile = fopen("myPic.bmp", "wb");
   fwrite(header, 1, sizeof(header), myFile);
   fwrite(img, 1, pixelDataSize, myFile);
@@ -111,4 +111,3 @@ int main(void)
   free(img);
   return 0;
 }
-
