@@ -94,8 +94,6 @@ int main(int argc, char* argv[])
 
       out = temp[0] | temp[1] | temp[2] | temp[3];
       printf("%c", out);
-
-
     }
   }
   fclose(in);
