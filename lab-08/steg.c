@@ -140,7 +140,7 @@ int main(int argc, char* argv[])
     }
 
     /* handle end of row padding */
-    fseek(in, rowPadding -1, SEEK_CUR);
+    fseek(in, rowPadding, SEEK_CUR);
     for(j = 0; j < rowPadding; ++j)
     {
       putc(0, out);
