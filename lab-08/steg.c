@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
       unsigned char mask = 0xFC;
 
       /* color order is BGR */
-      fread(&bytes, 1, 3, in);
+      fread(&bytes, 1, 4, in);
 
       if(!endOfFile)
       {
@@ -125,12 +125,12 @@ int main(int argc, char* argv[])
           bytes[3] = bytes[3] | (c & 3);
         }
       }
-      fwrite(&bytes, 1, 3, out);
+      fwrite(&bytes, 1, 4, out);
     }
 
     /* handle end of row padding */
     fseek(in, rowPadding, SEEK_CUR);
-    for(j = 0; j < rowPadding; ++j)
+    for(j = 1; j < rowPadding; ++j)
     {
       putc(0, out);
     }
