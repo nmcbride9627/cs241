@@ -100,11 +100,11 @@ int main(int argc, char* argv[])
       temp[3] = bytes[3] & 3;
 
       out = temp[0] | temp[1] | temp[2] | temp[3];
-      printf("%c", out);
       if(out == 0)
       {
         break;
       }
+      printf("%c", out);
     }
   }
   fclose(in);
