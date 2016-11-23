@@ -81,21 +81,21 @@ int main(int argc, char* argv[])
     for(j = 0; j < pixelWidth; ++j)
     {
       unsigned char bytes[3];
+      unsigned char temp[3] = {0};
+      unsigned char out;
 
       /* color order is BGR */
       fread(&bytes, 1, 3, in);
 
-      /* set red byte to zero */
-      bytes[2] = 0;
+      temp[0] = (bytes[0] & 3) << 6;
+      temp[1] = (bytes[1] & 3) << 4;
+      temp[2] = (bytes[2] & 3) << 2;
+      temp[3] = bytes[3] & 3;
 
-      fwrite(&bytes, 1, 3, out);
-    }
+      out = temp[0] | temp[1] | temp[2] | temp[3];
+      printf("%c", out);
 
-    /* handle end of row padding */
-    fseek(in, rowPadding, SEEK_CUR);
-    for(j = 0; j < rowPadding; ++j)
-    {
-      putc(0, out);
+
     }
   }
   fclose(in);
