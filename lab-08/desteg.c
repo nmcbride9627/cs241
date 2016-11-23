@@ -101,11 +101,11 @@ int main(int argc, char* argv[])
 
       out = temp[0] | temp[1] | temp[2] | temp[3];
       printf("%c", out);
-      
+
 
     }
     /* handle end of row padding */
-    fseek(in, rowPadding, SEEK_CUR);
+    //fseek(in, rowPadding, SEEK_CUR);
   }
   fclose(in);
   return 0;
