@@ -45,10 +45,8 @@ int main(int argc, char* argv[])
   FILE* in = fopen(infilename, "rb");
   FILE* out = fopen(outfilename, "wb");
 
-  int fileSize;
   int pixelWidth;
   int pixelHeight;
-  int pixelDataSize;
   int rowSize;
   int rowPadding;
 
@@ -85,22 +83,13 @@ int main(int argc, char* argv[])
     printf("Unexpected number of bits/pixel\n");
   }
 
-  fileSize = getIntFromArray(&header[2]);
   pixelWidth = getIntFromArray(&header[18]);
   pixelHeight = getIntFromArray(&header[22]);
-  pixelDataSize = getIntFromArray(&header[34]);
 
   /* compute row padding */
   rowSize = pixelWidth*3;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
-
-  printf("pixelWidth  = %d pixels\n", pixelWidth);
-  printf("pixelHeight = %d pixels\n", pixelHeight);
-  printf("rowPadding  = %d bytes\n", rowPadding);
-  printf("rowSize     = %d bytes\n", rowSize);
-  printf("pixelDataSize = %d bytes\n", pixelDataSize);
-  printf("fileSize = %d bytes\n", fileSize);
 
   /* write header to output file */
   fwrite(header, 1, sizeof(header), out);
@@ -114,7 +103,7 @@ int main(int argc, char* argv[])
       unsigned char mask = 0xFC;
 
       /* color order is BGR */
-      fread(&bytes, 1, 4, in);
+      fread(&bytes, 1, 3, in);
 
       if(!endOfFile)
       {
@@ -136,7 +125,7 @@ int main(int argc, char* argv[])
           bytes[3] = bytes[3] | (c & 3);
         }
       }
-      fwrite(&bytes, 1, 4, out);
+      fwrite(&bytes, 1, 3, out);
     }
 
     /* handle end of row padding */
