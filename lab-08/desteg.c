@@ -29,10 +29,8 @@ int main(int argc, char* argv[])
 
   FILE* in = fopen(infilename, "rb");
 
-  int fileSize;
   int pixelWidth;
   int pixelHeight;
-  int pixelDataSize;
   int rowSize;
   int rowPadding;
 
@@ -65,22 +63,13 @@ int main(int argc, char* argv[])
     printf("Unexpected number of bits/pixel\n");
   }
 
-  fileSize = getIntFromArray(&header[2]);
   pixelWidth = getIntFromArray(&header[18]);
   pixelHeight = getIntFromArray(&header[22]);
-  pixelDataSize = getIntFromArray(&header[34]);
 
   /* compute row padding */
   rowSize = pixelWidth*3;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
-
-  printf("pixelWidth  = %d pixels\n", pixelWidth);
-  printf("pixelHeight = %d pixels\n", pixelHeight);
-  printf("rowPadding  = %d bytes\n", rowPadding);
-  printf("rowSize     = %d bytes\n", rowSize);
-  printf("pixelDataSize = %d bytes\n", pixelDataSize);
-  printf("fileSize = %d bytes\n", fileSize);
 
   /* Read RGB data from original, copy without red */
   for(i = 0; i < pixelHeight; ++i)
@@ -102,7 +91,8 @@ int main(int argc, char* argv[])
       out = temp[0] | temp[1] | temp[2] | temp[3];
       if(out == 0)
       {
-        break;
+        fclose(in);
+        return 0;
       }
       printf("%c", out);
     }
