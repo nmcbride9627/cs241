@@ -91,8 +91,6 @@ int main(int argc, char* argv[])
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
-  printf("rowPadding  = %d bytes\n", rowPadding);
-
   /* write header to output file */
   fwrite(header, 1, sizeof(header), out);
 
@@ -130,7 +128,7 @@ int main(int argc, char* argv[])
     }
 
     /* handle end of row padding */
-    fseek(in, rowPadding, SEEK_CUR);
+    /*fseek(in, rowPadding, SEEK_CUR);*/
     for(j = 0; j < rowPadding; ++j)
     {
       putc(0, out);
