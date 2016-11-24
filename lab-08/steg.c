@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
   pixelHeight = getIntFromArray(&header[22]);
 
   /* compute row padding */
-  rowSize = pixelWidth*3;
+  rowSize = pixelWidth*4;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
@@ -131,8 +131,8 @@ int main(int argc, char* argv[])
     }
 
     /* handle end of row padding */
-    fseek(in, rowPadding +1, SEEK_CUR);
-    for(j = 0; j < rowPadding +1; ++j)
+    fseek(in, rowPadding, SEEK_CUR);
+    for(j = 0; j < rowPadding; ++j)
     {
       putc(0, out);
     }
