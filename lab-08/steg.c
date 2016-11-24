@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
   /* write header to output file */
   fwrite(header, 1, sizeof(header), out);
 
-  /* Read RGB data from original, copy without red */
+  /* TODO */
   for(i = 0; i < pixelHeight; ++i)
   {
     for(j = 0; j < pixelWidth; ++j)
