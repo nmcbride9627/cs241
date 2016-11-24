@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
   pixelHeight = getIntFromArray(&header[22]);
 
   /* compute row padding */
-  rowSize = pixelWidth*4;
+  rowSize = pixelWidth*3;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
   {
     for(j = 0; j < pixelWidth; ++j)
     {
-      unsigned char bytes[3];
+      unsigned char bytes[4];
       unsigned char mask = 0xFC;
 
       /* color order is BGR */
