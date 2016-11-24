@@ -106,7 +106,6 @@ int main(int argc, char* argv[])
 
       /* color order is BGR */
       fread(&bytes, 1, 4, in);
-
       if(!endOfFile)
       {
         bytes[0] &= mask;
