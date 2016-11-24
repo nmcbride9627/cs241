@@ -45,11 +45,8 @@ int main(int argc, char* argv[])
   FILE* in = fopen(infilename, "rb");
   FILE* out = fopen(outfilename, "wb");
 
-
-  int fileSize;
   int pixelWidth;
   int pixelHeight;
-  int pixelDataSize;
   int rowSize;
   int rowPadding;
 
@@ -86,22 +83,13 @@ int main(int argc, char* argv[])
     printf("Unexpected number of bits/pixel\n");
   }
 
-  fileSize = getIntFromArray(&header[2]);
   pixelWidth = getIntFromArray(&header[18]);
   pixelHeight = getIntFromArray(&header[22]);
-  pixelDataSize = getIntFromArray(&header[34]);
 
   /* compute row padding */
   rowSize = pixelWidth*3;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
-
-  printf("pixelWidth  = %d pixels\n", pixelWidth);
-  printf("pixelHeight = %d pixels\n", pixelHeight);
-  printf("rowPadding  = %d bytes\n", rowPadding);
-  printf("rowSize     = %d bytes\n", rowSize);
-  printf("pixelDataSize = %d bytes\n", pixelDataSize);
-  printf("fileSize = %d bytes\n", fileSize);
 
   /* write header to output file */
   fwrite(header, 1, sizeof(header), out);
@@ -127,10 +115,10 @@ int main(int argc, char* argv[])
       }
       else
       {
-        bytes[0] = bytes[0] | ((c >> 6) & 3);
-        bytes[1] = bytes[1] | ((c >> 4) & 3);
-        bytes[2] = bytes[2] | ((c >> 2) & 3);
-        bytes[3] = bytes[3] | (c & 3);
+        bytes[0] |= ((c >> 6) & 3);
+        bytes[1] |= ((c >> 4) & 3);
+        bytes[2] |= ((c >> 2) & 3);
+        bytes[3] |= (c & 3);
       }
     }
     fwrite(&bytes, 1, 4, out);
