@@ -7,19 +7,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-/****************************************************************************/
-/* This function copies 4 bytes from an int to an unsigned char array where */
-/*   the least significant byte of the int is placed in the first element   */
-/*   of the array.                                                          */
-/****************************************************************************/
-void copyIntToAddress(int n, unsigned char bytes[])
-{
-  bytes[0] = n & 0xFF;
-  bytes[1] = (n >>  8) & 0xFF;
-  bytes[2] = (n >> 16) & 0xFF;
-  bytes[3] = (n >> 24) & 0xFF;
-}
-
 /**********************************************************************/
 /* Take 4 bytes from an unsigned char array and assemble them into an */
 /* int where the first element of the array is the least significant  */
@@ -35,6 +22,9 @@ int getIntFromArray(unsigned char bytes[])
   return n;
 }
 
+/* This program takes two file names as command line arguments
+ * and hides a file from stdin in the last two bits of pixel
+ * and padding data of a .bmp */
 int main(int argc, char* argv[])
 {
   char* infilename = argv[1];
@@ -94,7 +84,9 @@ int main(int argc, char* argv[])
   /* write header to output file */
   fwrite(header, 1, sizeof(header), out);
 
-  /* TODO */
+  /* Iterate over pixel data 4 bytes at a time
+   * changing last two bits of each byte with two
+   * bits of character data */
   for(i = 0; i < pixelHeight * rowSize; i+=4)
   {
     unsigned char bytes[4];

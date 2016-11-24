@@ -71,7 +71,9 @@ int main(int argc, char* argv[])
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
-  /* Read RGB and extact two LSB's*/
+  /* Iterate over pixel data 4 bytes at a time
+   * and extact last two bits of each bytes
+   * and print to stdout*/
   for(i = 0; i < pixelHeight * rowSize; i+=4)
   {
     unsigned char bytes[4];
