@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
   int rowSize;
   int rowPadding;
 
-  int i, j;
+  int i;
   char c;
   bool endOfFile = false;
 
@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
   pixelDataSize = getIntFromArray(&header[34]);
 
   /* compute row padding */
-  rowSize = pixelWidth*4;
+  rowSize = pixelWidth*3;
   rowPadding = (4 - (rowSize % 4)) % 4;
   rowSize += rowPadding;
 
@@ -107,44 +107,33 @@ int main(int argc, char* argv[])
   fwrite(header, 1, sizeof(header), out);
 
   /* TODO */
-  for(i = 0; i < pixelHeight; ++i)
+  for(i = 0; i < pixelHeight * rowSize; i+=4)
   {
-    for(j = 0; j < pixelWidth; ++j)
-    {
-      unsigned char bytes[4];
-      unsigned char mask = 0xFC;
+    unsigned char bytes[4];
+    unsigned char mask = 0xFC;
 
-      /* color order is BGR */
-      fread(&bytes, 1, 4, in);
-      if(!endOfFile)
+    fread(&bytes, 1, 4, in);
+    if(!endOfFile)
+    {
+      bytes[0] &= mask;
+      bytes[1] &= mask;
+      bytes[2] &= mask;
+      bytes[3] &= mask;
+
+      c = getchar();
+      if(c == EOF)
       {
-        bytes[0] &= mask;
-        bytes[1] &= mask;
-        bytes[2] &= mask;
-        bytes[3] &= mask;
-
-        c = getchar();
-        if(c == EOF)
-        {
-          endOfFile = true;
-        }
-        else
-        {
-          bytes[0] = bytes[0] | ((c >> 6) & 3);
-          bytes[1] = bytes[1] | ((c >> 4) & 3);
-          bytes[2] = bytes[2] | ((c >> 2) & 3);
-          bytes[3] = bytes[3] | (c & 3);
-        }
+        endOfFile = true;
       }
-      fwrite(&bytes, 1, 4, out);
+      else
+      {
+        bytes[0] = bytes[0] | ((c >> 6) & 3);
+        bytes[1] = bytes[1] | ((c >> 4) & 3);
+        bytes[2] = bytes[2] | ((c >> 2) & 3);
+        bytes[3] = bytes[3] | (c & 3);
+      }
     }
-
-    /* handle end of row padding */
-    fseek(in, rowPadding, SEEK_CUR);
-    for(j = 0; j < rowPadding - 1; ++j)
-    {
-      putc(0, out);
-    }
+    fwrite(&bytes, 1, 4, out);
   }
   fclose(in);
   fclose(out);
