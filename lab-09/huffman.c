@@ -44,11 +44,19 @@ int genFreqArray(FILE* fptr, int freqency[256])
 void printFreq(int freqency[256])
 {
   int i;
+  printf("Symbol  Freq\n");
   for(i=0;i<256;i++)
   {
     if(freqency[i] != 0)
     {
-      printf("%5c%10d\n",i,freqency[i]);
+      if(freqency[i] <= 32)
+      {
+        printf("=%5d%10d\n",i,freqency[i]);
+      }
+      else
+      {
+        printf("%5c%10d\n",i,freqency[i]);
+      }
     }
   }
 }
