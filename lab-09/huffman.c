@@ -51,7 +51,7 @@ void printFreq(int freqency[256])
     {
       if(i <= 32)
       {
-        printf("=%d%10d\n",i,freqency[i]);
+        printf("=%d%8d\n",i,freqency[i]);
       }
       else
       {
