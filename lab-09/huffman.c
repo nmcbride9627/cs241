@@ -31,7 +31,7 @@ void decodeFile(FILE* in, FILE* out)
 
 int genFreqArray(FILE* fptr, int freqency[256])
 {
-  int c, totalNumChars;
+  int c, totalNumChars = 0;
   while((c = fgetc(fptr))!= EOF)
   {
     freqency[c]++;
