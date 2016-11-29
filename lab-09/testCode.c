@@ -3,7 +3,7 @@
 int main(int argc, char* argv[]) {
   char* infile;
   int freqency[256] = {0};
-  int totalNumChars;
+  int totalNumChars = 0;
   FILE* in;
   infile = argv[1];
   in = fopen(infile, "rb");
