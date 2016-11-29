@@ -49,13 +49,13 @@ void printFreq(int freqency[256])
   {
     if(freqency[i] != 0)
     {
-      if(freqency[i] <= ' ')
+      if(i <= 32)
       {
-        printf("=%d%10d\n",i,freqency[i]);
+        printf("=%5d%10d\n",i,freqency[i]);
       }
       else
       {
-        printf("%c%10d\n",i,freqency[i]);
+        printf("%5c%10d\n",i,freqency[i]);
       }
     }
   }
