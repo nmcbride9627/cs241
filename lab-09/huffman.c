@@ -1,11 +1,11 @@
-#ifndef HUFFMAN_H
-#define HUFFMAN_H
+/**********************/
+/* Nathaniel McBride	*/
+/* December 6, 2016	  */
+/* CS-241-002				  */
+/**********************/
 
-/* Including stdio so we'll know about FILE type */
+#include "huffman.h"
 #include <stdio.h>
-
-/* The following 2 functions are used in my huffencode and huffdecode
-   programs. You'll need to write them if you want to use my code.  */
 
 /**************************************************************/
 /* Huffman encode a file.                                     */
@@ -14,17 +14,39 @@
 /*       May be binary, so don't assume printable characters. */
 /* out -- File where encoded data will be written.            */
 /**************************************************************/
-void encodeFile(FILE* in, FILE* out);
+void encodeFile(FILE* in, FILE* out)
+{
+
+}
 
 /***************************************************/
 /* Decode a Huffman encoded file.                  */
 /* in -- File to decode.                           */
 /* out -- File where decoded data will be written. */
 /***************************************************/
-void decodeFile(FILE* in, FILE* out);
+void decodeFile(FILE* in, FILE* out)
+{
 
-void genFreqArray(FILE* fptr, int freqency[256]);
-void printFreq(int freqency[256]);
+}
 
+void genFreqArray(FILE* fptr, int freqency[256])
+{
+  int c;
+  while((c = fgetc(fptr))!= EOF)
+  {
+    freqency[c]++;
+  }
+  rewind(fptr);
+}
 
-#endif
+void printFreq(int freqency[256])
+{
+  int i;
+  for(i=0;i<256;i++)
+  {
+    if(freqency[i] != 0)
+    {
+      printf("%5c%10d\n",i,freqency[i]);
+    }
+  }
+}
