@@ -23,7 +23,7 @@ void encodeFile(FILE* in, FILE* out);
 /***************************************************/
 void decodeFile(FILE* in, FILE* out);
 
-void genFreqArray(FILE* fptr, int freqency[256]);
+int genFreqArray(FILE* fptr, int freqency[256]);
 void printFreq(int freqency[256]);
 
 

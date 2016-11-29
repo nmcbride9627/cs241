@@ -3,11 +3,12 @@
 int main(int argc, char* argv[]) {
   char* infile;
   int freqency[256] = {0};
+  int totalNumChars;
   FILE* in;
   infile = argv[1];
   in = fopen(infile, "rb");
-
-  genFreqArray(in, freqency);
+  totalNumChars = genFreqArray(in, freqency);
   printFreq(freqency);
+  printf("Total number characters: %d\n", totalNumChars);
   return 0;
 }
