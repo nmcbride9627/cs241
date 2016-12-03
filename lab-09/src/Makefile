@@ -10,13 +10,13 @@ huffdecode: huffdecode.o hufftree.o huffman.o
 	gcc -Wall -ansi -pedantic -o -g huffdecode huffdecode.o hufftree.o huffman.o
 
 huffencode.o: huffman.h huffencode.c
-	gcc -Wall -ansi -pedantic -c -g huffencode.o huffencode.c
+	gcc -Wall -ansi -pedantic -c -g huffencode.c
 
 huffdecode.o: huffman.h huffdecode.c
-	gcc -Wall -ansi -pedantic -c -g huffdecode.o huffdecode.c
+	gcc -Wall -ansi -pedantic -c -g huffdecode.c
 
 hufftree.o: hufftree.h huftree.c
-	gcc -Wall -ansi -pedantic -c -g hufftree.o hufftree.c
+	gcc -Wall -ansi -pedantic -c -g hufftree.c
 
 huffman.o: huffman.h hufftree.h huffman.c
-	gcc -Wall -ansi -pedantic -c -g huffman.o huffman.c
+	gcc -Wall -ansi -pedantic -c -g huffman.c
