@@ -12,11 +12,13 @@
 
 int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
 {
-  unsigned char c, totalNumChars = 0;
-  while((c = fgetc(fptr))!= EOF)
+  unsigned char c = fgetc(fptr);
+  int totalNumChars = 0;
+  while(!feof(fptr))
   {
     frequency[c]++;
     totalNumChars++;
+    c = fgetc(fptr);
   }
   rewind(fptr);
   return totalNumChars;
