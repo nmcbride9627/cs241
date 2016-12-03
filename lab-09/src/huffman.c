@@ -138,7 +138,8 @@ void printTree(struct HuffNode* root)
 /**************************************************************/
 void encodeFile(FILE* in, FILE* out)
 {
-  int totalNumChars, elementCount;
+  int totalNumChars = 0;
+  int elementCount = 0;
   int frequency[MAX] = {0};
   struct HuffNode* queue[MAX];
   struct HuffNode* tree;
