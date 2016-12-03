@@ -15,7 +15,7 @@ huffencode.o: huffman.h huffencode.c
 huffdecode.o: huffman.h huffdecode.c
 	gcc -Wall -ansi -pedantic -c -g huffdecode.c
 
-hufftree.o: hufftree.h huftree.c
+hufftree.o: hufftree.h hufftree.c
 	gcc -Wall -ansi -pedantic -c -g hufftree.c
 
 huffman.o: huffman.h hufftree.h huffman.c
