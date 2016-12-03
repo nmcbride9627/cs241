@@ -6,7 +6,6 @@
 
 #include "huffman.h"
 #include "hufftree.h"
-#include "priorityqueue.h"
 #include <stdio.h>
 
 #define MAX 256

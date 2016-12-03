@@ -4,15 +4,12 @@
 /* CS-241-002				  */
 /**********************/
 
-#include "huffnode.h"
+#include "hufftree.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #define MAX 256
-
-
-
 
 struct HuffNode* peek(struct HuffNode* queue[MAX], int* elementCount)
 {
