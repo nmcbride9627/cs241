@@ -10,12 +10,12 @@
 
 #define MAX 256
 
-int genFreqArray(FILE* fptr, int freqency[MAX])
+int genFreqArray(FILE* fptr, int frequency[MAX])
 {
   int c, totalNumChars = 0;
   while((c = fgetc(fptr))!= EOF)
   {
-    freqency[c]++;
+    frequency[c]++;
     totalNumChars++;
   }
   rewind(fptr);
@@ -79,21 +79,21 @@ struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount)
   return queue[0];
 }
 
-void printFreq(int freqency[MAX])
+void printFreq(int frequency[MAX])
 {
   int i;
   printf("Symbol  Freq\n");
   for(i = 0; i < MAX; i++)
   {
-    if(freqency[i] != 0)
+    if(frequency[i] != 0)
     {
       if(i <= 32)
       {
-        printf("=%d%8d\n",i,freqency[i]);
+        printf("=%d%8d\n",i,frequency[i]);
       }
       else
       {
-        printf("%c%10d\n",i,freqency[i]);
+        printf("%c%10d\n",i,frequency[i]);
       }
     }
   }
@@ -146,6 +146,7 @@ void encodeFile(FILE* in, FILE* out)
 
   totalNumChars = genFreqArray(in, frequency);
   genPriorityQueue(queue, &elementCount, frequency);
+  printFreq(frequency);
   tree = genHuffTree(queue, &elementCount);
 
   printFreq(frequency);
