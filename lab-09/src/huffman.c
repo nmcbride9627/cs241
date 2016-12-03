@@ -99,6 +99,36 @@ void printFreq(int freqency[MAX])
   }
 }
 
+
+void printWrapper(struct HuffNode* root, bool newLineWrap, bool printL)
+{
+	if(root != NULL)
+	{
+		printWrapper(root->left, false, printL);
+		if(printL)
+		{
+			if(root->left == NULL && root->right == NULL)
+			{
+				printf("%lu ", root->frequency);
+			}
+		}
+		else
+		{
+			printf("%lu ", root->frequency);
+		}
+		printWrapper(root->right, false, printL);
+	}
+	if(newLineWrap)
+	{
+		printf("\n");
+	}
+}
+
+void printTree(struct HuffNode* root)
+{
+	printWrapper(root, true, false);
+}
+
 /**************************************************************/
 /* Huffman encode a file.                                     */
 /*     Also writes freq/code table to standard output         */
@@ -119,6 +149,7 @@ void encodeFile(FILE* in, FILE* out)
 
   printFreq(frequency);
   printf("Total chars = %d\n", totalNumChars);
+  printTree(tree);
 }
 
 /***************************************************/
