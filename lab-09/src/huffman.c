@@ -55,6 +55,14 @@ void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode
               break;
             }
           }
+          else if(node->right != NULL)
+          {
+            queue[i+1] = queue[i];
+          }
+          else
+          {
+            break;
+          }
         }
         else
         {
