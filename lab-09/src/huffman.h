@@ -25,15 +25,15 @@ void encodeFile(FILE* in, FILE* out);
 /***************************************************/
 void decodeFile(FILE* in, FILE* out);
 
-int genFreqArray(FILE* fptr, int freqency[MAX]);
+int genFreqArray(FILE* fptr, unsigned long frequency[MAX]);
 
 void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode* node);
 
-void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, int freqency[MAX]);
+void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, unsigned long freqency[MAX]);
 
 struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount);
 
-void printFreq(int freqency[MAX]);
+void printFreq(unsigned long freqency[MAX]);
 
 
 #endif
