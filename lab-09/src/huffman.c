@@ -145,8 +145,9 @@ void encodeFile(FILE* in, FILE* out)
   struct HuffNode* tree;
 
   totalNumChars = genFreqArray(in, frequency);
-  genPriorityQueue(queue, &elementCount, frequency);
   printFreq(frequency);
+  genPriorityQueue(queue, &elementCount, frequency);
+
   tree = genHuffTree(queue, &elementCount);
 
   printFreq(frequency);
