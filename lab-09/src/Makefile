@@ -4,10 +4,10 @@ clean:
 	-rm huffencode huffdecode *.o
 
 huffencode: huffencode.o hufftree.o huffman.o
-	gcc -Wall -ansi -pedantic -o -g huffencode huffencode.o hufftree.o huffman.o
+	gcc -Wall -ansi -pedantic -o -g huffencode.o hufftree.o huffman.o
 
 huffdecode: huffdecode.o hufftree.o huffman.o
-	gcc -Wall -ansi -pedantic -o -g huffdecode huffdecode.o hufftree.o huffman.o
+	gcc -Wall -ansi -pedantic -o -g huffdecode.o hufftree.o huffman.o
 
 huffencode.o: huffman.h huffencode.c
 	gcc -Wall -ansi -pedantic -c -g huffencode.c
