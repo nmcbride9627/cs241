@@ -41,6 +41,9 @@ void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode
         if(node->frequency > queue[i]->frequency)
         {
           queue[i+1] = queue[i];
+        }
+        else
+        {
           break;
         }
       }
