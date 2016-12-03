@@ -129,7 +129,7 @@ void printFreq(unsigned long frequency[MAX])
     {
       if(i <= 32)
       {
-        printf("=%c%8lu\n",i,frequency[i]);
+        printf("=%d%8lu\n",i,frequency[i]);
       }
       else
       {
