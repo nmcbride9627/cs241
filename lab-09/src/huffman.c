@@ -26,7 +26,7 @@ int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
 
 void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode* node)
 {
-  int i = 0;
+  unsigned char i = 0;
 
   if((*elementCount) != MAX)
   {
