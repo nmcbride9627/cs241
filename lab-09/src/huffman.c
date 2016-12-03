@@ -175,7 +175,10 @@ void encodeFile(FILE* in, FILE* out)
   genCodeTable(codeTable, tree, 0);
   for(i = 0; i < MAX; i++)
   {
-    printf("%c = %d\n", i, codeTable[i]);
+    if(codeTable[i] != 0)
+    {
+      printf("%c = %d\n", i, codeTable[i]);
+    }
   }
 }
 
