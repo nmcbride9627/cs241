@@ -141,7 +141,7 @@ void encodeFile(FILE* in, FILE* out)
   int totalNumChars = 0;
   int elementCount = 0;
   int frequency[MAX] = {0};
-  struct HuffNode* queue[MAX];
+  struct HuffNode* queue[MAX] = {NULL};
   struct HuffNode* tree;
 
   totalNumChars = genFreqArray(in, frequency);
