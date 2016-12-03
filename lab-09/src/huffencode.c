@@ -8,7 +8,7 @@ int main(int argc, char** argv)
   FILE* in;
   FILE* out;
 
-  if(argc != 3) 
+  if(argc != 3)
   {
     printf("wrong number of args\n");
     return 1;

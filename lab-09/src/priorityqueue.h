@@ -7,8 +7,16 @@
 #ifndef PRIORITYQUEUE_H
 #define PRIORITYQUEUE_H
 
-#include "huffmantree.h"
+#include "hufftree.h"
 #include <stdbool.h>
+
+#define MAX 256
+
+struct PriorityQueue
+{
+  int elementCount;
+  struct HuffNode* queueArray[MAX];
+};
 
 bool isEmpty();
 
@@ -16,7 +24,7 @@ bool isFull();
 
 int sizeofqueue();
 
-void insertNode(struct HuffNode* node);
+void insertNode(struct PriorityQueue* queue, struct HuffNode* node);
 
 struct HuffNode* peek();
 

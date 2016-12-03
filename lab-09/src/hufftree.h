@@ -3,8 +3,11 @@
 /* December 6, 2016	  */
 /* CS-241-002				  */
 /**********************/
-#ifndef HUFFMANTREE_H
-#define HUFFMANTREE_H
+
+#ifndef HUFFTREE_H
+#define HUFFTREE_H
+
+#include <stdbool.h>
 
 struct HuffNode
 {
@@ -15,8 +18,9 @@ struct HuffNode
   struct HuffNode* right;
 };
 
-struct HuffNode* createHuffNode(unsigned char symbol, unsigned long frequency);
+struct HuffNode* createNode(unsigned char symbol, unsigned long frequency);
 
-void freeTree(struct HuffNode* root);
+struct HuffNode* createMiniTree(struct HuffNode* left, struct HuffNode* right);
+
 
 #endif

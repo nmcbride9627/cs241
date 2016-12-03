@@ -2,7 +2,9 @@
 #define HUFFMAN_H
 
 /* Including stdio so we'll know about FILE type */
+#include "hufftree.h"
 #include <stdio.h>
+#define MAX 256
 
 /* The following 2 functions are used in my huffencode and huffdecode
    programs. You'll need to write them if you want to use my code.  */
@@ -23,8 +25,15 @@ void encodeFile(FILE* in, FILE* out);
 /***************************************************/
 void decodeFile(FILE* in, FILE* out);
 
-int genFreqArray(FILE* fptr, int freqency[256]);
-void printFreq(int freqency[256]);
+int genFreqArray(FILE* fptr, int freqency[MAX]);
+
+void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode* node);
+
+void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, int freqency[MAX]);
+
+struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount);
+
+void printFreq(int freqency[MAX]);
 
 
 #endif

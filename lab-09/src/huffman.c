@@ -5,31 +5,13 @@
 /**********************/
 
 #include "huffman.h"
+#include "hufftree.h"
+#include "priorityqueue.h"
 #include <stdio.h>
 
-/**************************************************************/
-/* Huffman encode a file.                                     */
-/*     Also writes freq/code table to standard output         */
-/* in -- File to encode.                                      */
-/*       May be binary, so don't assume printable characters. */
-/* out -- File where encoded data will be written.            */
-/**************************************************************/
-void encodeFile(FILE* in, FILE* out)
-{
+#define MAX 256
 
-}
-
-/***************************************************/
-/* Decode a Huffman encoded file.                  */
-/* in -- File to decode.                           */
-/* out -- File where decoded data will be written. */
-/***************************************************/
-void decodeFile(FILE* in, FILE* out)
-{
-
-}
-
-int genFreqArray(FILE* fptr, int freqency[256])
+int genFreqArray(FILE* fptr, int freqency[MAX])
 {
   int c, totalNumChars = 0;
   while((c = fgetc(fptr))!= EOF)
@@ -41,11 +23,68 @@ int genFreqArray(FILE* fptr, int freqency[256])
   return totalNumChars;
 }
 
-void printFreq(int freqency[256])
+void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode* node)
+{
+  int i = 0;
+
+  if((*elementCount) == MAX)
+  {
+    if(elementCount == 0)
+    {
+      queue[0] = node;
+    }
+    else
+    {
+      for(i = (*elementCount) - 1; i >= 0; i--)
+      {
+        if(node->frequency > queue[i]->frequency)
+        {
+          queue[i+1] = queue[i];
+          break;
+        }
+      }
+      queue[i] = node;
+    }
+    elementCount++;
+  }
+}
+
+struct HuffNode* dequeueNode(struct HuffNode* queue[MAX], int* elementCount)
+{
+  return queue[--(*elementCount)];
+}
+
+void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, int freqency[MAX])
+{
+  int i;
+  for(i = 0; i < MAX; i++)
+  {
+    if(freqency[i] != 0)
+    {
+      struct HuffNode* newNode = createNode(i, freqency[i]);
+      enqueueNode(queue, elementCount, newNode);
+    }
+  }
+}
+
+struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount)
+{
+  while((*elementCount) > 1)
+  {
+    /* This take two nodes out of the queue, places them in a mini tree,
+     * then puts the root back into the queue */
+    enqueueNode(queue, elementCount,
+      createMiniTree(dequeueNode(queue, elementCount),
+        dequeueNode(queue, elementCount)));
+  }
+  return queue[0];
+}
+
+void printFreq(int freqency[MAX])
 {
   int i;
   printf("Symbol  Freq\n");
-  for(i=0;i<256;i++)
+  for(i = 0; i < MAX; i++)
   {
     if(freqency[i] != 0)
     {
@@ -59,4 +98,36 @@ void printFreq(int freqency[256])
       }
     }
   }
+}
+
+/**************************************************************/
+/* Huffman encode a file.                                     */
+/*     Also writes freq/code table to standard output         */
+/* in -- File to encode.                                      */
+/*       May be binary, so don't assume printable characters. */
+/* out -- File where encoded data will be written.            */
+/**************************************************************/
+void encodeFile(FILE* in, FILE* out)
+{
+  int totalNumChars, elementCount;
+  int frequency[MAX] = {0};
+  struct HuffNode* queue[MAX];
+  struct HuffNode* tree;
+
+  totalNumChars = genFreqArray(in, frequency);
+  genPriorityQueue(queue, &elementCount, frequency);
+  tree = genHuffTree(queue, &elementCount);
+
+  printFreq(frequency);
+  printf("Total chars = %d\n", totalNumChars);
+}
+
+/***************************************************/
+/* Decode a Huffman encoded file.                  */
+/* in -- File to decode.                           */
+/* out -- File where decoded data will be written. */
+/***************************************************/
+void decodeFile(FILE* in, FILE* out)
+{
+
 }
