@@ -30,7 +30,7 @@ void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode
 
   if((*elementCount) != MAX)
   {
-    if(elementCount == 0)
+    if((*elementCount) == 0)
     {
       queue[0] = node;
     }
