@@ -102,7 +102,6 @@ void printFreq(int freqency[MAX])
 
 void printWrapper(struct HuffNode* root, bool newLineWrap, bool printL)
 {
-  printf("Test\n");
 	if(root != NULL)
 	{
 		printWrapper(root->left, false, printL);
@@ -127,7 +126,6 @@ void printWrapper(struct HuffNode* root, bool newLineWrap, bool printL)
 
 void printTree(struct HuffNode* root)
 {
-  printf("Test\n");
 	printWrapper(root, true, false);
 }
 
