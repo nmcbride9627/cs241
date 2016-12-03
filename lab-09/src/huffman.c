@@ -57,7 +57,7 @@ struct HuffNode* dequeueNode(struct HuffNode* queue[MAX], int* elementCount)
 
 void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, unsigned long frequency[MAX])
 {
-  unsigned char i;
+  int i;
   for(i = 0; i < MAX; i++)
   {
     if(frequency[i] != 0)
