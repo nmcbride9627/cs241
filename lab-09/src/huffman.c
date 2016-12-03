@@ -10,9 +10,9 @@
 
 #define MAX 256
 
-int genFreqArray(FILE* fptr, int frequency[MAX])
+int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
 {
-  int c, totalNumChars = 0;
+  unsigned char c, totalNumChars = 0;
   while((c = fgetc(fptr))!= EOF)
   {
     frequency[c]++;
@@ -53,9 +53,9 @@ struct HuffNode* dequeueNode(struct HuffNode* queue[MAX], int* elementCount)
   return queue[--(*elementCount)];
 }
 
-void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, int frequency[MAX])
+void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, unsigned long frequency[MAX])
 {
-  int i;
+  unsigned char i;
   for(i = 0; i < MAX; i++)
   {
     if(frequency[i] != 0)
@@ -79,7 +79,7 @@ struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount)
   return queue[0];
 }
 
-void printFreq(int frequency[MAX])
+void printFreq(unsigned long frequency[MAX])
 {
   int i;
   printf("Symbol  Freq\n");
@@ -89,11 +89,11 @@ void printFreq(int frequency[MAX])
     {
       if(i <= 32)
       {
-        printf("=%d%8d\n",i,frequency[i]);
+        printf("=%c%8lu\n",i,frequency[i]);
       }
       else
       {
-        printf("%c%10d\n",i,frequency[i]);
+        printf("%c%10lu\n",i,frequency[i]);
       }
     }
   }
@@ -140,7 +140,7 @@ void encodeFile(FILE* in, FILE* out)
 {
   int totalNumChars = 0;
   int elementCount = 0;
-  int frequency[MAX] = {0};
+  unsigned long frequency[MAX] = {0};
   struct HuffNode* queue[MAX] = {NULL};
   struct HuffNode* tree;
 
