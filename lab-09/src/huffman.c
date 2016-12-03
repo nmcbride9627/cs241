@@ -26,7 +26,7 @@ void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode
 {
   int i = 0;
 
-  if((*elementCount) == MAX)
+  if((*elementCount) != MAX)
   {
     if(elementCount == 0)
     {
@@ -53,14 +53,14 @@ struct HuffNode* dequeueNode(struct HuffNode* queue[MAX], int* elementCount)
   return queue[--(*elementCount)];
 }
 
-void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, int freqency[MAX])
+void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, int frequency[MAX])
 {
   int i;
   for(i = 0; i < MAX; i++)
   {
-    if(freqency[i] != 0)
+    if(frequency[i] != 0)
     {
-      struct HuffNode* newNode = createNode(i, freqency[i]);
+      struct HuffNode* newNode = createNode(i, frequency[i]);
       enqueueNode(queue, elementCount, newNode);
     }
   }
