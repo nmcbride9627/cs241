@@ -172,6 +172,7 @@ void encodeFile(FILE* in, FILE* out)
   printFreq(frequency);
   printf("Total chars = %d\n", totalNumChars);
   printTree(tree);
+  genCodeTable(codeTable, tree, 0);
   for(i = 0; i < MAX; i++)
   {
     printf("%c = %d\n", i, codeTable[i]);
