@@ -114,8 +114,8 @@ void genCodeTable(int codeTable[], struct HuffNode* node, int code)
   }
   else
   {
-    genCodeTable(codeTable, node->left, code*10+1);
-    genCodeTable(codeTable, node->right, code*10+2);
+    genCodeTable(codeTable, node->left, code * 2);
+    genCodeTable(codeTable, node->right, (code * 2) + 1);
   }
 }
 
