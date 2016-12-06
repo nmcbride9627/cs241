@@ -121,18 +121,11 @@ void genCodeTable(int codeTable[], struct HuffNode* node, int code)
 
 void printCode(int num)
 {
-  while (num)
+  if(num > 0)
   {
-    if(num & 1)
-    {
-      printf("1");
-    }
-    else
-    {
-      printf("0");
-    }
-    num >>= 1;
+    printCode(num / 2);
   }
+  printf("%d", num % 2);
 }
 
 void printVals(unsigned long frequency[MAX], int codeTable[MAX])
