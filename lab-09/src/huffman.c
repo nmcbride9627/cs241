@@ -119,7 +119,23 @@ void genCodeTable(int codeTable[], struct HuffNode* node, int code)
   }
 }
 
-void printFreq(unsigned long frequency[MAX])
+void printCode(int num)
+{
+  while (num)
+  {
+    if(num & 1)
+    {
+      printf("1");
+    }
+    else
+    {
+      printf("0");
+    }
+    num >>= 1;
+  }
+}
+
+void printFreq(unsigned long frequency[MAX], int codeTable[MAX])
 {
   int i;
   printf("Symbol  Freq\n");
@@ -129,15 +145,18 @@ void printFreq(unsigned long frequency[MAX])
     {
       if(i <= 32)
       {
-        printf("=%d%8lu\n",i,frequency[i]);
+        printf("=%d%8lu ",i,frequency[i]);
+        printCode(codeTable[i]);
       }
       else
       {
-        printf("%c%10lu\n",i,frequency[i]);
+        printf("%c%10lu ",i,frequency[i]);
+        printCode(codeTable[i]);
       }
     }
   }
 }
+
 
 
 void printWrapper(struct HuffNode* root, bool newLineWrap, bool printL)
@@ -190,18 +209,11 @@ void encodeFile(FILE* in, FILE* out)
   genPriorityQueue(queue, &elementCount, frequency);
 
   tree = genHuffTree(queue, &elementCount);
-
-  printFreq(frequency);
-  printf("Total chars = %d\n", totalNumChars);
-  printTree(tree);
+  
   genCodeTable(codeTable, tree, 0);
-  for(i = 0; i < MAX; i++)
-  {
-    if(codeTable[i] != 0)
-    {
-      printf("%c = %d\n", i, codeTable[i]);
-    }
-  }
+
+  printFreq(frequency, codeTable);
+  printf("Total chars = %d\n", totalNumChars);\
 }
 
 /***************************************************/
