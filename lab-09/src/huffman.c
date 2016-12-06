@@ -106,16 +106,42 @@ struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount)
   return queue[0];
 }
 
-void genCodeTable(int codeTable[], struct HuffNode* node, int code)
+void printArray(int array[], int size)
 {
-  if(node->isLeaf == true)
+  int i;
+  for(i = 0; i < size; i++)
   {
-    codeTable[node->symbol] = code;
+    printf("%d", array[i]);
   }
-  else
+}
+
+void printEverything(struct HuffNode* root, int array[], int itr)
+{
+
+  printf("Symbol	Freq	Code\n");
+  if(root->left != NULL)
   {
-    genCodeTable(codeTable, node->left, code * 2);
-    genCodeTable(codeTable, node->right, (code * 2) + 1);
+    array[itr] = 0;
+    printEverything(root->left, array, itr + 1);
+  }
+  if(root->right != NULL)
+  {
+    array[itr] = 1;
+    printEverything(root->right, array, itr + 1);
+  }
+  if(root->isLeaf == true)
+  {
+    if(root->symbol < 33 || root->symbol > 126)
+    {
+      printf("=%d ", root->symbol);
+    }
+    else
+    {
+      printf("%c ", root->symbol);
+    }
+    printf("%lu ", root->frequency);
+    printArray(array, itr);
+    printf("\n");
   }
 }
 
@@ -131,7 +157,7 @@ void printCode(int num)
   }
 }
 
-void printVals(unsigned long frequency[MAX], int codeTable[MAX])
+void printVals(unsigned long frequency[MAX])
 {
   int i;
   printf("Symbol  Freq\n");
@@ -142,13 +168,11 @@ void printVals(unsigned long frequency[MAX], int codeTable[MAX])
       if(i <= 32)
       {
         printf("=%d%8lu ",i,frequency[i]);
-        printCode(codeTable[i]);
         printf("\n");
       }
       else
       {
         printf("%c%10lu ",i,frequency[i]);
-        printCode(codeTable[i]);
         printf("\n");
       }
     }
@@ -198,7 +222,8 @@ void encodeFile(FILE* in, FILE* out)
   int totalNumChars = 0;
   int elementCount = 0;
   unsigned long frequency[MAX] = {0};
-  int codeTable[MAX] = {0};
+  int tempArray[MAX] = {0};
+  int itr = 0;
   struct HuffNode* queue[MAX] = {NULL};
   struct HuffNode* tree;
 
@@ -206,10 +231,11 @@ void encodeFile(FILE* in, FILE* out)
   genPriorityQueue(queue, &elementCount, frequency);
 
   tree = genHuffTree(queue, &elementCount);
-  genCodeTable(codeTable, tree, 0);
 
-  printVals(frequency, codeTable);
-  printf("Total chars = %d\n", totalNumChars);\
+  printEverything(tree, tempArray, itr);
+
+
+  printf("Total chars = %d\n", totalNumChars);
 }
 
 /***************************************************/
