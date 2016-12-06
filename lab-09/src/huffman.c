@@ -147,11 +147,13 @@ void printVals(unsigned long frequency[MAX], int codeTable[MAX])
       {
         printf("=%d%8lu ",i,frequency[i]);
         printCode(codeTable[i]);
+        printf("\n");
       }
       else
       {
         printf("%c%10lu ",i,frequency[i]);
         printCode(codeTable[i]);
+        printf("\n");
       }
     }
   }
@@ -208,7 +210,6 @@ void encodeFile(FILE* in, FILE* out)
   genPriorityQueue(queue, &elementCount, frequency);
 
   tree = genHuffTree(queue, &elementCount);
-  \
   genCodeTable(codeTable, tree, 0);
 
   printVals(frequency, codeTable);
