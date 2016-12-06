@@ -135,7 +135,7 @@ void printCode(int num)
   }
 }
 
-void printFreq(unsigned long frequency[MAX], int codeTable[MAX])
+void printVals(unsigned long frequency[MAX], int codeTable[MAX])
 {
   int i;
   printf("Symbol  Freq\n");
@@ -197,7 +197,6 @@ void printTree(struct HuffNode* root)
 /**************************************************************/
 void encodeFile(FILE* in, FILE* out)
 {
-  int i;
   int totalNumChars = 0;
   int elementCount = 0;
   unsigned long frequency[MAX] = {0};
@@ -209,10 +208,10 @@ void encodeFile(FILE* in, FILE* out)
   genPriorityQueue(queue, &elementCount, frequency);
 
   tree = genHuffTree(queue, &elementCount);
-  
+  \
   genCodeTable(codeTable, tree, 0);
 
-  printFreq(frequency, codeTable);
+  printVals(frequency, codeTable);
   printf("Total chars = %d\n", totalNumChars);\
 }
 

@@ -33,7 +33,7 @@ void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, unsigned l
 
 struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount);
 
-void printFreq(unsigned long freqency[MAX]);
+void printVals(unsigned long frequency[MAX], int codeTable[MAX]);
 
 
 #endif
