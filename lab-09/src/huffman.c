@@ -231,6 +231,8 @@ void encodeFile(FILE* in, FILE* out)
 
   tree = genHuffTree(queue, &elementCount);
 
+  printEverything(tree, tempArray, itr);
+
 
   printf("Total chars = %d\n", totalNumChars);
 }
