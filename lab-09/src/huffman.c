@@ -125,7 +125,10 @@ void printCode(int num)
   {
     printCode(num / 2);
   }
-  printf("%d", num % 2);
+  if(num && num%2)
+  {
+    printf("%d", num % 2);
+  }
 }
 
 void printVals(unsigned long frequency[MAX], int codeTable[MAX])
