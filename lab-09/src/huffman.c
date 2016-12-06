@@ -118,7 +118,6 @@ void printArray(int array[], int size)
 void printEverything(struct HuffNode* root, int array[], int itr)
 {
 
-  printf("Symbol	Freq	Code\n");
   if(root->left != NULL)
   {
     array[itr] = 0;
@@ -231,8 +230,6 @@ void encodeFile(FILE* in, FILE* out)
   genPriorityQueue(queue, &elementCount, frequency);
 
   tree = genHuffTree(queue, &elementCount);
-
-  printEverything(tree, tempArray, itr);
 
 
   printf("Total chars = %d\n", totalNumChars);
