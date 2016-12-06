@@ -125,7 +125,7 @@ void printCode(int num)
   {
     printCode(num / 2);
   }
-  if(num && num%2)
+  if(num)
   {
     printf("%d", num % 2);
   }
