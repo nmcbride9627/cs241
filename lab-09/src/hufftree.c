@@ -95,7 +95,7 @@ void minHeapify(struct HuffHeap* heap, int i)
   if(right < heap->size &&
     heap->array[right]->frequency == heap->array[smallest]->frequency)
   {
-    if(heap->array[right]->right != NULL && heap->array[snallest]->right != NULL)
+    if(heap->array[right]->right != NULL && heap->array[smallest]->right != NULL)
     {
       if(heap->array[right]->right->symbol > heap->array[smallest]->right->symbol)
       {
