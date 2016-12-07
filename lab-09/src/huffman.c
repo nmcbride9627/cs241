@@ -26,10 +26,10 @@ int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
 
 struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
 {
-  int i = 0;
-  int j = 0;
+  unsigned int i = 0;
+  unsigned int j = 0;
   struct HuffHeap* priorityQueue = createHeap(capacity);
-  for(i = 0; i < 256; i++)
+  for(i = 0; i < MAX; i++)
   {
     if(frequency[i] != 0)
     {
