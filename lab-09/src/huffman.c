@@ -26,7 +26,7 @@ int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
 
 struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
 {
-  int i, j;
+  int i, j = 0;
   struct HuffHeap* priorityQueue = createHeap(capacity);
   for(i = 0; i < MAX; i++)
   {
@@ -156,8 +156,6 @@ void encodeFile(FILE* in, FILE* out)
   unsigned long frequency[MAX] = {0};
   unsigned int totalNumChars = genFreqArray(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
-
-    printf("test\n");
   printHeap(priorityQueue);
 }
 
