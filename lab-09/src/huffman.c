@@ -28,7 +28,7 @@ struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
 {
   int i, j = 0;
   struct HuffHeap* priorityQueue = createHeap(capacity);
-  for(i = 0; i < MAX; i++)
+  for(i = 0; i < 256; i++)
   {
     if(frequency[i] != 0)
     {
