@@ -55,19 +55,20 @@ void minHeapify(struct HuffHeap* heap, int i)
   int smallest = i;
   int left = 2*i+1;
   int right = 2*i+2;
-  if(right < heap->size &&
-    heap->array[right]->frequency < heap->array[smallest]->frequency)
-  {
-    smallest = right;
-  }
+
   if(left < heap->size &&
     heap->array[left]->frequency < heap->array[smallest]->frequency)
   {
     smallest = left;
   }
+  if(right < heap->size &&
+    heap->array[right]->frequency < heap->array[smallest]->frequency)
+  {
+    smallest = right;
+  }
   if(smallest != i)
   {
-    swapNodes(&heap->array[i], &heap->array[smallest]);
+    swapNodes(&heap->array[smallest], &heap->array[i]);
     minHeapify(heap, smallest);
   }
 }
