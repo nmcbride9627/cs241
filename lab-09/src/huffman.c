@@ -153,6 +153,8 @@ void printTree(struct HuffNode* root)
 /**************************************************************/
 void encodeFile(FILE* in, FILE* out)
 {
+
+    printf("test\n");
   unsigned long frequency[MAX] = {0};
   unsigned int totalNumChars = genFreqArray(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
