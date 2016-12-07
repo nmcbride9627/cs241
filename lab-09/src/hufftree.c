@@ -44,7 +44,7 @@ void buildMinHeap(struct HuffHeap* heap)
 {
   int i;
   int heapSize = heap->size - 1;
-  for(i = heapSize/2; i > 0; i--)
+  for(i = (heapSize-1)/2; i > 0; i--)
   {
     minHeapify(heap, i);
   }
@@ -55,11 +55,13 @@ void minHeapify(struct HuffHeap* heap, int i)
   int smallest = i;
   int left = 2*i+1;
   int right = 2*i+2;
-  if(right <= heap->size && heap->array[right] < heap->array[i])
+  if(right < heap->size &&
+    heap->array[right]->frequency < heap->array[smallest]->frequency)
   {
     smallest = right;
   }
-  if(left <= heap->size && heap->array[left] < heap->array[smallest])
+  if(left < heap->size &&
+    heap->array[left]->frequency < heap->array[smallest]->frequency)
   {
     smallest = left;
   }
