@@ -50,12 +50,23 @@ void buildMinHeap(struct HuffHeap* heap)
   }
 }
 
+
+void printHeap(struct HuffHeap* heap)
+{
+  int i;
+  for(i = 0; i < heap->size; i++)
+  {
+    printf("%c: %lu\n", heap->array[i]->symbol, heap->array[i]->frequency);
+  }
+}
+
 void minHeapify(struct HuffHeap* heap, int i)
 {
   int smallest = i;
   int left = 2*i+1;
   int right = 2*i+2;
 
+  printHeap(heap);
   if(left <= heap->size &&
     heap->array[left]->frequency < heap->array[smallest]->frequency)
   {
@@ -70,14 +81,5 @@ void minHeapify(struct HuffHeap* heap, int i)
   {
     swapNodes(&heap->array[smallest], &heap->array[i]);
     minHeapify(heap, smallest);
-  }
-}
-
-void printHeap(struct HuffHeap* heap)
-{
-  int i;
-  for(i = 0; i < heap->size; i++)
-  {
-    printf("%c: %lu\n", heap->array[i]->symbol, heap->array[i]->frequency);
   }
 }
