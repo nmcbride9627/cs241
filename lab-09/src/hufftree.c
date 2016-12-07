@@ -56,7 +56,7 @@ void printHeap(struct HuffHeap* heap)
   int i;
   for(i = 0; i < heap->size; i++)
   {
-    printf("%c: %lu\n", heap->array[i]->symbol, heap->array[i]->frequency);
+    printf("%c: %lu\n\n", heap->array[i]->symbol, heap->array[i]->frequency);
   }
 }
 
