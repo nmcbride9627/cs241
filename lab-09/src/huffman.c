@@ -24,86 +24,21 @@ int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
   return totalNumChars;
 }
 
-void enqueueNode(struct HuffNode* queue[MAX], int* elementCount, struct HuffNode* node)
+struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
 {
-  int i = 0;
-
-  if((*elementCount) != MAX)
-  {
-    if((*elementCount) == 0)
-    {
-      queue[0] = node;
-    }
-    else
-    {
-      for(i = (*elementCount) - 1; i >= 0; i--)
-      {
-        if(node->frequency > queue[i]->frequency)
-        {
-          queue[i+1] = queue[i];
-        }
-        else if(node->frequency == queue[i]->frequency)
-        {
-          if(node->right != NULL && queue[i]->right != NULL)
-          {
-            if(node->right->frequency < queue[i]->right->frequency)
-            {
-              queue[i+1] = queue[i];
-            }
-            else
-            {
-              break;
-            }
-          }
-          else if(node->right != NULL)
-          {
-            queue[i+1] = queue[i];
-          }
-          else
-          {
-            break;
-          }
-        }
-        else
-        {
-          break;
-        }
-      }
-      queue[i+1] = node;
-    }
-    (*elementCount)++;
-  }
-}
-
-struct HuffNode* dequeueNode(struct HuffNode* queue[MAX], int* elementCount)
-{
-  return queue[--(*elementCount)];
-}
-
-void genPriorityQueue(struct HuffNode* queue[MAX], int* elementCount, unsigned long frequency[MAX])
-{
-  int i;
+  int i, j;
+  struct HuffHeap* priorityQueue = createHeap(capacity);
   for(i = 0; i < MAX; i++)
   {
-    if(frequency[i] != 0)
+    if(frequency[i] != 0 && j < capacity)
     {
-      struct HuffNode* newNode = createNode(i, frequency[i]);
-      enqueueNode(queue, elementCount, newNode);
+      priorityQueue->array[j] = createNode(i, frequency[i]);
+      priorityQueue->size = capacity;
+      j++;
+      buildMinHeap(priorityQueue);
     }
   }
-}
-
-struct HuffNode* genHuffTree(struct HuffNode* queue[MAX], int* elementCount)
-{
-  while((*elementCount) > 1)
-  {
-    /* This take two nodes out of the queue, places them in a mini tree,
-     * then puts the root back into the queue */
-    enqueueNode(queue, elementCount,
-      createMiniTree(dequeueNode(queue, elementCount),
-        dequeueNode(queue, elementCount)));
-  }
-  return queue[0];
+  return priorityQueue;
 }
 
 void printArray(int array[], int size)
@@ -128,7 +63,7 @@ void printEverything(struct HuffNode* root, int array[], int itr)
     array[itr] = 1;
     printEverything(root->right, array, itr + 1);
   }
-  if(root->isLeaf == true)
+  if(isLeaf(root) == true)
   {
     if(root->symbol < 33 || root->symbol > 126)
     {
@@ -218,23 +153,10 @@ void printTree(struct HuffNode* root)
 /**************************************************************/
 void encodeFile(FILE* in, FILE* out)
 {
-  int totalNumChars = 0;
-  int elementCount = 0;
   unsigned long frequency[MAX] = {0};
-  int tempArray[MAX] = {0};
-  int itr = 0;
-  struct HuffNode* queue[MAX] = {NULL};
-  struct HuffNode* tree;
-
-  totalNumChars = genFreqArray(in, frequency);
-  genPriorityQueue(queue, &elementCount, frequency);
-
-  tree = genHuffTree(queue, &elementCount);
-
-  printEverything(tree, tempArray, itr);
-
-
-  printf("Total chars = %d\n", totalNumChars);
+  unsigned int totalNumChars = genFreqArray(in, frequency);
+  struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
+  printHeap(priorityQueue);
 }
 
 /***************************************************/

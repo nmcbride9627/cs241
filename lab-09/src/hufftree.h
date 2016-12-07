@@ -11,16 +11,32 @@
 
 struct HuffNode
 {
-  bool isLeaf;
   unsigned char symbol;
   unsigned long frequency;
   struct HuffNode* left;
   struct HuffNode* right;
 };
 
+struct HuffHeap
+{
+  unsigned long size;
+  unsigned long capacity;
+  struct HuffNode** array;
+};
+
 struct HuffNode* createNode(unsigned char symbol, unsigned long frequency);
 
-struct HuffNode* createMiniTree(struct HuffNode* left, struct HuffNode* right);
+struct HuffHeap* createHeap(unsigned long capacity);
+
+bool isLeaf(struct HuffNode* root);
+
+void swapNodes(struct HuffNode** nodeA, struct HuffNode** nodeB);
+
+void buildMinHeap(struct HuffHeap* heap);
+
+void minHeapify(struct HuffHeap* heap, int i);
+
+void printHeap(struct HuffHeap* heap);
 
 
 #endif
