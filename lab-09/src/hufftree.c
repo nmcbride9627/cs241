@@ -85,7 +85,7 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
       {
         temp = temp->right;
       }
-      if(temp->symbol < root->symbol)
+      if(temp->symbol > root->symbol)
       {
         swapNodes(&heap->array[i-1], &heap->array[i]);
         i--;
