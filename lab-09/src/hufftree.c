@@ -115,6 +115,7 @@ struct HuffNode* removeNode(struct HuffHeap* heap)
   else
   {
     temp = heap->array[0];
+    heap->size--;
     while(i < heap->size -1)
     {
       heap->array[i] = heap->array[i+1];
