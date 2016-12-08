@@ -154,6 +154,23 @@ void encodeFile(FILE* in, FILE* out)
   unsigned int totalNumChars = genFreqArray(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   printHeap(priorityQueue);
+  removeNode(priorityQueue);
+  printHeap(priorityQueue);
+  printHeap(priorityQueue);
+  removeNode(priorityQueue);
+  printHeap(priorityQueue);
+  printHeap(priorityQueue);
+  removeNode(priorityQueue);
+  printHeap(priorityQueue);
+  printHeap(priorityQueue);
+  removeNode(priorityQueue);
+  printHeap(priorityQueue);
+  printHeap(priorityQueue);
+  removeNode(priorityQueue);
+  printHeap(priorityQueue);
+  printHeap(priorityQueue);
+  removeNode(priorityQueue);
+  printHeap(priorityQueue);
 }
 
 /***************************************************/

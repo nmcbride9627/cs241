@@ -34,6 +34,8 @@ void swapNodes(struct HuffNode** nodeA, struct HuffNode** nodeB);
 
 void insertNode(struct HuffHeap* heap, struct HuffNode* node);
 
+struct HuffNode* removeNode(struct HuffHeap* heap);
+
 void buildMinHeap(struct HuffHeap* heap);
 
 void minHeapify(struct HuffHeap* heap, int i);
