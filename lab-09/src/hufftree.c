@@ -62,14 +62,14 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
     heap->size++;
     heap->array[i] = node;
 
-    while(i != 0 && heap->array[(i-1)/2]->frequency >= heap->array[i]->frequency)
+    while(i != 0)
     {
       if(heap->array[(i-1)/2]->frequency > heap->array[i]->frequency)
       {
         swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
         i = (i-1)/2;
       }
-      if(heap->array[(i-1)/2]->frequency == heap->array[i]->frequency)
+      else if(heap->array[(i-1)/2]->frequency == heap->array[i]->frequency)
       {
         if(heap->array[(i-1)/2]->right != NULL && heap->array[i]->right != NULL)
         {
@@ -84,6 +84,14 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
           swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
           i = (i-1)/2;
         }
+        else
+        {
+          break;
+        }
+      }
+      else
+      {
+        break;
       }
     }
   }
