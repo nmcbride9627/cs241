@@ -10,7 +10,7 @@
 
 #define MAX 256
 
-int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
+int genFreqArrayEncode(FILE* fptr, unsigned long frequency[MAX])
 {
   unsigned char c = fgetc(fptr);
   int totalNumChars = 0;
@@ -22,6 +22,24 @@ int genFreqArray(FILE* fptr, unsigned long frequency[MAX])
   }
   rewind(fptr);
   return totalNumChars;
+}
+
+int genFreqArrayDecode(FILE* fptr, unsigned long frequencyTable[MAX])
+{
+  unsigned int i;
+  unsigned char numSymbols;
+  unsigned char symbol;
+  unsigned long frequency;
+  unsigned long totalNumSymbols;
+  fread(&numSymbols, sizeof(unsigned char), 1, fptr);
+  for(i = 0; i < numSymbols; i++)
+  {
+    fread(&symbol, sizeof(unsigned char), 1, fptr);
+    fread(&frequency, sizeof(unsigned long), 1, fptr);
+    frequencyTable[symbol] = frequency;
+  }
+  fread(&totalNumSymbols, sizeof(unsigned long), 1, fptr);
+  return totalNumSymbols;
 }
 
 struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
@@ -55,6 +73,15 @@ void printArray(int array[], int size)
   for(i = 0; i < size; i++)
   {
     printf("%d", array[i]);
+  }
+}
+
+void printULArray(unsigned long array[], int size)
+{
+  int i;
+  for(i = 0; i < size; i++)
+  {
+    printf("%lu ", array[i]);
   }
 }
 
@@ -161,7 +188,7 @@ void encodeFile(FILE* in, FILE* out)
 {
   unsigned long frequency[MAX] = {0};
   int array[MAX] = {0}, itr = 0;
-  unsigned int totalNumChars = genFreqArray(in, frequency);
+  unsigned int totalNumChars = genFreqArrayEncode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
   printEverything(huffmanTree, array, itr);
@@ -174,5 +201,7 @@ void encodeFile(FILE* in, FILE* out)
 /***************************************************/
 void decodeFile(FILE* in, FILE* out)
 {
-
+  unsigned long frequency[MAX] = {0};
+  genFreqArrayDecode(in, frequency);
+  printULArray(frequency, MAX);
 }
