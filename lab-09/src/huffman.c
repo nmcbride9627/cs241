@@ -33,7 +33,6 @@ struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
     if(frequency[i] != 0)
     {
       insertNode(priorityQueue, createNode(i, frequency[i]));
-      ++priorityQueue->size;
     }
   }
   return priorityQueue;
