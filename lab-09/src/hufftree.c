@@ -19,6 +19,16 @@ struct HuffNode* createNode(unsigned char symbol, unsigned long frequency)
   return newNode;
 }
 
+struct HuffNode* createMiniTree(struct HuffNode* left, struct HuffNode* right)
+{
+  struct HuffNode* newNode = malloc(sizeof(struct HuffNode));
+  newNode->symbol = 0;
+  newNode->frequency = left->frequency + right->frequency;
+  newNode->left = left;
+  newNode->right = right;
+  return newNode;
+}
+
 struct HuffHeap* createHeap(unsigned long capacity)
 {
   struct HuffHeap* heap = malloc(sizeof(struct HuffHeap));
