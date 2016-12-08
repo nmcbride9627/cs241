@@ -189,9 +189,8 @@ void encodeFile(FILE* in, FILE* out)
   int array[MAX] = {0}, itr = 0;
   unsigned int totalNumChars = genFreqArrayEncode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
-
-    printHeap(priorityQueue);
-  struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
+  struct HuffNode* huffmanTree = genHuffTree(priorityQueue);
+  printEverything(huffmanTree, array, itr);
 
 }
 
