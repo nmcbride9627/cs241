@@ -33,11 +33,11 @@ bool isLeaf(struct HuffNode* root)
   return root->left == NULL && root->right == NULL;
 }
 
-void swapNodes(struct HuffNode* nodeA, struct HuffNode* nodeB)
+void swapNodes(struct HuffNode** nodeA, struct HuffNode** nodeB)
 {
-  struct HuffNode* temp = nodeA;
-  nodeA = nodeB;
-  nodeB = temp;
+  struct HuffNode* temp = *nodeA;
+  *nodeA = *nodeB;
+  *nodeB = temp;
 }
 
 void insertNode(struct HuffHeap* heap, struct HuffNode* node)
@@ -56,19 +56,15 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
     {
       if(heap->array[(i-1)/2]->frequency > heap->array[i]->frequency)
       {
-        swapNodes(heap->array[i], heap->array[(i-1)/2]);
+        swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
         i = (i-1)/2;
       }
       if(heap->array[(i-1)/2]->frequency == heap->array[i]->frequency)
       {
         if(heap->array[(i-1)/2]->symbol > heap->array[i]->symbol)
         {
-          swapNodes(heap->array[i], heap->array[(i-1)/2]);
+          swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
           i = (i-1)/2;
-        }
-        else
-        {
-          break;
         }
       }
     }
@@ -144,7 +140,7 @@ void minHeapify(struct HuffHeap* heap, int i)
   }
   if(smallest != i)
   {
-    swapNodes(heap->array[smallest], heap->array[i]);
+    swapNodes(&heap->array[smallest], &heap->array[i]);
     minHeapify(heap, smallest);
   }
 }
