@@ -100,20 +100,26 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
 
 struct HuffNode* removeNode(struct HuffHeap* heap)
 {
+
+  int i = 0;
   struct HuffNode* temp;
   if(heap->size <= 0)
   {
     printf("Error: Heap empty\n");
   }
-  if(heap->size == 1)
+  else if(heap->size == 1)
   {
     heap->size--;
     return heap->array[0];
   }
-  temp = heap->array[0];
-  heap->array[0] = heap->array[heap->size -1];
-  heap->size--;
-  minHeapify(heap, 0);
+  else
+  {
+    temp = heap->array[0];
+    while(i < heap->size -1)
+    {
+      heap->array[i] = heap->array[i+1];
+    }
+  }
   return temp;
 }
 
