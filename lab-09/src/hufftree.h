@@ -28,6 +28,8 @@ struct HuffNode* createNode(unsigned char symbol, unsigned long frequency);
 
 struct HuffHeap* createHeap(unsigned long capacity);
 
+struct HuffNode* createMiniTree(struct HuffNode* left, struct HuffNode* right);
+
 bool isLeaf(struct HuffNode* root);
 
 void swapNodes(struct HuffNode** nodeA, struct HuffNode** nodeB);
