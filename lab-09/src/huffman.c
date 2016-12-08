@@ -38,6 +38,15 @@ struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
   return priorityQueue;
 }
 
+struct HuffNode* genHuffTree(struct HuffHeap* heap)
+{
+  while(heap->size > 1)
+  {
+    insertNode(heap, createMiniTree(removeNode(heap), removeNode(heap)));
+  }
+  return heap->array[0];
+}
+
 void printArray(int array[], int size)
 {
   int i;
@@ -110,8 +119,6 @@ void printVals(unsigned long frequency[MAX])
   }
 }
 
-
-
 void printWrapper(struct HuffNode* root, bool newLineWrap, bool printL)
 {
 	if(root != NULL)
@@ -153,31 +160,8 @@ void encodeFile(FILE* in, FILE* out)
   unsigned long frequency[MAX] = {0};
   unsigned int totalNumChars = genFreqArray(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
-  removeNode(priorityQueue);
-  printHeap(priorityQueue);
+  struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
+  printTree(huffmanTree);
 }
 
 /***************************************************/
