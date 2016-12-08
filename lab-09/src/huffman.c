@@ -202,6 +202,7 @@ void encodeFile(FILE* in, FILE* out)
 void decodeFile(FILE* in, FILE* out)
 {
   unsigned long frequency[MAX] = {0};
+  int array[MAX] = {0}, itr = 0;
   unsigned int totalNumChars = genFreqArrayDecode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
