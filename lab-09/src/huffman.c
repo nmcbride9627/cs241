@@ -121,11 +121,13 @@ void printSymFreqCode(unsigned long frequency[MAX], struct Code* codeTable[MAX])
       if(i <= 32)
       {
         printf("=%d %lu ",i,frequency[i]);
+        printCode(codeTable[i]);
         printf("\n");
       }
       else
       {
-        printf("%c%10lu ",i,frequency[i]);
+        printf("%c %lu ",i,frequency[i]);
+        printCode(codeTable[i]);
         printf("\n");
       }
     }
