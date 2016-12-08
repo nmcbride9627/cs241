@@ -9,6 +9,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#define MAX 256
+
 struct HuffNode* createNode(unsigned char symbol, unsigned long frequency)
 {
   struct HuffNode* newNode = malloc(sizeof(struct HuffNode));
@@ -27,6 +29,15 @@ struct HuffNode* createMiniTree(struct HuffNode* right, struct HuffNode* left)
   newNode->left = left;
   newNode->right = right;
   return newNode;
+}
+
+struct Code* createCode(int* code, int size)
+{
+  struct Code* newCode = malloc(sizeof(struct Code));
+  newCode->code = malloc(size * sizeof(int*));
+  newCode->code = code;
+  newCode->size = size;
+  return newCode;
 }
 
 struct HuffHeap* createHeap(unsigned long capacity)
