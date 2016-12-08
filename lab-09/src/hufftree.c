@@ -63,10 +63,10 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
   }
   else
   {
-    int i = heap->size++;
-    heap->array[i] = node;
     struct HuffNode* root;
     struct HuffNode* temp;
+    int i = heap->size++;
+    heap->array[i] = node;
 
     while(i != 0 && heap->array[i-1]->frequency > heap->array[i]->frequency)
     {
@@ -118,6 +118,7 @@ struct HuffNode* removeNode(struct HuffHeap* heap)
     while(i < heap->size -1)
     {
       heap->array[i] = heap->array[i+1];
+      i++;
     }
   }
   return temp;
