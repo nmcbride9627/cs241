@@ -121,6 +121,7 @@ struct HuffNode* removeNode(struct HuffHeap* heap)
       swapNodes(&heap->array[i], &heap->array[i+1]);
       i++;
     }
+    heap->array[i] = NULL;
   }
   return temp;
 }
