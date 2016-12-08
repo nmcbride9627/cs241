@@ -60,7 +60,6 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
 {
   while(heap->size > 1)
   {
-    printHeap(heap);
     insertNode(heap, createMiniTree(removeNode(heap), removeNode(heap)));
   }
   return heap->array[0];
