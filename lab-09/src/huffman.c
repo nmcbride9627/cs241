@@ -203,6 +203,7 @@ void decodeFile(FILE* in, FILE* out)
 {
   unsigned long frequency[MAX] = {0};
   unsigned int totalNumChars = genFreqArrayDecode(in, frequency);
-  printULArray(frequency, MAX);
-  printf("totalNumChars: %u\n", totalNumChars);
+  struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
+  struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
+  printEverything(huffmanTree, array, itr);
 }
