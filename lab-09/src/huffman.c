@@ -81,7 +81,7 @@ void printULArray(unsigned long array[], int size)
   int i;
   for(i = 0; i < size; i++)
   {
-    printf("%lu ", array[i]);
+    printf("array[%d] = %lu ",i, array[i]);
   }
 }
 
@@ -202,6 +202,7 @@ void encodeFile(FILE* in, FILE* out)
 void decodeFile(FILE* in, FILE* out)
 {
   unsigned long frequency[MAX] = {0};
-  genFreqArrayDecode(in, frequency);
+  unsigned int totalNumChars = genFreqArrayDecode(in, frequency);
   printULArray(frequency, MAX);
+  printf("totalNumChars: %u\n", totalNumChars);
 }
