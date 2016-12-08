@@ -56,38 +56,39 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
   {
     printf("Error: Heap full\n");
   }
+  else if(heap->size == 0)
+  {
+    heap->array[0] = node;
+    heap->size++;
+  }
   else
   {
-    int i = heap->size;
-    heap->size++;
+    int i = heap->size++;
     heap->array[i] = node;
+    struct HuffNode* root;
+    struct HuffNode* temp;
 
-    while(i != 0)
+    while(i != 0 && heap->array[i-1]->frequency > heap->array[i]->frequency)
     {
-      if(heap->array[(i-1)/2]->frequency > heap->array[i]->frequency)
+      swapNodes(&heap->array[i-1], &heap->array[i]);
+      i--;
+    }
+    root = heap->array[i];
+    while(root->right != NULL)
+    {
+      root = root->right;
+    }
+    while(i != 0 && heap->array[i-1]->frequency == heap->array[i]->frequency)
+    {
+      temp = heap->array[i-1];
+      while(temp->right != NULL)
       {
-        swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
-        i = (i-1)/2;
+        temp = temp->right;
       }
-      else if(heap->array[(i-1)/2]->frequency == heap->array[i]->frequency)
+      if(temp->symbol < root->symbol)
       {
-        if(heap->array[(i-1)/2]->right != NULL && heap->array[i]->right != NULL)
-        {
-          if(heap->array[(i-1)/2]->right->symbol < heap->array[i]->right->symbol)
-          {
-            swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
-            i = (i-1)/2;
-          }
-        }
-        else if(heap->array[i]->right != NULL)
-        {
-          swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
-          i = (i-1)/2;
-        }
-        else
-        {
-          break;
-        }
+        swapNodes(&heap->array[i-1], &heap->array[i]);
+        i--;
       }
       else
       {
