@@ -52,7 +52,7 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
     heap->size++;
     heap->array[i] = node;
 
-    while(i != 0)
+    while(i != 0 && heap->array[(i-1)/2]->frequency >= heap->array[i]->frequency)
     {
       if(heap->array[(i-1)/2]->frequency > heap->array[i]->frequency)
       {
