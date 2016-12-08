@@ -10,7 +10,6 @@
 
 #define MAX 256
 
-
 int genFreqArrayEncode(FILE* fptr, unsigned long frequency[MAX])
 {
   unsigned char c = fgetc(fptr);
@@ -61,7 +60,6 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
 {
   while(heap->size > 1)
   {
-    printHeap(heap);
     insertNode(heap, createMiniTree(removeNode(heap), removeNode(heap)));
 
   }
@@ -192,7 +190,8 @@ void encodeFile(FILE* in, FILE* out)
   unsigned int totalNumChars = genFreqArrayEncode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
-  printEverything(huffmanTree, array, itr);
+
+  printHeap(priorityQueue);
 }
 
 /***************************************************/
@@ -207,5 +206,4 @@ void decodeFile(FILE* in, FILE* out)
   unsigned int totalNumChars = genFreqArrayDecode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
-  printEverything(huffmanTree, array, itr);
 }
