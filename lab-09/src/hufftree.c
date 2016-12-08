@@ -19,7 +19,7 @@ struct HuffNode* createNode(unsigned char symbol, unsigned long frequency)
   return newNode;
 }
 
-struct HuffNode* createMiniTree(struct HuffNode* left, struct HuffNode* right)
+struct HuffNode* createMiniTree(struct HuffNode* right, struct HuffNode* left)
 {
   struct HuffNode* newNode = malloc(sizeof(struct HuffNode));
   newNode->symbol = 255;
