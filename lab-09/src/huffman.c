@@ -10,6 +10,7 @@
 
 #define MAX 256
 
+
 int genFreqArrayEncode(FILE* fptr, unsigned long frequency[MAX])
 {
   unsigned char c = fgetc(fptr);
