@@ -115,13 +115,13 @@ struct HuffNode* removeNode(struct HuffHeap* heap)
   else
   {
     temp = heap->array[0];
-    heap->size--;
     while(i < heap->size -1)
     {
       swapNodes(&heap->array[i], &heap->array[i+1]);
       i++;
     }
     heap->array[i] = NULL;
+    heap->size--;
   }
   return temp;
 }
