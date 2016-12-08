@@ -32,6 +32,8 @@ bool isLeaf(struct HuffNode* root);
 
 void swapNodes(struct HuffNode** nodeA, struct HuffNode** nodeB);
 
+void insertNode(struct HuffHeap* heap, struct HuffNode* node);
+
 void buildMinHeap(struct HuffHeap* heap);
 
 void minHeapify(struct HuffHeap* heap, int i);

@@ -40,6 +40,25 @@ void swapNodes(struct HuffNode** nodeA, struct HuffNode** nodeB)
   *nodeB = temp;
 }
 
+void insertNode(struct HuffHeap* heap, struct HuffNode* node)
+{
+  if(heap->size == heap->capacity)
+  {
+    printf("Error: Heap full\n");
+  }
+  else
+  {
+    int i = heap->size++;
+    heap->array[i] = node;
+
+    while(i != 0 && heap->array[(i-1)/2] > heap->array[i])
+    {
+      swapNodes(&(heap->array[i]), &(heap->array[(i-1)/2]));
+      i = (i-1)/2;
+    }
+  }
+}
+
 void buildMinHeap(struct HuffHeap* heap)
 {
   int i;
