@@ -66,6 +66,10 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
           swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
           i = (i-1)/2;
         }
+        else
+        {
+          break;
+        }
       }
     }
   }
