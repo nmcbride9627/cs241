@@ -48,12 +48,13 @@ void insertNode(struct HuffHeap* heap, struct HuffNode* node)
   }
   else
   {
-    int i = heap->size++;
+    int i = heap->size;
+    heap->size++;
     heap->array[i] = node;
 
     while(i != 0 && heap->array[(i-1)/2] > heap->array[i])
     {
-      swapNodes(&(heap->array[i]), &(heap->array[(i-1)/2]));
+      swapNodes(&heap->array[i], &heap->array[(i-1)/2]);
       i = (i-1)/2;
     }
   }
