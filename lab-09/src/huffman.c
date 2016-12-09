@@ -78,13 +78,11 @@ void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, 
 {
   if(root->left != NULL)
   {
-    code = code * 2;
-    genHuffCodes(root->left, codeTable, code, iterator + 1);
+    genHuffCodes(root->left, codeTable, code * 2, iterator + 1);
   }
   if(root->right != NULL)
   {
-    code = (code * 2) + 1;
-    genHuffCodes(root->right, codeTable, code, iterator + 1);
+    genHuffCodes(root->right, codeTable,  (code * 2) + 1, iterator + 1);
   }
   if(isLeaf(root) == true)
   {
