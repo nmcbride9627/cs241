@@ -65,21 +65,21 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
   return heap->array[0];
 }
 
-void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int codeArray[MAX], int iterator)
+void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, int iterator)
 {
   if(root->left != NULL)
   {
-    codeArray[iterator] = 0;
-    genHuffCodes(root->left, codeTable, codeArray, iterator + 1);
+    code = code * 2;
+    genHuffCodes(root->left, codeTable, code, iterator + 1);
   }
   if(root->right != NULL)
   {
-    codeArray[iterator] = 1;
-    genHuffCodes(root->right, codeTable, codeArray, iterator + 1);
+    code = (code * 2) + 1;
+    genHuffCodes(root->right, codeTable, code, iterator + 1);
   }
   if(isLeaf(root) == true)
   {
-    codeTable[root->symbol] = createCode(codeArray, iterator);
+    codeTable[root->symbol] = createCode(code, iterator);
   }
 }
 
@@ -101,13 +101,13 @@ void printULArray(unsigned long array[], int size)
   }
 }
 
-void printCode(struct Code* code)
+void printCode(int code, int length)
 {
-  int i;
-  for(i = 0; i < code->size; i++)
+  if(code > 0)
   {
-    printf("%d", code->code[i]);
+    printCode(code / 2, length - 1);
   }
+  printf("%d", code % 2);
 }
 
 void printSymFreqCode(unsigned long frequency[MAX], struct Code* codeTable[MAX])
@@ -121,13 +121,13 @@ void printSymFreqCode(unsigned long frequency[MAX], struct Code* codeTable[MAX])
       if(i <= 32)
       {
         printf("=%d %lu ",i,frequency[i]);
-        printCode(codeTable[i]);
+        printCode(codeTable[i]->code, codeTable[i]->length -1);
         printf("\n");
       }
       else
       {
         printf("%c %lu ",i,frequency[i]);
-        printCode(codeTable[i]);
+        printCode(codeTable[i]->code, codeTable[i]->length -1);
         printf("\n");
       }
     }
@@ -227,12 +227,12 @@ void encodeFile(FILE* in, FILE* out)
 {
   unsigned long frequency[MAX] = {0};
   struct Code* codeTable[MAX] = {0};
-  int codeArray[MAX] = {0};
+  int code = 0;
   int itr = 0;
   unsigned int totalNumChars = genFreqArrayEncode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   struct HuffNode* huffmanTree = genHuffTree(priorityQueue);
-  genHuffCodes(huffmanTree, codeTable, codeArray, itr);
+  genHuffCodes(huffmanTree, codeTable, code, itr);
   printSymFreqCode(frequency, codeTable);
 
 }
