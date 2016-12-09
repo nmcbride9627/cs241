@@ -111,14 +111,7 @@ void printULArray(unsigned long array[], int size)
   }
 }
 
-void printCode(int code, int length)
-{
-  if(code > 0)
-  {
-    printCode(code / 2, length - 1);
-  }
-  printf("%d", code % 2);
-}
+
 
 void printSymFreqCode(unsigned long frequency[MAX], struct Code* codeTable[MAX])
 {
