@@ -231,15 +231,16 @@ void encodeFile(FILE* in, FILE* out)
 {
   unsigned long frequency[MAX] = {0};
   struct Code* codeTable[MAX] = {0};
-  int array[MAX] = {0}
+  int array[MAX] = {0};
   int code = 0;
   int itr = 0;
   unsigned int totalNumChars = genFreqArrayEncode(in, frequency);
   struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
   struct HuffNode* huffmanTree = genHuffTree(priorityQueue);
+
+  printEverything(huffmanTree, array, itr);
   genHuffCodes(huffmanTree, codeTable, code, itr);
   printSymFreqCode(frequency, codeTable);
-  printEverything(huffmanTree, array, itr);
 
 }
 
