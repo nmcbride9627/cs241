@@ -65,6 +65,15 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
   return heap->array[0];
 }
 
+void printCode(int code, int length)
+{
+  if(code > 0)
+  {
+    printCode(code / 2, length - 1);
+  }
+  printf("%d", code % 2);
+}
+
 void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, int iterator)
 {
   if(root->left != NULL)
@@ -80,6 +89,7 @@ void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, 
   if(isLeaf(root) == true)
   {
     codeTable[root->symbol] = createCode(code, iterator);
+    printCode(code, iterator);
   }
 }
 
