@@ -90,7 +90,7 @@ void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, 
   {
     codeTable[root->symbol] = createCode(code, iterator);
     printCode(code, iterator);
-    printf("\n");
+    printf("%c \n", root->symbol);
   }
 }
 
