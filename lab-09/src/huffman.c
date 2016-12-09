@@ -103,7 +103,7 @@ void printULArray(unsigned long array[], int size)
 
 void printCode(int code, int length)
 {
-  if(length > 0)
+  if(code > 0)
   {
     printCode(code / 2, length - 1);
   }
