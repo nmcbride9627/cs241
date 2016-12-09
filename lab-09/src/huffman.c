@@ -80,7 +80,6 @@ void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, 
   if(isLeaf(root) == true)
   {
     codeTable[root->symbol] = createCode(code, iterator);
-    code = 0;
   }
 }
 
