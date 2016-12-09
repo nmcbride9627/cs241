@@ -67,7 +67,7 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
 
 void printCode(int code, int length)
 {
-  if(code > 0)
+  if(length > 0)
   {
     printCode(code / 2, length - 1);
   }
