@@ -292,7 +292,7 @@ void encodeFile(FILE* in, FILE* out)
   genHuffCodes(huffmanTree, codeTable, 0, 0);
   printSymFreqCode(frequency, codeTable);
   writeHeader(out, numberSymbols, frequency, totalNumSymbols);
-
+  writePayload(in, out, codeTable);
 }
 
 /***************************************************/
