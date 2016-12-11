@@ -1,7 +1,13 @@
 all: huffencode huffdecode
 
 clean:
-	-rm huffencode huffdecode *.o
+	-rm huffencode huffdecode *.o test*.txt
+
+encodetest:
+	./huffencode ../bin/small/small.txt testencode.txt
+
+decodetest:
+	./huffdecode ../bin/small/small.txt.huff textdecode.txt
 
 huffencode: huffencode.o hufftree.o huffman.o
 	gcc -Wall -ansi -pedantic -o huffencode huffencode.o hufftree.o huffman.o
