@@ -42,7 +42,8 @@ int genFreqArrayDecode(FILE* fptr, unsigned long frequencyTable[MAX])
   return totalNumSymbols;
 }
 
-struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
+struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX],
+  unsigned long capacity, unsigned char* numSymbols)
 {
   unsigned int i = 0;
   struct HuffHeap* priorityQueue = createHeap(capacity);
@@ -51,6 +52,7 @@ struct HuffHeap* genPriorityQueue(unsigned long frequency[MAX], int capacity)
     if(frequency[i] != 0)
     {
       insertNode(priorityQueue, createNode(i, frequency[i]));
+      (*numSymbols)++;
     }
   }
   return priorityQueue;
@@ -65,7 +67,8 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
   return heap->array[0];
 }
 
-void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX], int code, int iterator)
+void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX],
+  int code, int iterator)
 {
   if(root->left != NULL)
   {
@@ -214,6 +217,22 @@ void printTree(struct HuffNode* root)
 	printWrapper(root, true, false);
 }
 
+void writeHeader(FILE* fptr, unsigned char numSymbols,
+  unsigned long frequency[MAX], unsigned long totalNumSymbols)
+{
+  unsigned char i;
+  fwrite(&numSymbols, sizeof(unsigned char), 1, fptr);
+  for(i = 0; i < MAX; i++)
+  {
+    if(frequency[i] != 0)
+    {
+      fwrite(&i, sizeof(unsigned char), 1, fptr);
+      fwrite(&frequency[i], sizeof(unsigned long), 1, fptr);
+    }
+  }
+  fwrite(&totalNumSymbols, sizeof(unsigned long), 1, fptr);
+}
+
 /**************************************************************/
 /* Huffman encode a file.                                     */
 /*     Also writes freq/code table to standard output         */
@@ -223,16 +242,19 @@ void printTree(struct HuffNode* root)
 /**************************************************************/
 void encodeFile(FILE* in, FILE* out)
 {
+  unsigned char numberSymbols = 0;
+  unsigned long totalNumSymbols = 0;
   unsigned long frequency[MAX] = {0};
   struct Code* codeTable[MAX] = {0};
-  int array[MAX] = {0};
-  int code = 0;
-  int itr = 0;
-  unsigned int totalNumChars = genFreqArrayEncode(in, frequency);
-  struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
-  struct HuffNode* huffmanTree = genHuffTree(priorityQueue);
-  genHuffCodes(huffmanTree, codeTable, code, itr);
+  struct HuffHeap* priorityQueue;
+  struct HuffNode* huffmanTree;
+
+  totalNumSymbols = genFreqArrayEncode(in, frequency);
+  priorityQueue = genPriorityQueue(frequency, totalNumSymbols, &numberSymbols);
+  huffmanTree = genHuffTree(priorityQueue);
+  genHuffCodes(huffmanTree, codeTable, 0, 0);
   printSymFreqCode(frequency, codeTable);
+  writeHeader(out, numberSymbols, frequency, totalNumSymbols);
 
 }
 
@@ -243,9 +265,10 @@ void encodeFile(FILE* in, FILE* out)
 /***************************************************/
 void decodeFile(FILE* in, FILE* out)
 {
+  /*
   unsigned long frequency[MAX] = {0};
   int array[MAX] = {0}, itr = 0;
   unsigned int totalNumChars = genFreqArrayDecode(in, frequency);
-  struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars);
-  struct HuffNode* huffmanTree= genHuffTree(priorityQueue);
+  struct HuffHeap* priorityQueue = genPriorityQueue(frequency, totalNumChars, numberSymbols);
+  struct HuffNode* huffmanTree= genHuffTree(priorityQueue);*/
 }
