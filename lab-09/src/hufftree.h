@@ -19,8 +19,8 @@ struct HuffNode
 
 struct Code
 {
-  int code;
-  int length;
+  unsigned int code;
+  unsigned int length;
 };
 
 struct HuffHeap
@@ -36,7 +36,7 @@ struct HuffHeap* createHeap(unsigned long capacity);
 
 struct HuffNode* createMiniTree(struct HuffNode* left, struct HuffNode* right);
 
-struct Code* createCode(int code, int size);
+struct Code* createCode(unsigned int code, unsigned int length);
 
 bool isLeaf(struct HuffNode* root);
 

@@ -31,7 +31,7 @@ struct HuffNode* createMiniTree(struct HuffNode* right, struct HuffNode* left)
   return newNode;
 }
 
-struct Code* createCode(int code, int length)
+struct Code* createCode(unsigned int code, unsigned int length)
 {
   struct Code* newCode = malloc(sizeof(struct Code));
   newCode->code = code;

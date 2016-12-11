@@ -68,7 +68,7 @@ struct HuffNode* genHuffTree(struct HuffHeap* heap)
 }
 
 void genHuffCodes(struct HuffNode* root, struct Code* codeTable[MAX],
-  int code, int iterator)
+  unsigned int code, unsigned int iterator)
 {
   if(root->left != NULL)
   {
@@ -231,6 +231,43 @@ void writeHeader(FILE* fptr, unsigned char numSymbols,
     }
   }
   fwrite(&totalNumSymbols, sizeof(unsigned long), 1, fptr);
+}
+
+void writePayload(FILE* in, FILE* out, struct Code* codeTable[MAX])
+{
+  unsigned char c;
+  unsigned char output = 0;
+  unsigned int tempCode = 0;
+  int bitsStored = 0;
+  while(!feof(in))
+  {
+    fread(&c, sizeof(unsigned char), 1, in);
+    if(8 - bitsStored <= codeTable[c]->length)
+    {
+      output <<= codeTable[c]->length;
+      output |= codeTable[c]->code;
+      bitsStored += codeTable[c]->length;
+    }
+    else
+    {
+      output <<= (8 - bitsStored);
+      tempCode = (codeTable[c]->code) >>
+        (codeTable[c]->length - (8 - bitsStored));
+      output |= tempCode;
+      fwrite(&output, sizeof(unsigned char), 1, out);
+      output = 0;
+      tempCode = codeTable[c]->code <<
+        (8 - (codeTable[c]->length - (8 - bitsStored)));
+      tempCode >>= (8 - (codeTable[c]->length - (8 - bitsStored)));
+      output |= tempCode;
+      bitsStored = 8 - (8 - (codeTable[c]->length - (8 - bitsStored)));
+    }
+    if(bitsStored != 0)
+    {
+      output <<= (8 - bitsStored);
+      fwrite(&output, sizeof(unsigned char), 1, out);
+    }
+  }
 }
 
 /**************************************************************/
