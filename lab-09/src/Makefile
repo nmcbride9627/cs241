@@ -1,7 +1,7 @@
 all: huffencode huffdecode
 
 clean:
-	-rm huffencode huffdecode *.o test*.txt
+	-rm huffencode huffdecode *.o test*.txt encodetest decodetest
 
 encodetest:
 	./huffencode ../bin/small/small.txt testencode.txt
