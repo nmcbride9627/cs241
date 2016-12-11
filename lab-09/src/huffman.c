@@ -262,11 +262,11 @@ void writePayload(FILE* in, FILE* out, struct Code* codeTable[MAX])
       output |= tempCode;
       bitsStored = 8 - (8 - (codeTable[c]->length - (8 - bitsStored)));
     }
-    if(bitsStored != 0)
-    {
-      output <<= (8 - bitsStored);
-      fwrite(&output, sizeof(unsigned char), 1, out);
-    }
+  }
+  if(bitsStored != 0)
+  {
+    output <<= (8 - bitsStored);
+    fwrite(&output, sizeof(unsigned char), 1, out);
   }
 }
 
