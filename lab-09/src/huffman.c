@@ -220,7 +220,7 @@ void printTree(struct HuffNode* root)
 void writeHeader(FILE* fptr, unsigned char numSymbols,
   unsigned long frequency[MAX], unsigned long totalNumSymbols)
 {
-  unsigned char i;
+  unsigned long i;
   fwrite(&numSymbols, sizeof(unsigned char), 1, fptr);
   for(i = 0; i < MAX; i++)
   {
