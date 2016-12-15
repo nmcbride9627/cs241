@@ -5,7 +5,7 @@ int main(int argc, char const *argv[]) {
   char* p = &c;
   char** q = &p;
 
-  ++p[0];
+  *p++;
   printf("%c\n", c);
   return 0;
 }
