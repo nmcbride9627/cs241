@@ -1,11 +1,18 @@
 #include <stdio.h>
 
-int main(int argc, char const *argv[]) {
-  char c = 'm';
-  char* p = &c;
-  char** q = &p;
+void  main(void)
 
-  *p++;
-  printf("%c\n", c);
-  return 0;
+{
+long a[] = {7, 13, 17};
+
+long *x = a;
+
+printf("sizeof(long )=%lu ", sizeof(long ));
+
+printf("x=%p, x[0]=%ld\n", x, x[0]);
+
+x = x + 2;
+
+printf("x=%p, x[0]=%ld\n", x, x[0]);
+
 }
