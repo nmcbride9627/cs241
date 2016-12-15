@@ -1,18 +1,25 @@
 #include <stdio.h>
 
-void  main(void)
-
+int  main()
 {
-long a[] = {7, 13, 17};
-
-long *x = a;
-
-printf("sizeof(long )=%lu ", sizeof(long ));
-
-printf("x=%p, x[0]=%ld\n", x, x[0]);
-
-x = x + 2;
-
-printf("x=%p, x[0]=%ld\n", x, x[0]);
-
+char s[] = "QfQQinQalQ";
+char  del = ’Q’;
+int  sourceIndex = 0;
+int  destIndex = 0;
+while (s[sourceIndex ])
+{
+if (s[sourceIndex] != del)
+{
+s[destIndex] = s[sourceIndex ];
+destIndex ++;
+}
+else
+{
+printf("[%d,%d] %s\n", sourceIndex , destIndex , s);
+}
+sourceIndex ++;
+}
+s[destIndex ]=’\0’;
+printf("result: %s\n",s);
+return  0;
 }
