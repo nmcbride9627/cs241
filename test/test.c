@@ -3,7 +3,7 @@
 int  main()
 {
 char s[] = "QfQQinQalQ";
-char  del = ’Q’;
+char  del = 'Q';
 int  sourceIndex = 0;
 int  destIndex = 0;
 while (s[sourceIndex ])
@@ -19,7 +19,7 @@ printf("[%d,%d] %s\n", sourceIndex , destIndex , s);
 }
 sourceIndex ++;
 }
-s[destIndex ]=’\0’;
+s[destIndex ]='\0';
 printf("result: %s\n",s);
 return  0;
 }
